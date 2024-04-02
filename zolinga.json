@@ -1,0 +1,61 @@
+{
+    "name": "Zolinga Rights Management System",
+    "version": "1.0",
+    "description": "Provides a simple rights management system for Zolinga.",
+    "authors": [
+        "Danny Sevcik <danny@zolinga.net>"
+    ],
+    "attributes": {},
+    "listen": [
+        {
+            "description": "The $api->rms service providing user management API.",
+            "service": "rms",
+            "class": "\\Zolinga\\Rms\\Service",
+            "origin": [
+                "internal"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "The $api->user representing the current user.",
+            "service": "user",
+            "class": "\\Zolinga\\Rms\\UserService",
+            "origin": [
+                "internal"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "The User login request.",
+            "event": "rms:login",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onLogin",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "Log the user out.",
+            "event": "rms:logout",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onLogout",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "RMS Authorization Provider",
+            "event": "system:authorize",
+            "class": "\\Zolinga\\Rms\\UserService",
+            "method": "onAuthorize",
+            "origin": [
+                "internal"
+            ]
+        }
+    ],
+    "autoload": {
+        "Zolinga\\Rms\\": "src/"
+    }
+}
