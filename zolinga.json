@@ -57,5 +57,8 @@
     ],
     "autoload": {
         "Zolinga\\Rms\\": "src/"
-    }
+    },
+    "dependencies": [
+        "zolinga-db"
+    ]
 }
