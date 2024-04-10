@@ -115,7 +115,7 @@ class User
      *      canLogin: ?int, 
      *      created: ?int, 
      *      modified: ?int, 
-     *      lastLogin: ?int, 
+     *      lastLogin: ?int, lo
      *      lastLoginFrom: ?string} $who
      */
     protected function load(string|int|array $who): void
@@ -137,9 +137,17 @@ class User
         }
     }
 
-    public function __get(string $name): null|string|int|bool
+    /**
+     * Getter
+     *
+     * @param string $name
+     * @return null|string|integer|boolean|array<mixed>
+     */
+    public function __get(string $name): null|string|int|bool|array
     {
         switch ($name) {
+            case 'data': // readonly used by UserService
+                return $this->data;
             case 'isModified':
                 return (bool) $this->modifiedFields;
             case 'canLogin':

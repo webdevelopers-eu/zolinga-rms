@@ -36,6 +36,16 @@
             "priority": 0.5
         },
         {
+            "description": "The User registration request.",
+            "event": "rms:register",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onRegister",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
             "description": "Log the user out.",
             "event": "rms:logout",
             "class": "\\Zolinga\\Rms\\Api\\UserApi",
@@ -60,5 +70,12 @@
     },
     "dependencies": [
         "zolinga-db"
+    ],
+    "webComponents": [
+        {
+            "tag": "login-box",
+            "description": "The login form for the RMS system.",
+            "module": "web-components/login-box/login-box.js"
+        }
     ]
 }

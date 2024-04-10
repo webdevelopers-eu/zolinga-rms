@@ -31,6 +31,7 @@ class UserApi implements ListenerInterface
 
         $username = $event->request['username'] ?? null;
         $password = $event->request['password'] ?? null;
+        $remember = $event->request['remember'] ?? false;
         
         if (!$username || !$password) {
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username and password are required."));
@@ -41,6 +42,10 @@ class UserApi implements ListenerInterface
             $event->setStatus($event::STATUS_UNAUTHORIZED, dgettext("zolinga-rms", "Invalid username or password."));
             return;
         }
+
+        if ($remember) {
+            $api->user->remember();
+        }
         
         $event->response['user'] = [
             "username" => $api->user->username,
@@ -50,6 +55,45 @@ class UserApi implements ListenerInterface
             // check if event status is OK and amend the response
         ];
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Login successful."));
+    }
+
+    public function onRegister(RequestResponseEvent $event): void {
+        global $api;
+
+        $username = $event->request['username'] ?? null;
+        $password = $event->request['password'] ?? null;
+        
+        if (!$username || !$password) {
+            $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username and password are required."));
+            return;
+        }
+
+        if (isset($event->request['password2']) && $event->request['password2'] !== $password) {
+            $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Passwords do not match."));
+            return;
+        }
+
+        if (filter_var($username, FILTER_VALIDATE_EMAIL) === false) {
+            $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username must be a valid email address."));
+            return;
+        }
+
+        if ($api->rms->findUser($username)) {
+            $event->setStatus($event::STATUS_CONFLICT, dgettext("zolinga-rms", "User already exists."));
+            return;
+        }
+
+        $user = $api->rms->createUser([
+            "username" => $username,
+            "password" => $password,
+        ]);
+
+        if (!$api->user->login($username, $password)) {
+            $event->setStatus($event::STATUS_ERROR, dgettext("zolinga-rms", "User created but could not login."));
+            return;
+        }
+
+        $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "User created."));
     }
 
     public function onLogout(RequestEvent $event): void {
