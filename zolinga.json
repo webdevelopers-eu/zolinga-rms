@@ -63,6 +63,16 @@
             "origin": [
                 "internal"
             ]
+        },
+        {
+            "description": "Just wake up RMS User to set cookies.",
+            "event": "system:content",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onContent",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
         }
     ],
     "autoload": {

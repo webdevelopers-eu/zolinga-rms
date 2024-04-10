@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Zolinga\Rms\Api;
 
 use Zolinga\Rms\User;
-use Zolinga\System\Events\{RequestEvent, RequestResponseEvent, ListenerInterface, AuthorizeEvent};
+use Zolinga\System\Events\{ContentEvent, RequestEvent, RequestResponseEvent, ListenerInterface, AuthorizeEvent};
 
 class UserApi implements ListenerInterface
 {
@@ -94,6 +94,14 @@ class UserApi implements ListenerInterface
         }
 
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "User created."));
+    }
+
+    // we just need to wake up the user object so it sets cookies
+    public function onContent(ContentEvent $event):void {
+        global $api;
+        // wake up the user object
+        /** @phpstan-ignore-next-line */
+        $api->user;
     }
 
     public function onLogout(RequestEvent $event): void {
