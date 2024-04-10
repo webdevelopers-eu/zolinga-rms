@@ -39,6 +39,9 @@ class UserService extends User implements ServiceInterface
             $id = null;
         }
 
+        if (!$id) {
+            $this->setLoggedInFlagCookie(false);
+        }
         parent::__construct($id);
     }
 
@@ -52,16 +55,7 @@ class UserService extends User implements ServiceInterface
     {
         parent::load($who);
         $_SESSION['rms']['user'] = $this->id;
-
-        // Set js-readable session cookie with the same expiration as PHP session
-        setcookie('rmsIn', '1', [
-            'expires' => 0,
-            'path' => '/',
-            'domain' => '',
-            'secure' => false,
-            'httponly' => false,
-            'samesite' => 'Strict'
-        ]);
+        $this->setLoggedInFlagCookie((bool) $this->id);
     }
 
     public function login(string $username, string $password): bool
@@ -94,15 +88,7 @@ class UserService extends User implements ServiceInterface
     protected function reset(): void
     {
         unset($_SESSION['rms']['user']);
-
-        setcookie('rmsIn', '', [
-            'expires' => time() - 3600,
-            'path' => '/',
-            'domain' => '',
-            'secure' => false,
-            'httponly' => false,
-            'samesite' => 'Strict'
-        ]);
+        $this->setLoggedInFlagCookie(false);
 
         setcookie('al', '', [
             'expires' => time() - 3600,
@@ -221,5 +207,24 @@ class UserService extends User implements ServiceInterface
 
         // calculate the bytes needed to store the PHP_MAX_INT binary
         return base_convert(substr(sha1($hashString), 4, 28), 16, 36);
+    }
+
+    /**
+     * Set the cookie for javascript - is the user logged in?
+     * 
+     * This does not need to be secure as it is used only as a hint for the javascript.
+     *
+     * @param boolean $status
+     * @return void
+     */
+    private function setLoggedInFlagCookie(bool $status): void {
+        setcookie('rmsIn', $status ? '1' : '0', [
+            'expires' => 0,
+            'path' => '/',
+            'domain' => '',
+            'secure' => false, // no need to secure this
+            'httponly' => false,
+            'samesite' => 'Strict'
+        ]);
     }
 }
