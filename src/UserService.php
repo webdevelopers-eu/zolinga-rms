@@ -29,10 +29,11 @@ class UserService extends User implements ServiceInterface
         if (isset($_SESSION['rms']['user'])) {
             $id = $_SESSION['rms']['user'];
             /** @phpstan-ignore-next-line */
-        } elseif (isset($_COOKIE['al']) && SECURE_CONNECTION) {
+        } elseif (isset($_COOKIE['rmsa']) && SECURE_CONNECTION) {
             try {
-                $id = $this->parseAutologinToken($_COOKIE['al']);
+                $id = $this->parseAutologinToken($_COOKIE['rmsa']);
             } catch (\Throwable $e) { // fail silently
+                $this->clearAutologinCookie();
                 $id = null;
             }
         } else {
@@ -89,8 +90,12 @@ class UserService extends User implements ServiceInterface
     {
         unset($_SESSION['rms']['user']);
         $this->setLoggedInFlagCookie(false);
+        $this->clearAutologinCookie();
+    }
 
-        setcookie('al', '', [
+    private function clearAutologinCookie() {
+        unset($_COOKIE['rmsa']);
+        setcookie('rmsa', '', [
             'expires' => time() - 3600,
             'path' => '/',
             'domain' => '',
@@ -132,8 +137,8 @@ class UserService extends User implements ServiceInterface
 
         // Set auto-login cookie
         // Options: expires, path, domain, secure, httponly and samesite
-        // setcookie('al', $token, $expire, '/', '', true, true);
-        setcookie('al', $token, [
+        // setcookie('rmsa', $token, $expire, '/', '', true, true);
+        setcookie('rmsa', $token, [
             'expires' => time() + self::AUTOLOGIN_EXPIRE,
             'path' => '/',
             'domain' => '',
