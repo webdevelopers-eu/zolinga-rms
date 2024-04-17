@@ -79,7 +79,8 @@
         "Zolinga\\Rms\\": "src/"
     },
     "dependencies": [
-        "zolinga-db"
+        "zolinga-db",
+        "zolinga-commons"
     ],
     "webComponents": [
         {
