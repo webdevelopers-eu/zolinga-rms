@@ -25,6 +25,10 @@ card-deck {
     font-size: 0.8em;
 }
 
+:host([layer]) {
+    z-index: 1000; /* there can be status message displayed on top after login */ 
+}
+
 :host-context(html.rms-logged-out):host([layer]) {
     position: fixed;
     top: 0%;
@@ -39,14 +43,9 @@ card-deck {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    z-index: 1000;
     pointer-events: all;
     max-height: 100vh;
     max-width: 100vw;
-}
-
-:host([layer="minimized"]) {
-    pointer-events: none;
 }
 
 :host([layer]) card-deck {
@@ -59,6 +58,7 @@ card-deck {
 
 :host([layer="minimized"]) card-deck {
     animation-name: minimize;    
+    pointer-events: none !important;
 }
 
 :host([layer]) .curtain {

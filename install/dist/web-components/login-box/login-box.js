@@ -33,6 +33,18 @@ export default class LoginBox extends WebComponent {
         const eventName = form.dataset.event;
         const resp = await api.dispatchEvent(eventName, Object.fromEntries(data.entries()));
         this.#showMessage(resp.message, resp.isOK ? 'success' : 'error', 'form-message', 20000);
+
+        if (resp.ok) {
+            form.reset(); // remove form data
+        }
+
+        switch (eventName) {
+            case 'rms:login':
+                //this.setAttribute('layer', resp.ok ? 'minimized' : 'maximized');
+                document.documentElement.classList.toggle('rms-logged-in', resp.ok);
+                document.documentElement.classList.toggle('rms-logged-out', !resp.ok);
+                break;
+        }
     }
 
     #showMessage(message, type = 'info', id = null, timeout = 0) {
@@ -49,7 +61,7 @@ export default class LoginBox extends WebComponent {
             msgNode.id = id;
             this.#messages.querySelector(`#${id}`)?.remove();
         }
-    
+
         this.#messages.appendChild(msgNode);
 
         if (timeout) {
