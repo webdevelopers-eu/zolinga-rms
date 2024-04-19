@@ -11,7 +11,7 @@ export default class LoginBox extends WebComponent {
         this.ready(this.#init());
 
         this.listen('rms:login-changed', (resp) => {
-            this.setAttribute('layer', resp.isLoggedIn ? 'minimized' : 'maximized');
+            this.setAttribute('layer', resp.loggedIn ? 'minimized' : 'maximized');
         });
     }
 

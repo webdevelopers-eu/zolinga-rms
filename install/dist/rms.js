@@ -12,7 +12,7 @@ function updateLoginState(loginState) {
   }
   console.log('RMS: Login state changed from %s to %s', lastLoginState, loginState);
   lastLoginState = loginState;
-  api.broadcast('rms:login-changed', { isLoggedIn: loginState });
+  api.broadcast('rms:login-changed', { loggedIn: loginState });
   document.documentElement.classList.toggle('rms-logged-in', loginState);
   document.documentElement.classList.toggle('rms-logged-out', !loginState);
 }
@@ -31,6 +31,6 @@ api
     updateLoginState(false);
   })
   .listen('rms:login-changed', (data) => {
-    document.cookie = 'rmsIn=' + (data.isLoggedIn ? '1' : '0');
-    updateLoginState(data.isLoggedIn);
+    document.cookie = 'rmsIn=' + (data.loggedIn ? '1' : '0');
+    updateLoginState(data.loggedIn);
   });
