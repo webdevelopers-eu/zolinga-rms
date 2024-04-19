@@ -10,6 +10,10 @@
     width: 256px; /* even pixls to avoid bluring during translate() */
 }
 
+:host-context(html.rms-logged-in) .for-guests {
+    display: none !important;
+}
+
 card-deck {
     --color-fg: var(--login-color-fg);
     --color-bg: var(--login-color-bg);
@@ -21,7 +25,7 @@ card-deck {
     font-size: 0.8em;
 }
 
-:host([layer]) {
+:host-context(html.rms-logged-out):host([layer]) {
     position: fixed;
     top: 0%;
     left: 0%;

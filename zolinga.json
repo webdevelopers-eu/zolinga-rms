@@ -73,6 +73,16 @@
                 "remote"
             ],
             "priority": 0.5
+        },
+        {
+            "description": "Integrate with front-end HTML page.",
+            "event": "system:content",
+            "class": "\\Zolinga\\Rms\\CmsIntegration",
+            "method": "onContent",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.1
         }
     ],
     "autoload": {
