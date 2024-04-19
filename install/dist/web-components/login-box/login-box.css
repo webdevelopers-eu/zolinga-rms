@@ -1,15 +1,96 @@
 :host {
     --login-radius: var(--radius, 5px);
-    --login-color-fg: var(--color-bg, #333);
-    --login-color-bg: var(--color-fg, #ffffff);
+    --login-color-fg: var(--color-fg, #333);
+    --login-color-bg: var(--color-bg, #ffffff);
     --login-color-primary: var(--color-primary, #007bff);
+    --layer-speed: 0.5s;
+
     font-family: inherit;
+
+    width: 256px; /* even pixls to avoid bluring during translate() */
+}
+
+card-deck {
+    --color-fg: var(--login-color-fg);
+    --color-bg: var(--login-color-bg);
+    --color-primary: var(--login-color-primary);
+    --radius: var(--login-radius);
+}
+
+.small {
+    font-size: 0.8em;
+}
+
+:host([layer]) {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+    display: grid; /* no translate() to avoid fractional scaling that makes things blury */
+    place-items: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1000;
+    pointer-events: all;
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+:host([layer="minimized"]) {
+    pointer-events: none;
+}
+
+:host([layer]) card-deck {
+    position: relative;
+    animation-duration: var(--layer-speed);
+    animation-timing-function: ease-in-out;
+    animation-name: maximize;
+    animation-fill-mode: forwards;
+}
+
+:host([layer="minimized"]) card-deck {
+    animation-name: minimize;    
+}
+
+:host([layer]) .curtain {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    z-index: -1;
+    opacity: 0;
+    animation-duration: var(--layer-speed);
+    animation-timing-function: ease-in-out;
+    animation-name: maximize-curtain;
+    animation-fill-mode: forwards;
+    backdrop-filter: blur(5px) grayscale(50%);
+}
+
+:host([layer="minimized"]) .curtain {
+    animation-name: minimize-curtain;
 }
 
 * {
     box-sizing: border-box;
 }
 
+*:where(form) {
+    max-height: 100vh;
+    overflow: auto;
+
+    & *:where(h1) {
+        text-align: center;
+    }
+}
 
 .messages {
     position: fixed;
@@ -85,5 +166,45 @@
         opacity: 1;
         font-size: 0.7em;  
         left: 2em; 
+    }
+}
+
+@keyframes maximize {
+    0% {
+        top: -100vh;
+    }
+
+    100% {
+        top: 0vh;
+    }
+}
+
+@keyframes minimize {
+    0% {
+        top: 0vh;
+    }
+
+    100% {
+        top: -100vh;
+    }
+}
+
+@keyframes maximize-curtain {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes minimize-curtain {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }

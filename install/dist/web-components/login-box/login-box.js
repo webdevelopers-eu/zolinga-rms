@@ -4,6 +4,7 @@ import api from '/dist/system/api.js';
 export default class LoginBox extends WebComponent {
     #root;
     #messages;
+    #curtain;
 
     constructor() {
         super();
@@ -17,9 +18,12 @@ export default class LoginBox extends WebComponent {
         });
 
         this.#messages = this.#root.querySelector('.messages');
+        this.#curtain = this.#root.querySelector('.curtain');
 
         this.#root.querySelectorAll('form[data-event]')
             .forEach(form => form.addEventListener('submit', this.#submitForm.bind(this)));
+
+        this.#curtain.addEventListener('click', () => this.hasAttribute('click-outside-to-close') && this.setAttribute('layer', 'minimized'));
     }
 
     async #submitForm(event) {
