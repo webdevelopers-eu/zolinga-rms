@@ -9,6 +9,10 @@ export default class LoginBox extends WebComponent {
     constructor() {
         super();
         this.ready(this.#init());
+
+        this.listen('rms:login-changed', (resp) => {
+            this.setAttribute('layer', resp.isLoggedIn ? 'minimized' : 'maximized');
+        });
     }
 
     async #init() {
@@ -36,14 +40,6 @@ export default class LoginBox extends WebComponent {
 
         if (resp.ok) {
             form.reset(); // remove form data
-        }
-
-        switch (eventName) {
-            case 'rms:login':
-                //this.setAttribute('layer', resp.ok ? 'minimized' : 'maximized');
-                document.documentElement.classList.toggle('rms-logged-in', resp.ok);
-                document.documentElement.classList.toggle('rms-logged-out', !resp.ok);
-                break;
         }
     }
 
