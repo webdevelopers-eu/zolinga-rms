@@ -83,6 +83,10 @@ card-deck {
     box-sizing: border-box;
 }
 
+.center {
+    text-align: center;
+}
+
 *:where(form) {
     max-height: 100vh;
     overflow: auto;
