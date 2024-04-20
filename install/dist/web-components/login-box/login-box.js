@@ -47,6 +47,6 @@ export default class LoginBox extends WebComponent {
             type,
             id,
             timeout
-        }, true);
+        }, false);
     }
 }
