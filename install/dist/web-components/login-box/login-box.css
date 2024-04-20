@@ -10,10 +10,6 @@
     width: 256px; /* even pixls to avoid bluring during translate() */
 }
 
-:host-context(html.rms-logged-in) .for-guests {
-    display: none !important;
-}
-
 card-deck {
     --color-fg: var(--login-color-fg);
     --color-bg: var(--login-color-bg);
@@ -24,9 +20,9 @@ card-deck {
 .small {
     font-size: 0.8em;
 }
-
-:host-context(html.rms-logged-out):host([layer="maximized"]) {
+:host([layer]) {
     position: fixed;
+    contain: size;
     top: 0%;
     left: 0%;
     right: 0%;
@@ -39,9 +35,13 @@ card-deck {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    pointer-events: all;
     max-height: 100vh;
     max-width: 100vw;
+    z-index: 1000;
+}
+
+:host([layer="minimized"]) {
+    pointer-events: none !important;
 }
 
 :host([layer]) card-deck {
@@ -55,7 +55,6 @@ card-deck {
 :host([layer="minimized"]) card-deck {
     animation-name: minimize;    
     pointer-events: none !important;
-    display: none;
 }
 
 :host([layer]) .curtain {
@@ -117,20 +116,24 @@ card-deck {
 @keyframes maximize {
     0% {
         top: -100vh;
+        transform: scale(0);
     }
 
     100% {
         top: 0vh;
+        transform: scale(1);
     }
 }
 
 @keyframes minimize {
     0% {
         top: 0vh;
+        transform: scale(1);
     }
 
     100% {
         top: -100vh;
+        transform: scale(0);
     }
 }
 

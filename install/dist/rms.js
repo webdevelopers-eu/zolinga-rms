@@ -18,7 +18,9 @@ function updateLoginState(loginState) {
   }
   console.log('RMS: Login state changed from %s to %s', lastLoginState, loginState);
   lastLoginState = loginState;
-  api.broadcast('rms:login-changed', { loggedIn: loginState });
+
+  api.broadcast('rms:login-changed', { loggedIn: loginState }, true);
+
   document.documentElement.classList.toggle('rms-logged-in', loginState);
   document.documentElement.classList.toggle('rms-logged-out', !loginState);
 }
