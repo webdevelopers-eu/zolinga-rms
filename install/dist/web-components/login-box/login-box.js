@@ -39,7 +39,10 @@ export default class LoginBox extends WebComponent {
         const data = new FormData(form);
         const eventName = form.dataset.event;
         const resp = await api.dispatchEvent(eventName, Object.fromEntries(data.entries()));
-        this.#showMessage(resp.message, resp.isOK ? 'success' : 'error', 'login-box-message', 20000);
+
+        if (!eventName.match(/^(rms:login|rms:logout)$/)) { // rms.js shows messages for login/out automatically
+            this.#showMessage(resp.message, resp.ok ? 'success' : 'error', 'login-box-message', 20000);
+        }
     }
 
     #showMessage(message, type = 'info', id = null, timeout = 0) {
