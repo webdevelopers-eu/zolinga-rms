@@ -67,7 +67,6 @@ export default class LoginBox extends WebComponent {
 
     attributeChangedCallback(name, oldValue, newValue) {
         super.attributeChangedCallback(name, oldValue, newValue);
-        
         if (name === 'show-card') {
             this.#deck?.setAttribute('show-card', newValue);
         } else if (name === 'password-reset-hash') {
@@ -78,4 +77,4 @@ export default class LoginBox extends WebComponent {
     #reset() {
         this.#root?.querySelectorAll('form').forEach(form => form.reset());
     }
-}name="hash"
+}
