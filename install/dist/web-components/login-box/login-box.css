@@ -90,8 +90,7 @@ card-deck {
 
 *:where(form) {
     max-height: 100vh;
-    overflow: auto;
-
+    
     & *:where(h1) {
         text-align: center;
     }
