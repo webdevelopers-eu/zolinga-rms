@@ -38,7 +38,7 @@
 
             <button part="button" type="submit" class="primary" gettext=".">Sign in</button>
 
-            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('password-recovery');" gettext=".">
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('password-recover');" gettext=".">
                 Forgot password?
             </a>
 
@@ -74,10 +74,10 @@
 
             <slot name="sign-up-after"></slot>
         </form>
-        <form class="c-form" part="card password-recovery" card-name="password-recovery" data-event="rms:recover">
-            <h1 part="heading h1 password-recovery-heading" gettext=".">Password recovery</h1>
+        <form class="c-form" part="card password-recover" card-name="password-recover" data-event="rms:recover">
+            <h1 part="heading h1 password-recover-heading" gettext=".">Password recovery</h1>
 
-            <slot name="password-recovery-before"></slot>
+            <slot name="password-recover-before"></slot>
 
             <label>
                 <span gettext=".">Username</span>
@@ -90,7 +90,31 @@
                 Sign in
             </a>
 
-            <slot name="password-recovery-after"></slot>
+            <slot name="password-recover-after"></slot>
+        </form>
+        <form class="c-form" part="card password-reset" card-name="password-reset" data-event="rms:reset">
+            <h1 part="heading h1 password-reset-heading" gettext=".">Password reset</h1>
+
+            <slot name="password-reset-before"></slot>
+
+            <label>
+                <span gettext=".">New password</span>
+                <input type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
+            </label>
+            <label>
+                <span gettext=".">Confirm password</span>
+                <input type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Password">
+            </label>
+
+            <input type="hidden" name="hash" value=""/>
+
+            <button part="button" type="submit" class="primary" gettext=".">Reset password</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext=".">
+                Sign in
+            </a>
+
+            <slot name="password-reset-after"></slot>
         </form>
     </card-deck>
 

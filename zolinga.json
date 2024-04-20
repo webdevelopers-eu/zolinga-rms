@@ -46,6 +46,26 @@
             "priority": 0.5
         },
         {
+            "description": "The User password reset request.",
+            "event": "rms:recover",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onRecover",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "The User password reset.",
+            "event": "rms:reset",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onReset",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
             "description": "Log the user out.",
             "event": "rms:logout",
             "class": "\\Zolinga\\Rms\\Api\\UserApi",
@@ -90,7 +110,8 @@
     },
     "dependencies": [
         "zolinga-db",
-        "zolinga-commons"
+        "zolinga-commons",
+        "zolinga-intl"
     ],
     "webComponents": [
         {

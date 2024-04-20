@@ -13,13 +13,6 @@ function getCookie(name) {
 }
 
 function updateLoginState(loginState, message, severity) {
-  if (loginState === lastLoginState) {
-    return;
-  }
-  console.log('RMS: Login state changed from %s to %s', lastLoginState, loginState);
-  lastLoginState = loginState;
-
-  api.broadcast('rms:login-changed', { loggedIn: loginState, message }, true);
   api.broadcast('message', {
     message,
     type: severity || (loginState ? 'success' : 'info'),
@@ -27,13 +20,26 @@ function updateLoginState(loginState, message, severity) {
     timeout: severity.match(/info|success/) ? 5000 : 30000
   }, false);
 
+  if (loginState === lastLoginState) {
+    return;
+  }
+  console.log('RMS: Login state changed from %s to %s', lastLoginState, loginState);
+  lastLoginState = loginState;
+
+  api.broadcast('rms:login-changed', { loggedIn: loginState, message }, true);
+
   document.documentElement.classList.toggle('rms-logged-in', loginState);
   document.documentElement.classList.toggle('rms-logged-out', !loginState);
 }
 
 let lastLoginState = getCookie('rmsIn') === '1';
 
-setInterval(() => updateLoginState(getCookie('rmsIn') === '1', 'Your session expired.', 'warning'), 10000);
+setInterval(() => {
+  const loginState = getCookie('rmsIn') === '1';
+  if (lastLoginState != loginState) {
+    updateLoginState(loginState, 'Your session expired.', 'warning');
+  }
+}, 10000);
 
 api
   .listen('event-response:rms:login', (resp) => {
@@ -45,3 +51,23 @@ api
   .listen('rms:login-changed', (data) => {
     updateLoginState(data.loggedIn, data.message, 'info');
   });
+
+// Password reset request
+function checkPasswordReset() {
+  const passwordReset = window.location.hash.match(/[&#!]recover=([a-z0-9]+-[a-z0-9]+-[a-z0-9]+)/i);
+  if (passwordReset) {
+    const hash = passwordReset[1];
+    // Try to reuse existing box if possible 
+    let login = document.querySelector('login-box[role~="password-reset"]');
+    if (!login) {
+      login = document.body.appendChild(document.createElement('login-box'));
+    }
+    login.setAttribute('role', 'password-reset');
+    login.setAttribute('layer', 'maximized');
+    login.setAttribute('click-outside-to-close', '');
+    login.setAttribute('show-card', 'password-reset');
+    login.setAttribute('password-reset-hash', hash);
+  }
+}
+checkPasswordReset();
+window.addEventListener('hashchange', checkPasswordReset);
