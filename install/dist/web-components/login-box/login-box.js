@@ -5,7 +5,8 @@ export default class LoginBox extends WebComponent {
     #root;
     #curtain;
     #deck;
-    observedAttributes = ['show-card', 'password-reset-hash'];
+
+    static observedAttributes = [...WebComponent.observedAttributes, 'show-card', 'password-reset-hash'];
 
     constructor() {
         super();
@@ -65,6 +66,8 @@ export default class LoginBox extends WebComponent {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
+        super.attributeChangedCallback(name, oldValue, newValue);
+        
         if (name === 'show-card') {
             this.#deck?.setAttribute('show-card', newValue);
         } else if (name === 'password-reset-hash') {
