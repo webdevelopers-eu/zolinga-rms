@@ -16,7 +16,7 @@ export default class LoginBox extends WebComponent {
     }
 
     #reset() {
-        this.#root.querySelectorAll('form').forEach(form => form.reset());
+        this.#root?.querySelectorAll('form').forEach(form => form.reset());
     }
 
     async #init() {

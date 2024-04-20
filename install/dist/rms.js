@@ -12,14 +12,20 @@ function getCookie(name) {
   }
 }
 
-function updateLoginState(loginState) {
+function updateLoginState(loginState, message) {
   if (loginState === lastLoginState) {
     return;
   }
   console.log('RMS: Login state changed from %s to %s', lastLoginState, loginState);
   lastLoginState = loginState;
 
-  api.broadcast('rms:login-changed', { loggedIn: loginState }, true);
+  api.broadcast('rms:login-changed', { loggedIn: loginState, message }, true);
+  api.broadcast('message', {
+    message,
+    type: loginState ? 'success' : 'info',
+    id: 'login-box-message',
+    timeout: 5000
+  }, false);
 
   document.documentElement.classList.toggle('rms-logged-in', loginState);
   document.documentElement.classList.toggle('rms-logged-out', !loginState);
@@ -27,15 +33,15 @@ function updateLoginState(loginState) {
 
 let lastLoginState = getCookie('rmsIn') === '1';
 
-setInterval(() => updateLoginState(getCookie('rmsIn') === '1'), 5000);
+setInterval(() => updateLoginState(getCookie('rmsIn') === '1', 'Login changed by cookie'), 10000);
 
 api
   .listen('event-response:rms:login', (resp) => {
-    updateLoginState(resp.ok);
+    updateLoginState(resp.ok, resp.message);
   })
   .listen('event-response:rms:logout', (resp) => {
-    updateLoginState(false);
+    updateLoginState(false, resp.message);
   })
   .listen('rms:login-changed', (data) => {
-    updateLoginState(data.loggedIn);
+    updateLoginState(data.loggedIn, data.message);
   });
