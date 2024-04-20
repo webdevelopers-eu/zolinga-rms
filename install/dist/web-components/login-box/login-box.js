@@ -3,7 +3,6 @@ import api from '/dist/system/api.js';
 
 export default class LoginBox extends WebComponent {
     #root;
-    #messages;
     #curtain;
 
     constructor() {
@@ -21,7 +20,6 @@ export default class LoginBox extends WebComponent {
             mode: 'closed'
         });
 
-        this.#messages = this.#root.querySelector('.messages');
         this.#curtain = this.#root.querySelector('.curtain');
 
         this.#root.querySelectorAll('form[data-event]')
@@ -36,7 +34,7 @@ export default class LoginBox extends WebComponent {
         const data = new FormData(form);
         const eventName = form.dataset.event;
         const resp = await api.dispatchEvent(eventName, Object.fromEntries(data.entries()));
-        this.#showMessage(resp.message, resp.isOK ? 'success' : 'error', 'form-message', 20000);
+        this.#showMessage(resp.message, resp.isOK ? 'success' : 'error', 'login-box-message', 20000);
 
         if (resp.ok) {
             form.reset(); // remove form data
@@ -44,24 +42,11 @@ export default class LoginBox extends WebComponent {
     }
 
     #showMessage(message, type = 'info', id = null, timeout = 0) {
-        const msgNode = document.createElement('div');
-        msgNode.classList.add('message', type);
-
-        const textNode = msgNode.appendChild(document.createElement('span'));
-        textNode.textContent = message;
-
-        const closeNode = msgNode.appendChild(document.createElement('button'));
-        closeNode.addEventListener('click', () => msgNode.remove());
-
-        if (id) {
-            msgNode.id = id;
-            this.#messages.querySelector(`#${id}`)?.remove();
-        }
-
-        this.#messages.appendChild(msgNode);
-
-        if (timeout) {
-            setTimeout(() => msgNode.remove(), timeout);
-        }
+        this.broadcast('message', {
+            message,
+            type,
+            id,
+            timeout
+        }, true);
     }
 }
