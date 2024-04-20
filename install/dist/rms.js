@@ -3,7 +3,13 @@ import api from '/dist/system/api.js';
 function getCookie(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
-  if (parts.length == 2) return parts.pop().split(";").shift();
+  if (parts.length == 2) {
+    return parts.pop().split(";").shift();
+  } else if (parts.length > 2) {
+    console.warn('RMS: Multiple cookies with the same name found: %s. Cookies: %s', name, value);
+  } else {
+    return null;
+  }
 }
 
 function updateLoginState(loginState) {
@@ -23,14 +29,11 @@ setInterval(() => updateLoginState(getCookie('rmsIn') === '1'), 5000);
 
 api
   .listen('event-response:rms:login', (resp) => {
-    document.cookie = 'rmsIn=' + (resp.ok ? '1' : '0');
     updateLoginState(resp.ok);
   })
   .listen('event-response:rms:logout', (resp) => {
-    document.cookie = 'rmsIn=0';
     updateLoginState(false);
   })
   .listen('rms:login-changed', (data) => {
-    document.cookie = 'rmsIn=' + (data.loggedIn ? '1' : '0');
     updateLoginState(data.loggedIn);
   });
