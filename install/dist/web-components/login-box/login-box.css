@@ -59,6 +59,7 @@ card-deck {
 :host([layer="minimized"]) card-deck {
     animation-name: minimize;    
     pointer-events: none !important;
+    display: none;
 }
 
 :host([layer]) .curtain {
