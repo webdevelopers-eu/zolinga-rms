@@ -114,25 +114,21 @@ card-deck {
 
 @keyframes maximize {
     0% {
-        top: -100vh;
-        transform: scale(0);
+        transform: rotateX(90deg);
     }
 
     100% {
-        top: 0vh;
-        transform: scale(1);
+        transform: rotateX(0deg);
     }
 }
 
 @keyframes minimize {
     0% {
-        top: 0vh;
-        transform: scale(1);
+        transform: rotateX(0deg);
     }
 
     100% {
-        top: -100vh;
-        transform: scale(0);
+        transform: rotateX(90deg);
     }
 }
 
