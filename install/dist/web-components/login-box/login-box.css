@@ -3,7 +3,7 @@
     --login-color-fg: var(--color-fg, #333);
     --login-color-bg: var(--color-bg, #ffffff);
     --login-color-primary: var(--color-primary, #007bff);
-    --layer-speed: 0.5s;
+    --layer-speed: 0.25s;
 
     font-family: inherit;
 
