@@ -43,6 +43,16 @@ export default class LoginBox extends WebComponent {
             .forEach(form => form.addEventListener('submit', this.#submitForm.bind(this)));
 
         this.#curtain.addEventListener('click', () => this.hasAttribute('click-outside-to-close') && this.setAttribute('layer', 'minimized'));
+
+        // Wait for c-resources to load before appending the shadow root
+        const resources = this.#root.querySelector('c-resources');
+        await new Promise(resolve => {
+            if (resources.dataset.ready) {
+                resolve();
+            } else {
+                resources.addEventListener('web-component-ready', resolve);
+            }
+        });
     }
 
     async #submitForm(event) {
