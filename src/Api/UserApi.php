@@ -112,7 +112,8 @@ class UserApi implements ListenerInterface
             // just register a listener with lower priority
             // check if event status is OK and amend the response
         ];
-        $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Login successful."));
+        $msg = dgettext("zolinga-rms", "Welcome! You are now logged in.");
+        $event->setStatus($event::STATUS_OK, $msg);
     }
 
     public function onRegister(RequestResponseEvent $event): void
@@ -156,7 +157,7 @@ class UserApi implements ListenerInterface
             return;
         }
 
-        $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Welcome! You are now registered and logged in."));
+        $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Welcome! You are now logged in."));
     }
 
     // we just need to wake up the user object so it sets cookies
