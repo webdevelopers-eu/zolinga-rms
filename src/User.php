@@ -241,8 +241,8 @@ class User
     {
         global $api;
 
-        if ($this->modifiedFields || $this->data['id']) {
-            throw new Exception("User data has been modified or User object is already loaded.");
+        if ($this->modifiedFields) {
+            throw new Exception("User data has been modified and not saved.");
         }
 
         $res = $api->db->query("SELECT * FROM rmsUsers WHERE id = ?", $id)->current();
@@ -332,6 +332,8 @@ class User
     /**
      * Do not call directly. Use $api->rms->createUser() instead.
      *
+     * @throws \Exception If the user cannot be created (already exists etc.)
+     * @throws \InvalidArgumentException If the username is not set.
      * @return User
      */
     public function create(): User
@@ -343,7 +345,9 @@ class User
         }
 
         $modifiedValues = array_filter($this->data, fn ($v) => $v !== null, ARRAY_FILTER_USE_BOTH);
-        $id = $api->db->expandQuery("INSERT INTO rmsUsers (`??`) VALUES ('??')", array_keys($modifiedValues), $modifiedValues);
+        $id = $api->db->expandQuery("INSERT INTO rmsUsers (`??`) VALUES ('??')", array_keys($modifiedValues), $modifiedValues)
+            or throw new \Exception("Failed to create the user.");
+            
         $this->modifiedFields = [];
         $this->loadById($id);
         return $this;

@@ -13,12 +13,14 @@ function getCookie(name) {
 }
 
 function updateLoginState(loginState, message, severity) {
-  api.broadcast('message', {
-    message,
-    type: severity || (loginState ? 'success' : 'info'),
-    id: 'login-box-message',
-    timeout: severity.match(/info|success/) ? 5000 : 30000
-  }, false);
+  if (message) {
+    api.broadcast('message', {
+      message,
+      type: severity || (loginState ? 'success' : 'info'),
+      id: 'login-box-message',
+      timeout: severity.match(/info|success/) ? 5000 : 30000
+    }, false);
+  }
 
   if (loginState === lastLoginState) {
     return;
@@ -42,14 +44,11 @@ setInterval(() => {
 }, 10000);
 
 api
-  .listen('event-response:rms:login', (resp) => {
-    updateLoginState(resp.ok, resp.message, resp.ok ? 'success' : 'error');
-  })
   .listen('event-response:rms:logout', (resp) => {
     updateLoginState(false, resp.message, resp.ok ? 'success' : 'error');
   })
   .listen('rms:login-changed', (data) => {
-    updateLoginState(data.loggedIn, data.message, 'info');
+    updateLoginState(data.loggedIn, data.message, data.severity || 'info');
   });
 
 // Password reset request

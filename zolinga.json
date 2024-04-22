@@ -103,6 +103,26 @@
                 "remote"
             ],
             "priority": 0.1
+        },
+        {
+            "description": "Get google button settings.",
+            "event": "google:get",
+            "class": "\\Zolinga\\Rms\\Api\\Google\\GoogleApi",
+            "method": "onGet",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "Set google button settings.",
+            "event": "google:login",
+            "class": "\\Zolinga\\Rms\\Api\\Google\\GoogleApi",
+            "method": "onLogin",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
         }
     ],
     "autoload": {
@@ -118,6 +138,19 @@
             "tag": "login-box",
             "description": "The login form for the RMS system.",
             "module": "web-components/login-box/login-box.js"
+        },
+        {
+            "tag": "google-login",
+            "description": "The Google sign-in button.",
+            "module": "web-components/google-login/google-login.js"
         }
-    ]
+    ],
+    "config": {
+        "rms": {
+            "google": {
+                "# clientId": "The Google API client ID for sign-in button. See https://console.developers.google.com/apis",
+                "clientId": ""
+            }
+        }
+    }
 }

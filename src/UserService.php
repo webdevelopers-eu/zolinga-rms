@@ -47,16 +47,22 @@ class UserService extends User implements ServiceInterface
     }
 
     /**
-     * load the user by ID or username and store the ID in the session.
+     * Load the user by ID or username and store the ID in the session.
      *
-     * @param string|integer|array<mixed> $who
-     * @return void
+     * @param User|string|integer|array<mixed> $who
+     * @return bool true if the user was found and logged in, false otherwise
      */
-    protected function load(string|int|array $who): void
+    public function loginNoPassword(string|int|array $who): bool
     {
-        parent::load($who);
-        $_SESSION['rms']['user'] = $this->id;
-        $this->setLoggedInFlagCookie((bool) $this->id);
+        try {
+            parent::load($who);
+            $_SESSION['rms']['user'] = $this->id;
+            $this->setLoggedInFlagCookie((bool) $this->id);
+        } catch (\Throwable $e) {
+            $this->reset();
+            return false;
+        }
+        return true;
     }
 
     public function login(string $username, string $password): bool
@@ -75,7 +81,7 @@ class UserService extends User implements ServiceInterface
                 $this->reset();
                 return false;
             }
-            $this->load($user->data);
+            $this->loginNoPassword($user->data);
         } catch (\Throwable $e) {
             $api->log->error("rms.login", $e);
             $this->reset();
@@ -93,7 +99,8 @@ class UserService extends User implements ServiceInterface
         $this->clearAutologinCookie();
     }
 
-    private function clearAutologinCookie() {
+    private function clearAutologinCookie(): void
+    {
         unset($_COOKIE['rmsa']);
         setcookie('rmsa', '', [
             'expires' => time() - 3600,
@@ -222,7 +229,8 @@ class UserService extends User implements ServiceInterface
      * @param boolean $status
      * @return void
      */
-    private function setLoggedInFlagCookie(bool $status): void {
+    private function setLoggedInFlagCookie(bool $status): void
+    {
         setcookie('rmsIn', $status ? '1' : '0', [
             'expires' => 0,
             'path' => '/',

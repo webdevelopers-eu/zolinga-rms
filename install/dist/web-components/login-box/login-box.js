@@ -12,8 +12,14 @@ export default class LoginBox extends WebComponent {
         super();
         this.ready(this.#init());
 
+        if (!this.hasAttribute('layer')) {
+            this.classList.add('for-guests');
+        }
+
         this.listen('rms:login-changed', (resp) => {
-            this.setAttribute('layer', resp.loggedIn ? 'minimized' : 'maximized');
+            if (this.hasAttribute('layer')) {
+                this.setAttribute('layer', resp.loggedIn ? 'minimized' : 'maximized');
+            }
             setTimeout(this.#reset.bind(this), resp.loggedIn ? 1000 : 0);
         });
     }
@@ -30,6 +36,7 @@ export default class LoginBox extends WebComponent {
         if (this.hasAttribute('show-card')) {
             this.#deck.setAttribute('show-card', this.getAttribute('show-card'));
         }
+        this.#deck.addEventListener('show-card', (event) => this.setAttribute('show-card', event.detail.cardName));
         this.#root.querySelector('input[name="hash"]').value = this.getAttribute('password-reset-hash') || '';
 
         this.#root.querySelectorAll('form[data-event]')
@@ -50,19 +57,21 @@ export default class LoginBox extends WebComponent {
 
         const resp = await api.dispatchEvent(eventName, data);
 
-        if (!eventName.match(/^(rms:login|rms:logout)$/)) { // rms.js shows messages for login/out automatically
-            this.broadcast('message', {
-                message: resp.message || 'No server response message provided.',
-                type: resp.message && resp.ok ? 'success' : 'error',
-                id: 'login-box-message',
-                timeout: 20000
-            });
+        this.broadcast('message', {
+            message: resp.message || 'No server response message provided.',
+            type: resp.message && resp.ok ? 'success' : 'error',
+            id: 'login-box-message',
+            timeout: 20000
+        }, true);
+
+        if (eventName == 'rms:login') {
+            this.broadcast('rms:login-changed', { loggedIn: resp.ok });
         }
 
-        if (resp.response.showCard) {
-            this.setAttribute('show-card', resp.response.showCard);
-            this.#deck.setAttribute('show-card', resp.response.showCard);
-        }
+        // if (resp.response.showCard) {
+        //     this.setAttribute('show-card', resp.response.showCard);
+        //     this.#deck.setAttribute('show-card', resp.response.showCard);
+        // }
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
