@@ -61,7 +61,7 @@ export default class LoginBox extends WebComponent {
             message: resp.message || 'No server response message provided.',
             type: resp.message && resp.ok ? 'success' : 'error',
             id: 'login-box-message',
-            timeout: 20000
+            timeout: resp.ok ? 5000 : 20000
         }, true);
 
         if (['rms:login', 'rms:register'].includes(eventName) && resp.ok) {

@@ -36,7 +36,12 @@ setInterval(() => {
 
 api
   .listen('event-response:rms:logout', (resp) => {
-    api.broadcast('message', {message: resp.message, type: resp.ok ? 'success' : 'error', id: 'login-box-message' }, true);
+    api.broadcast('message', {
+      message: resp.message, 
+      type: resp.ok ? 'success' : 'error', 
+      id: 'login-box-message',
+      timeout: resp.ok ? 5000 : 20000 
+    }, true);
     updateLoginState(false);
   })
   .listen('rms:login-changed', (data) => {
