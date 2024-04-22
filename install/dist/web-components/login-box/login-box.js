@@ -64,7 +64,7 @@ export default class LoginBox extends WebComponent {
             timeout: 20000
         }, true);
 
-        if (eventName == 'rms:login') {
+        if (['rms:login', 'rms:register', 'rms:reset'].includes(eventName) && resp.ok) {
             this.broadcast('rms:login-changed', { loggedIn: resp.ok });
         }
 

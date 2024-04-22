@@ -26,11 +26,11 @@
 
             <label>
                 <span gettext=".">E-mail</span>
-                <input type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail" required>
+                <input autocomplete="email" type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail" required>
             </label>
             <label>
                 <span gettext=".">Password</span>
-                <input type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password" required>
+                <input autocomplete="current-password" type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password" required>
             </label>
 
             <label class="center">
@@ -59,23 +59,23 @@
 
             <label>
                 <span gettext=".">Given name</span>
-                <input required type="text" class="form-control" name="givenName" gettext="placeholder" placeholder="Given name">
+                <input autocomplete="given-name" required type="text" class="form-control" name="givenName" gettext="placeholder" placeholder="Given name">
             </label>
             <label>
                 <span gettext=".">Family name</span>
-                <input required type="text" class="form-control" name="familyName" gettext="placeholder" placeholder="Family name">
+                <input autocomplete="family-name" required type="text" class="form-control" name="familyName" gettext="placeholder" placeholder="Family name">
             </label>
             <label>
                 <span gettext=".">E-mail</span>
-                <input required type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail">
+                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail">
             </label>
             <label>
                 <span gettext=".">Password</span>
-                <input required type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
             </label>
             <label>
                 <span gettext=".">Confirm password</span>
-                <input required type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Confirm Password">
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Confirm Password">
             </label>
 
             <slot name="sign-up-after"></slot>
@@ -93,7 +93,7 @@
 
             <label>
                 <span gettext=".">E-mail</span>
-                <input required type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail">
+                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail">
             </label>
 
             <slot name="password-recover-after"></slot>
@@ -111,11 +111,11 @@
 
             <label>
                 <span gettext=".">New password</span>
-                <input required type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
             </label>
             <label>
                 <span gettext=".">Confirm password</span>
-                <input required type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Confirm password">
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Confirm password">
             </label>
 
             <input required type="hidden" name="hash" value=""/>

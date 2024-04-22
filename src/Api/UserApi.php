@@ -148,7 +148,7 @@ class UserApi implements ListenerInterface
             return;
         }
 
-        $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "User created."));
+        $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Welcome! You are now registered and logged in."));
     }
 
     // we just need to wake up the user object so it sets cookies
@@ -162,7 +162,7 @@ class UserApi implements ListenerInterface
     public function onLogout(RequestEvent $event): void {
         global $api;
         $api->user->logout();
-        $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Logout successful."));
+        $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "You have been logged out."));
     }
 
     private function sendRecoveryEmail(User $user, string $referrer): bool {
