@@ -64,14 +64,14 @@ export default class LoginBox extends WebComponent {
             timeout: 20000
         }, true);
 
-        if (['rms:login', 'rms:register', 'rms:reset'].includes(eventName) && resp.ok) {
+        if (['rms:login', 'rms:register'].includes(eventName) && resp.ok) {
             this.broadcast('rms:login-changed', { loggedIn: resp.ok });
         }
 
-        // if (resp.response.showCard) {
-        //     this.setAttribute('show-card', resp.response.showCard);
-        //     this.#deck.setAttribute('show-card', resp.response.showCard);
-        // }
+        if (resp.response.showCard) { // after password reset we may want to go back to login
+            this.setAttribute('show-card', resp.response.showCard);
+            this.#deck.setAttribute('show-card', resp.response.showCard);
+        }
     }
 
     attributeChangedCallback(name, oldValue, newValue) {

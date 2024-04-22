@@ -12,11 +12,12 @@ class UserApi implements ListenerInterface
 {
     private const RECOVERY_LINK_EXPIRATION = 3600;
 
-    public function onRecover(RequestResponseEvent $event): void {
+    public function onRecover(RequestResponseEvent $event): void
+    {
         global $api;
 
         $username = $event->request['username'] ?? null;
-        
+
         if (!$username) {
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username is required."));
             return;
@@ -39,7 +40,8 @@ class UserApi implements ListenerInterface
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Recovery email sent. Check your inbox and follow the instructions."));
     }
 
-    public function onReset(RequestResponseEvent $event): void {
+    public function onReset(RequestResponseEvent $event): void
+    {
         global $api;
 
         if ($event->request['password'] != $event->request['password2']) {
@@ -52,12 +54,17 @@ class UserApi implements ListenerInterface
             return;
         }
 
+        $event->response['showCard'] = 'sign-in'; // show login card after reset or if invalid link.
         $hash = $event->request['hash'] ?? null;
-        $user = $this->getUserByRecoveryHash($hash);
-        $user->setPassword($event->request['password']);
-        $user->save();
+        try {
+            $user = $this->getUserByRecoveryHash($hash);
+            $user->setPassword($event->request['password']);
+            $user->save();
+        } catch (\Exception $e) {
+            $event->setStatus($event::STATUS_ERROR, $e->getMessage());
+            return;
+        }
 
-        $event->response['showCard'] = 'sign-in'; // show login card after reset
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Password reset successful."));
     }
 
@@ -83,7 +90,7 @@ class UserApi implements ListenerInterface
         $username = $event->request['username'] ?? null;
         $password = $event->request['password'] ?? null;
         $remember = $event->request['remember'] ?? false;
-        
+
         if (!$username || !$password) {
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username and password are required."));
             return;
@@ -97,7 +104,7 @@ class UserApi implements ListenerInterface
         if ($remember) {
             $api->user->remember();
         }
-        
+
         $event->response['user'] = [
             "username" => $api->user->username,
             "id" => $api->user->id,
@@ -108,14 +115,15 @@ class UserApi implements ListenerInterface
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Login successful."));
     }
 
-    public function onRegister(RequestResponseEvent $event): void {
+    public function onRegister(RequestResponseEvent $event): void
+    {
         global $api;
 
         $username = $event->request['username'] ?? null;
         $password = $event->request['password'] ?? null;
         $givenName = $event->request['givenName'] ?? null;
         $familyName = $event->request['familyName'] ?? null;
-        
+
         if (!$username || !$password) {
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username and password are required."));
             return;
@@ -152,20 +160,23 @@ class UserApi implements ListenerInterface
     }
 
     // we just need to wake up the user object so it sets cookies
-    public function onContent(ContentEvent $event):void {
+    public function onContent(ContentEvent $event): void
+    {
         global $api;
         // wake up the user object
         /** @phpstan-ignore-next-line */
         $api->user;
     }
 
-    public function onLogout(RequestEvent $event): void {
+    public function onLogout(RequestEvent $event): void
+    {
         global $api;
         $api->user->logout();
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "You have been logged out."));
     }
 
-    private function sendRecoveryEmail(User $user, string $referrer): bool {
+    private function sendRecoveryEmail(User $user, string $referrer): bool
+    {
         global $api;
 
         $file = $api->locale->getLocalizedFile("private://zolinga-rms/templates/email-recover-password.html");
@@ -180,11 +191,11 @@ class UserApi implements ListenerInterface
         $html = str_replace("{{recoveryLink}}", $recoveryLink, $html);
 
         // temp file
-        file_put_contents(sys_get_temp_dir().'/last-recovery-email.html', $html);
+        file_put_contents(sys_get_temp_dir() . '/last-recovery-email.html', $html);
 
         $email = new Email();
         $email->setMessage(false, $html);
-        
+
         return $email->send($user->username);
     }
 
@@ -195,7 +206,8 @@ class UserApi implements ListenerInterface
      * @param string $hash
      * @return User
      */
-    private function getUserByRecoveryHash(string $hash): User {
+    private function getUserByRecoveryHash(string $hash): User
+    {
         global $api;
 
         list($idBase, $expirationBase, $hashBase) = explode("-", "$hash--");
@@ -229,7 +241,8 @@ class UserApi implements ListenerInterface
      * @param integer $expiration
      * @return string
      */
-    private function generateHash(User $user, int $expiration): string {
+    private function generateHash(User $user, int $expiration): string
+    {
         $expirationBase = base_convert("$expiration", 10, 36);
         $idBase = base_convert("$user->id", 10, 36);
         $hash = substr(hash('sha256', "$user->id $expiration $user->password"), 0, 12);
