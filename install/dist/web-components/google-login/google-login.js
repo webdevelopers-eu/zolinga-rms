@@ -37,7 +37,7 @@ export default class GoogleLogin extends WebComponent {
         console.log('Google: callback', response);
         const resp = await api.dispatchEvent("google:login", {"jwt": response.credential});
 
-        this.broadcast("message", {"message": resp.message, "type": resp.ok ? "success" : "error"}, true); 
+        this.broadcast("message", {"message": resp.message, "type": resp.ok ? "success" : "error", id: 'login-box-message'}, true); 
         this.broadcast("rms:login-changed", {"loggedIn": resp.ok});
     }
 

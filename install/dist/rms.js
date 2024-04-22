@@ -12,23 +12,14 @@ function getCookie(name) {
   }
 }
 
-function updateLoginState(loginState, message, severity) {
-  if (message) {
-    api.broadcast('message', {
-      message,
-      type: severity || (loginState ? 'success' : 'info'),
-      id: 'login-box-message',
-      timeout: severity.match(/info|success/) ? 5000 : 30000
-    }, false);
-  }
-
+function updateLoginState(loginState) {
   if (loginState === lastLoginState) {
     return;
   }
   console.log('RMS: Login state changed from %s to %s', lastLoginState, loginState);
   lastLoginState = loginState;
 
-  api.broadcast('rms:login-changed', { loggedIn: loginState, message }, true);
+  api.broadcast('rms:login-changed', {loggedIn: loginState}, true);
 
   document.documentElement.classList.toggle('rms-logged-in', loginState);
   document.documentElement.classList.toggle('rms-logged-out', !loginState);
@@ -39,16 +30,17 @@ let lastLoginState = getCookie('rmsIn') === '1';
 setInterval(() => {
   const loginState = getCookie('rmsIn') === '1';
   if (lastLoginState != loginState) {
-    updateLoginState(loginState, 'Your session expired.', 'warning');
+    updateLoginState(loginState, {message: 'Your session expired.', type: 'warning', id: 'login-box-message'});
   }
 }, 10000);
 
 api
   .listen('event-response:rms:logout', (resp) => {
-    updateLoginState(false, resp.message, resp.ok ? 'success' : 'error');
+    api.broadcast('message', {message: resp.message, type: resp.ok ? 'success' : 'error', id: 'login-box-message' }, true);
+    updateLoginState(false);
   })
   .listen('rms:login-changed', (data) => {
-    updateLoginState(data.loggedIn, data.message, data.severity || 'info');
+    updateLoginState(data.loggedIn, data);
   });
 
 // Password reset request
