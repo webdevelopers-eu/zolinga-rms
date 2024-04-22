@@ -113,6 +113,8 @@ class UserApi implements ListenerInterface
 
         $username = $event->request['username'] ?? null;
         $password = $event->request['password'] ?? null;
+        $givenName = $event->request['givenName'] ?? null;
+        $familyName = $event->request['familyName'] ?? null;
         
         if (!$username || !$password) {
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username and password are required."));
@@ -137,6 +139,8 @@ class UserApi implements ListenerInterface
         $user = $api->rms->createUser([
             "username" => $username,
             "password" => $password,
+            "givenName" => $givenName,
+            "familyName" => $familyName,
         ]);
 
         if (!$api->user->login($username, $password)) {

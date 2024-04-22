@@ -43,7 +43,12 @@ class UserService extends User implements ServiceInterface
         if (!$id) {
             $this->setLoggedInFlagCookie(false);
         }
-        parent::__construct($id);
+        
+        try {
+            parent::__construct($id);
+        } catch (\Throwable $e) { // usually when user with $id does not exist
+            $this->reset();
+        }
     }
 
     /**
@@ -62,6 +67,7 @@ class UserService extends User implements ServiceInterface
             $this->reset();
             return false;
         }
+        $this->updateAfterLogin();
         return true;
     }
 
@@ -88,8 +94,15 @@ class UserService extends User implements ServiceInterface
             return false;
         }
 
+        $this->updateAfterLogin();
         $api->log->info("rms.login", "User $this logged in.", ["id" => $this->id, "username" => $this->username]);
         return true;
+    }
+
+    private function updateAfterLogin(): void {
+        $this->lastLogin = time();
+        $this->lastLoginFrom = $_SERVER['REMOTE_ADDR'] ?? null;
+        $this->save();
     }
 
     protected function reset(): void

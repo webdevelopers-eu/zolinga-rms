@@ -35,6 +35,8 @@ use Exception, InvalidArgumentException;
  * @property ?int $id The unique ID of the user.
  * @property ?string $username The e-mail of the user.
  * @property ?string $password The password hash of the user. You set the password in a plain-text password but reading the password returns the hash.
+ * @property ?string $givenName The given name of the user.
+ * @property ?string $familyName The family name of the user.
  * @property ?int $removed The date and time the user was removed. If 0, the user is not removed.
  * @property ?bool $canLogin Whether the user can login.
  * @property ?int $created The date and time the user was created.
@@ -55,6 +57,8 @@ class User
      *      id: ?int, 
      *      username: ?string, 
      *      password: ?string,
+     *      givenName: ?string,
+     *      familyName: ?string,
      *      removed: ?int, 
      *      canLogin: ?int, 
      *      created: ?int, 
@@ -66,6 +70,8 @@ class User
         'id' => null,
         'username' => null,
         'password' => null,
+        'givenName' => null,
+        'familyName' => null,
         'removed' => null, // '0' means 'not removed', otherwise the timestamp of removal
         'canLogin' => null,
         'created' => null,
@@ -111,6 +117,8 @@ class User
      *      id: ?int, 
      *      username: ?string, 
      *      password: ?string,
+     *      givenName: ?string,
+     *      familyName: ?string,
      *      removed: ?int, 
      *      canLogin: ?int, 
      *      created: ?int, 
@@ -189,6 +197,8 @@ class User
             case 'lastLogin':
                 $this->data[$name] = is_int($value) ? $value : throw new \InvalidArgumentException("Property $name must be an integer.");
                 break;
+            case 'givenName':
+            case 'familyName':
             case 'lastLoginFrom':
                 $this->data[$name] = is_string($value) ? $value : throw new \InvalidArgumentException("Property $name must be a string.");
                 break;

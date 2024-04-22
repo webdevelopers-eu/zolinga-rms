@@ -25,8 +25,8 @@
             <slot name="sign-in-before"></slot>
 
             <label>
-                <span gettext=".">Username</span>
-                <input type="email" class="form-control" name="username" gettext="placeholder" placeholder="Enter username" required>
+                <span gettext=".">E-mail</span>
+                <input type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail" required>
             </label>
             <label>
                 <span gettext=".">Password</span>
@@ -37,6 +37,8 @@
                 <input type="checkbox" class="form-check-input" name="remember">
                 <span class="form-check" gettext=".">Remember me</span>
             </label>
+
+            <slot name="sign-in-after"></slot>
 
             <button part="button" type="submit" class="primary" gettext=".">Sign in</button>
 
@@ -49,8 +51,6 @@
             </a>
 
             <google-login></google-login>
-
-            <slot name="sign-in-after"></slot>
         </form>
         <form class="c-form" part="card sign-up" card-name="sign-up" data-event="rms:register">
             <h1 part="heading h1 sign-up-heading" gettext=".">Sign up</h1>
@@ -58,25 +58,33 @@
             <slot name="sign-up-before"></slot>
 
             <label>
-                <span gettext=".">Username</span>
-                <input type="text" class="form-control" name="username" gettext="placeholder" placeholder="Enter username">
+                <span gettext=".">Given name</span>
+                <input required type="text" class="form-control" name="givenName" gettext="placeholder" placeholder="Given name">
+            </label>
+            <label>
+                <span gettext=".">Family name</span>
+                <input required type="text" class="form-control" name="familyName" gettext="placeholder" placeholder="Family name">
+            </label>
+            <label>
+                <span gettext=".">E-mail</span>
+                <input required type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail">
             </label>
             <label>
                 <span gettext=".">Password</span>
-                <input type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
+                <input required type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
             </label>
             <label>
                 <span gettext=".">Confirm password</span>
-                <input type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Password">
+                <input required type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Confirm Password">
             </label>
+
+            <slot name="sign-up-after"></slot>
 
             <button part="button" type="submit" class="primary" gettext=".">Sign up</button>
 
             <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext=".">
                 Sign in
             </a>
-
-            <slot name="sign-up-after"></slot>
         </form>
         <form class="c-form" part="card password-recover" card-name="password-recover" data-event="rms:recover">
             <h1 part="heading h1 password-recover-heading" gettext=".">Password recovery</h1>
@@ -84,17 +92,17 @@
             <slot name="password-recover-before"></slot>
 
             <label>
-                <span gettext=".">Username</span>
-                <input type="text" class="form-control" name="username" gettext="placeholder" placeholder="Enter username">
+                <span gettext=".">E-mail</span>
+                <input required type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail">
             </label>
+
+            <slot name="password-recover-after"></slot>
 
             <button part="button" type="submit" class="primary" gettext=".">Recover password</button>
 
             <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext=".">
                 Sign in
             </a>
-
-            <slot name="password-recover-after"></slot>
         </form>
         <form class="c-form" part="card password-reset" card-name="password-reset" data-event="rms:reset">
             <h1 part="heading h1 password-reset-heading" gettext=".">Password reset</h1>
@@ -103,14 +111,16 @@
 
             <label>
                 <span gettext=".">New password</span>
-                <input type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
+                <input required type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
             </label>
             <label>
                 <span gettext=".">Confirm password</span>
-                <input type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Password">
+                <input required type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Confirm password">
             </label>
 
-            <input type="hidden" name="hash" value=""/>
+            <input required type="hidden" name="hash" value=""/>
+
+            <slot name="password-reset-after"></slot>
 
             <button part="button" type="submit" class="primary" gettext=".">Reset password</button>
 
@@ -118,7 +128,6 @@
                 Sign in
             </a>
 
-            <slot name="password-reset-after"></slot>
         </form>
     </card-deck>
 

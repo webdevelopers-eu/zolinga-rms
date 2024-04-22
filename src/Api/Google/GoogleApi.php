@@ -47,11 +47,16 @@ class GoogleApi implements ListenerInterface
 
         $user = $api->rms->findUser($mail);
         if (!$user) {
-            $user = $api->rms->createUser(["username" => $mail, "password" => null]);
+            $user = $api->rms->createUser([
+                "username" => $mail, 
+                "password" => null,
+                "givenName" => $jwt->payload["given_name"],
+                "familyName" => $jwt->payload["family_name"],
+            ]);
         }
 
         $api->user->loginNoPassword($user->id);
 
-        $event->setStatus($event::STATUS_OK, _("User logged in."));
+        $event->setStatus($event::STATUS_OK, sprintf(_("Welcome %s! You are now logged in."), $jwt->payload['given_name']));
     }
 }
