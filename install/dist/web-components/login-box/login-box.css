@@ -17,6 +17,10 @@ card-deck {
     --radius: var(--login-radius);
 }
 
+google-login {
+    text-align: center;
+}
+
 .small {
     font-size: 0.8em;
 }
