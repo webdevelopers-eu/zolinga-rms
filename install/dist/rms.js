@@ -1,4 +1,5 @@
-import api from '/dist/system/api.js';
+import api from '/dist/system/js/api.js';
+import WebComponent from '/dist/system/js/web-component.js';
 
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -19,7 +20,7 @@ function updateLoginState(loginState) {
   console.log('RMS: Login state changed from %s to %s', lastLoginState, loginState);
   lastLoginState = loginState;
 
-  api.broadcast('rms:login-changed', {loggedIn: loginState}, true);
+  api.broadcast('rms:login-changed', { loggedIn: loginState }, true);
 
   document.documentElement.classList.toggle('rms-logged-in', loginState);
   document.documentElement.classList.toggle('rms-logged-out', !loginState);
@@ -30,17 +31,17 @@ let lastLoginState = getCookie('rmsIn') === '1';
 setInterval(() => {
   const loginState = getCookie('rmsIn') === '1';
   if (lastLoginState != loginState) {
-    updateLoginState(loginState, {message: 'Your session expired.', type: 'warning', id: 'login-box-message'});
+    updateLoginState(loginState, { message: 'Your session expired.', type: 'warning', id: 'login-box-message' });
   }
 }, 10000);
 
 api
   .listen('event-response:rms:logout', (resp) => {
     api.broadcast('message', {
-      message: resp.message, 
-      type: resp.ok ? 'success' : 'error', 
+      message: resp.message,
+      type: resp.ok ? 'success' : 'error',
       id: 'login-box-message',
-      timeout: resp.ok ? 5000 : 20000 
+      timeout: resp.ok ? 5000 : 20000
     }, true);
     updateLoginState(false);
   })
@@ -67,3 +68,38 @@ function checkPasswordReset() {
 }
 checkPasswordReset();
 window.addEventListener('hashchange', checkPasswordReset);
+
+
+// Usefull API
+window.rms = new class {
+  isLoggedIn() {
+    return lastLoginState;
+  }
+
+  /**
+   * Brings up the login box and when user logs in or is already logged in resolves the returned Promise.
+   * @returns {Promise}
+   */
+  async login() {
+    if (this.isLoggedIn()) {
+      return Promise.resolve();
+    }
+
+    // Is there a login box in <template id="login-box">?
+    console.log('RMS: Opening login box - searching for template#loging-box...');
+    const template = document.querySelector('template#login-box');
+    let box = template ? template.content.firstElementChild.cloneNode(true) : document.createElement('login-box');
+    box.setAttribute('style', 'position: fixed;');
+    box.setAttribute('layer', 'maximized');
+    box.setAttribute('click-outside-to-close', 'true');
+    box.setAttribute('remove-on-close', 'true');
+    document.body.appendChild(box);
+    
+    return WebComponent.watchModal(box);
+  }
+
+  async logout() {
+    return api.dispatchEvent('rms:logout', {});
+  }
+
+};

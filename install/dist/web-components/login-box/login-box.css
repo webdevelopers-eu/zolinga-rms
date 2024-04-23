@@ -6,8 +6,6 @@
     --layer-speed: 0.25s;
 
     font-family: inherit;
-
-    width: 256px; /* even pixls to avoid bluring during translate() */
 }
 
 card-deck {
@@ -54,6 +52,13 @@ google-login {
     animation-timing-function: ease-in-out;
     animation-name: maximize;
     animation-fill-mode: forwards;
+}
+
+:host form {
+    max-width: calc(100dvw - 2em);
+    max-height: calc(100dvh - 2em);
+    width: 320px;
+    overflow: hidden auto;
 }
 
 :host([layer="minimized"]) card-deck {

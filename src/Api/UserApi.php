@@ -76,7 +76,7 @@ class UserApi implements ListenerInterface
      * Example:
      * 
      * ```javascript
-     *    import api from '/dist/system/api.js';
+     *    import api from '/dist/system/js/api.js';
      *    const resp = await api.dispatchEvent('rms:login', {username: 'user', password: 'password'});
      * ```
      * 

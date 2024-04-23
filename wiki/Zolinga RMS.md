@@ -49,7 +49,7 @@ $can = $otherUser->hasRightsAll("edit some/file.txt", "edit some/other.txt");
 # Logging In and Out Using Javascript
 
 ```javascript
-import api from '/dist/system/api.js';
+import api from '/dist/system/js/api.js';
 
 const event = await api.dispatchEvent('rms:login', {username, password});
 

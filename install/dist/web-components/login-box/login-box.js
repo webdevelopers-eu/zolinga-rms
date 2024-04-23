@@ -1,5 +1,5 @@
-import WebComponent from '/dist/system/lib/web-component.js';
-import api from '/dist/system/api.js';
+import WebComponent from '/dist/system/js/web-component.js';
+import api from '/dist/system/js/api.js';
 
 export default class LoginBox extends WebComponent {
     #root;
@@ -10,18 +10,19 @@ export default class LoginBox extends WebComponent {
 
     constructor() {
         super();
-        this.ready(this.#init());
-
-        if (!this.hasAttribute('layer')) {
-            this.classList.add('for-guests');
-        }
 
         this.listen('rms:login-changed', (resp) => {
             if (this.hasAttribute('layer')) {
                 this.setAttribute('layer', resp.loggedIn ? 'minimized' : 'maximized');
             }
             setTimeout(this.#reset.bind(this), resp.loggedIn ? 1000 : 0);
+
+            if (resp.loggedIn) {
+                this.resolveModal();
+            }
         });
+
+        this.ready(this.#init());
     }
 
     async #init() {
@@ -29,6 +30,11 @@ export default class LoginBox extends WebComponent {
         this.#root = await this.loadContent(contentURL, {
             mode: 'closed'
         });
+
+        // Must be in async #init as this is nota allowed in constructor
+        if (!this.hasAttribute('layer')) {
+            this.classList.add('for-guests');
+        }
 
         this.#curtain = this.#root.querySelector('.curtain');
         this.#deck = this.#root.querySelector('card-deck');
@@ -42,7 +48,15 @@ export default class LoginBox extends WebComponent {
         this.#root.querySelectorAll('form[data-event]')
             .forEach(form => form.addEventListener('submit', this.#submitForm.bind(this)));
 
-        this.#curtain.addEventListener('click', () => this.hasAttribute('click-outside-to-close') && this.setAttribute('layer', 'minimized'));
+        this.#curtain.addEventListener('click', () => {
+            if (this.hasAttribute('click-outside-to-close')) {
+                this.setAttribute('layer', 'minimized');
+                if (this.hasAttribute('remove-on-close')) {
+                    setTimeout(() => this.remove(), 2000); // let the animation finish
+                }
+                this.rejectModal();
+            }
+        });
 
         // Wait for c-resources to load before appending the shadow root
         const resources = this.#root.querySelector('c-resources');
@@ -57,13 +71,30 @@ export default class LoginBox extends WebComponent {
 
     async #submitForm(event) {
         event.preventDefault();
+
         const form = event.target;
         const formData = new FormData(form);
         const eventName = form.dataset.event;
 
+        // Check if there are any validation errors in slotted content
+        const slotsNames = Array.from(form.querySelectorAll('slot')).map(slot => slot.name);
+        const slotted = Array.from(this.querySelectorAll('input, select, textarea'))
+            .filter(input => slotsNames.includes(input.closest('[slot]')?.slot));
+
+        const validationError = slotted.find(input => !input.checkValidity());
+        if (validationError) {
+            validationError.reportValidity();
+            return;
+        }
+
         let data = Object.fromEntries(formData.entries());
         data.referrer = window.location.href;
         data.origin = window.location.origin;
+        
+        // Append slotted values
+        slotted.forEach(input => {
+            data[input.name] = input.value;
+        });
 
         const resp = await api.dispatchEvent(eventName, data);
 
