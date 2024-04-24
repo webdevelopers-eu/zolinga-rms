@@ -52,6 +52,7 @@ class GoogleApi implements ListenerInterface
                 "password" => null,
                 "givenName" => $jwt->payload["given_name"],
                 "familyName" => $jwt->payload["family_name"],
+                "lang" => $api->locale->locale
             ]);
         }
 

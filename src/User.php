@@ -59,6 +59,7 @@ class User
      *      password: ?string,
      *      givenName: ?string,
      *      familyName: ?string,
+     *      lang: ?string,
      *      removed: ?int, 
      *      canLogin: ?int, 
      *      created: ?int, 
@@ -72,6 +73,7 @@ class User
         'password' => null,
         'givenName' => null,
         'familyName' => null,
+        'lang' => null, // 'll_CC' format, e.g. 'en_US
         'removed' => null, // '0' means 'not removed', otherwise the timestamp of removal
         'canLogin' => null,
         'created' => null,
@@ -119,6 +121,7 @@ class User
      *      password: ?string,
      *      givenName: ?string,
      *      familyName: ?string,
+     *      lang: ?string
      *      removed: ?int, 
      *      canLogin: ?int, 
      *      created: ?int, 
@@ -201,6 +204,13 @@ class User
             case 'familyName':
             case 'lastLoginFrom':
                 $this->data[$name] = is_string($value) ? $value : throw new \InvalidArgumentException("Property $name must be a string.");
+                break;
+            case 'lang':
+                $lang = \Locale::getPrimaryLanguage((string) $value)
+                    or throw new \InvalidArgumentException("Property $name must be a valid language code in format ll_CC.");
+                $region = \Locale::getRegion((string) $value)
+                    or throw new \InvalidArgumentException("Property $name must be a valid language code in format ll_CC.");
+                $this->data[$name] = "{$lang}_{$region}";
                 break;
             default:
                 throw new \InvalidArgumentException("Property $name does not exist.");

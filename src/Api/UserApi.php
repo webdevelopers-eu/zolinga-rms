@@ -150,6 +150,7 @@ class UserApi implements ListenerInterface
             "password" => $password,
             "givenName" => $givenName,
             "familyName" => $familyName,
+            "lang" => $api->locale->locale
         ]);
 
         if (!$api->user->login($username, $password)) {

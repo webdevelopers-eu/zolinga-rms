@@ -4,6 +4,7 @@ create table rmsUsers (
     `password` VARCHAR(1024) DEFAULT NULL COMMENT 'Password hash.',
     `givenName` VARCHAR(128) DEFAULT NULL COMMENT 'Given name.',
     `familyName` VARCHAR(128) DEFAULT NULL COMMENT 'Family name.',
+    `lang` VARCHAR(5) DEFAULT 'en_US' COMMENT 'User language.',
     `removed` INT(10) UNSIGNED DEFAULT 0 COMMENT 'Date and time the registry item was removed.', 
     `canLogin` BOOLEAN DEFAULT 1 COMMENT 'User can login.',
     `created` INT(10) UNSIGNED DEFAULT NULL COMMENT 'Auto updated by trigger. Date and time the registry item was created.',

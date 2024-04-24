@@ -76,6 +76,10 @@ class UserService extends User implements ServiceInterface
         global $api;
 
         try {
+            if (strlen($password) < 6) {
+                throw new \Exception("Password too short.");
+            }
+
             $user = $api->rms->findUser($username);
             if (!$user) {
                 $api->log->warning("rms.login", "User $username not found.", ["username" => $username]);
