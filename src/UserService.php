@@ -22,6 +22,8 @@ class UserService extends User implements ServiceInterface
 
     public function __construct()
     {
+        global $api;
+
         if (!is_array($_SESSION['rms'] ?? null)) {
             $_SESSION['rms'] = [];
         }
@@ -47,6 +49,7 @@ class UserService extends User implements ServiceInterface
         try {
             parent::__construct($id);
         } catch (\Throwable $e) { // usually when user with $id does not exist
+            $api->log->error("rms.login", $e);
             $this->reset();
         }
     }
@@ -59,11 +62,14 @@ class UserService extends User implements ServiceInterface
      */
     public function loginNoPassword(string|int|array $who): bool
     {
+        global $api;
+
         try {
             parent::load($who);
             $_SESSION['rms']['user'] = $this->id;
             $this->setLoggedInFlagCookie((bool) $this->id);
         } catch (\Throwable $e) {
+            $api->log->error("rms.login", $e);
             $this->reset();
             return false;
         }
@@ -131,6 +137,9 @@ class UserService extends User implements ServiceInterface
 
     public function logout(): void
     {
+        global $api;
+
+        $api->log->info("rms.login", "User $this logged out.");
         $this->reset();
     }
 
@@ -151,11 +160,20 @@ class UserService extends User implements ServiceInterface
      */
     public function remember(): void
     {
+        global $api;
+
         /** @phpstan-ignore-next-line */
         $enabled = SECURE_CONNECTION && $this->id;
         /** @var true $enabled */
         /** @phpstan-ignore-next-line */
-        if (!$enabled) return; // not logged in
+        if (!$enabled) {
+            $api->log->warning(
+                "rms.remember", 
+                "Autologin not enabled: no secure connection or user not logged in.", 
+                ["secure" => SECURE_CONNECTION, "userId" => $this->id]
+            );
+            return; // not logged in
+        }
 
         $token = $this->genAutologinToken();
 
