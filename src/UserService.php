@@ -170,7 +170,11 @@ class UserService extends User implements ServiceInterface
             $api->log->warning(
                 "rms.remember", 
                 "Autologin not enabled: no secure connection or user not logged in.", 
-                ["secure" => SECURE_CONNECTION, "userId" => $this->id]
+                [
+                        "secure" => SECURE_CONNECTION, 
+                        "userId" => $this->id,
+                        "serverName" => $_SERVER['SERVER_NAME']
+                ]
             );
             return; // not logged in
         }
