@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace Zolinga\Rms;
+
 use Stringable;
 use Exception, InvalidArgumentException;
 
@@ -367,7 +368,7 @@ class User
         $modifiedValues = array_filter($this->data, fn ($v) => $v !== null, ARRAY_FILTER_USE_BOTH);
         $id = $api->db->expandQuery("INSERT INTO rmsUsers (`??`) VALUES ('??')", array_keys($modifiedValues), $modifiedValues)
             or throw new \Exception("Failed to create the user.");
-            
+
         $this->modifiedFields = [];
         $this->loadById($id);
         return $this;
@@ -378,7 +379,8 @@ class User
      *
      * @return void
      */
-    public function remove(): void {
+    public function remove(): void
+    {
         global $api;
 
         $api->rms->removeUser($this);
@@ -496,7 +498,16 @@ class User
             WHERE `userId` = ? AND commandHash IN ('??')
             ", $this->id, $commandHashes)->fetchFirstColumnAll();
 
-        return array_filter($commands, fn ($k) => in_array($commandObjects[$k]->hash, $foundHashes), ARRAY_FILTER_USE_KEY);
+        return array_filter(
+            $commands,
+            fn ($k) =>
+            in_array($commandObjects[$k]->hash, $foundHashes)
+            || 
+            ($commandObjects[$k]->text === 'member of users' && $this->id)
+            ||
+            ($commandObjects[$k]->text === 'member of guests' && !$this->id),
+            ARRAY_FILTER_USE_KEY
+        );
     }
 
     /**
