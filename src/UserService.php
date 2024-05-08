@@ -42,9 +42,7 @@ class UserService extends User implements ServiceInterface
             $id = null;
         }
 
-        if (!$id) {
-            $this->setLoggedInFlagCookie(false);
-        }
+        $this->setLoggedInFlagCookie((bool) $id);
         
         try {
             parent::__construct($id);

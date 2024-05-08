@@ -1,6 +1,8 @@
 import api from '/dist/system/js/api.js';
 import WebComponent from '/dist/system/js/web-component.js';
 
+let lastLoginState = getCookie('rmsIn') === '1';
+
 function getCookie(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
@@ -25,8 +27,6 @@ function updateLoginState(loginState) {
   document.documentElement.classList.toggle('rms-logged-in', loginState);
   document.documentElement.classList.toggle('rms-logged-out', !loginState);
 }
-
-let lastLoginState = getCookie('rmsIn') === '1';
 
 setInterval(() => {
   const loginState = getCookie('rmsIn') === '1';
