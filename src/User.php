@@ -344,7 +344,7 @@ class User
 
         if ($this->modifiedFields) {
             $modifiedValues = array_intersect_key($this->data, $this->modifiedFields);
-            $api->db->expandQuery("UPDATE rmsUsers SET ?? WHERE id = ? LIMIT 1", $modifiedValues, $this->id);
+            $api->db->queryExpand("UPDATE rmsUsers SET ?? WHERE id = ? LIMIT 1", $modifiedValues, $this->id);
             $this->modifiedFields = [];
         }
         return $this;
@@ -366,7 +366,7 @@ class User
         }
 
         $modifiedValues = array_filter($this->data, fn ($v) => $v !== null, ARRAY_FILTER_USE_BOTH);
-        $id = $api->db->expandQuery("INSERT INTO rmsUsers (`??`) VALUES ('??')", array_keys($modifiedValues), $modifiedValues)
+        $id = $api->db->queryExpand("INSERT INTO rmsUsers (`??`) VALUES ('??')", array_keys($modifiedValues), $modifiedValues)
             or throw new \Exception("Failed to create the user.");
 
         $this->modifiedFields = [];
@@ -492,7 +492,7 @@ class User
 
         $commandObjects = array_map(fn ($command) => $command instanceof Command ? $command : new Command((string) $command), $commands);
         $commandHashes = array_map(fn ($command) => $command->hash, $commandObjects);
-        $foundHashes = $api->db->expandQuery("
+        $foundHashes = $api->db->queryExpand("
             SELECT `commandHash` 
             FROM `rmsRights` 
             WHERE `userId` = ? AND commandHash IN ('??')

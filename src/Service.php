@@ -149,7 +149,7 @@ class Service implements ServiceInterface
             $rights
         );
 
-        $ret = $api->db->expandQuery(
+        $ret = $api->db->queryExpand(
             'SELECT DISTINCT userId as id FROM rmsRights WHERE commandHash IN ("??") ORDER BY userId ASC', 
             $hashes
         )->fetchFirstColumnAll();
