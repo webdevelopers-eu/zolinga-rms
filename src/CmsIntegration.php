@@ -40,6 +40,8 @@ class CmsIntegration implements ListenerInterface
         $headNode->appendChild($style);
         $style->setAttribute('type', 'text/css');
         $style->appendChild($event->content->createTextNode(<<<CSS
+                :host-context(html.rms-logged-out) .for-users,
+                :host-context(html.rms-logged-in) .for-guests,
                 html.rms-logged-out .for-users,
                 html.rms-logged-in .for-guests {
                     display: none !important;
