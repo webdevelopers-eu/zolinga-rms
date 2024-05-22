@@ -10,7 +10,7 @@ create table rmsUsers (
     `created` INT(10) UNSIGNED DEFAULT NULL COMMENT 'Auto updated by trigger. Date and time the registry item was created.',
     `modified` INT(10) UNSIGNED DEFAULT NULL COMMENT 'Auto updated by trigger. Date and time the registry item was last modified.',
     `lastLogin` INT(10) UNSIGNED DEFAULT NULL COMMENT 'Date and time of last login.',
-    `lastLoginFrom` VARCHAR(255) DEFAULT NULL COMMENT 'IP address of last login.',
+    `lastLoginFrom` VARCHAR(39) DEFAULT NULL COMMENT 'IP address of last login.',
     PRIMARY KEY (`id`),
     INDEX `rmsUsers_username` (`username`),
     UNIQUE KEY `rmsUsers_UNIQUE` (`username`, `removed`)
