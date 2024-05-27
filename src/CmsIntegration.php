@@ -40,8 +40,6 @@ class CmsIntegration implements ListenerInterface
         $headNode->appendChild($style);
         $style->setAttribute('type', 'text/css');
         $style->appendChild($event->content->createTextNode(<<<CSS
-                :host-context(html.rms-logged-out) .for-users,
-                :host-context(html.rms-logged-in) .for-guests,
                 html.rms-logged-out .for-users,
                 html.rms-logged-in .for-guests {
                     display: none !important;
@@ -49,6 +47,15 @@ class CmsIntegration implements ListenerInterface
                     position: absolute !important;
                     opacity: 0 !important;
                 }
-                CSS));
+
+                /* Keep :host-context() separate because FF doesn't support it in the same rule with above for normal documents */
+                :host-context(html.rms-logged-out) .for-users,
+                :host-context(html.rms-logged-in) .for-guests {
+                    display: none !important;
+                    pointer-events: none !important;
+                    position: absolute !important;
+                    opacity: 0 !important;
+                }
+            CSS));
     }
 }
