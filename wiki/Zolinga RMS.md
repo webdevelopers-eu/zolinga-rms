@@ -95,3 +95,22 @@ $users = array_map(fn($id) => $api->rms->getUser($id), $userIds);
 // Remove them from the group
 array_walk($users, fn($user) => $user->revoke("member of group1"));
 ```
+
+## Metadata
+
+Each `User` object (including `$api->user`) has a `meta` property that can be used retrieve and store additional user data structures that must be JSON-serializable. Setting new data into array automatically saves data into DB.
+
+```php
+$api->user->meta["key"] = ["value" => "data"];
+echo $api->user->meta["key"]["value"]; // Output: data
+unset($api->user->meta["key"]); // same as $api->user->meta["key"] = null;
+```
+
+Note that only one-level array is supported for setting data.
+
+```
+$api->user->meta["key"]["subkey"] = "value"; // ERROR This will not work
+$api->user->meta["key"] = ["subkey" => "value"]; // This will work
+```
+
+The key can be any string max 255 characters long.

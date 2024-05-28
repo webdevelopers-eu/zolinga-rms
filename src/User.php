@@ -92,6 +92,14 @@ class User
      */
     private array $modifiedFields = [];
 
+
+    /**
+     * Key-value store for user meta data.
+     *
+     * @var Meta
+     */
+    private Meta $meta;
+
     /**
      * Constructor
      *
@@ -158,8 +166,9 @@ class User
     public function __get(string $name): null|string|int|bool|array
     {
         switch ($name) {
-            case 'data': // readonly used by UserService
-                return $this->data;
+            case 'meta':
+            case 'data': // readonly
+                return $this->$name;
             case 'isModified':
                 return (bool) $this->modifiedFields;
             case 'canLogin':
@@ -273,6 +282,8 @@ class User
 
         $this->data = $res;
         $this->modifiedFields = [];
+        $this->meta = new Meta($this);
+
         return $this;
     }
 
@@ -305,6 +316,8 @@ class User
 
         $this->data = $res;
         $this->modifiedFields = [];
+        $this->meta = new Meta($this);
+
         return $this;
     }
 
@@ -326,8 +339,11 @@ class User
     private function loadFromArray(array $data): User
     {
         $merge = array_intersect_key($data, $this->data);
+
         $this->data = array_merge($this->data, $merge);
         $this->modifiedFields = [];
+        $this->meta = new Meta($this);
+        
         return $this;
     }
 
@@ -544,6 +560,7 @@ class User
         // set all values to null
         $this->data = array_map(fn ($v) => null, $this->data);
         $this->modifiedFields = [];
+        $this->meta = new Meta($this);
     }
 
     /**
