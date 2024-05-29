@@ -33,7 +33,7 @@ setInterval(() => {
   if (lastLoginState != loginState) {
     updateLoginState(loginState, { message: 'Your session expired.', type: 'warning', id: 'login-box-message' });
   }
-}, 10000);
+}, 2000);
 
 api
   .listen('event-response:rms:logout', (resp) => {

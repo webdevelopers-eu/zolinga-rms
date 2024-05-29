@@ -161,9 +161,9 @@ class User
      * Getter
      *
      * @param string $name
-     * @return null|string|integer|boolean|array<mixed>
+     * @return null|string|integer|boolean|array<mixed>|Meta
      */
-    public function __get(string $name): null|string|int|bool|array
+    public function __get(string $name): null|string|int|bool|array|Meta
     {
         switch ($name) {
             case 'meta':

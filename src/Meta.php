@@ -26,6 +26,14 @@ class Meta implements ArrayAccess {
         $this->userId = $user->id;
     }
 
+    public function __get(string $name): void {
+        throw new \Exception('RMS: Cannot access meta data directly. Use array access');
+    }
+
+    public function __set(string $name, mixed $value): void {
+        throw new \Exception('RMS: Cannot set meta data directly. Use array access');
+    }
+
     public function getMeta(string $prop): mixed {
         global $api;
 
