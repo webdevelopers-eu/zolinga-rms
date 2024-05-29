@@ -48,14 +48,56 @@ class CmsIntegration implements ListenerInterface
                     opacity: 0 !important;
                 }
 
-                /* Keep :host-context() separate because FF doesn't support it in the same rule with above for normal documents */
-                :host-context(html.rms-logged-out) .for-users,
-                :host-context(html.rms-logged-in) .for-guests {
-                    display: none !important;
-                    pointer-events: none !important;
-                    position: absolute !important;
-                    opacity: 0 !important;
+                /** This is a workaround for FF & Safari not supporting :host-context() */
+                html.rms-logged-out {
+                    --for-users-display: none;
+                    --for-users-size: 0px;
+                    --for-users-overflow: hidden;
+                    --for-users-position: absolute;
+                    --for-users-events: none;
+                    --for-guests-display: invalid-value; /* gets ignored */
+                    --for-guests-size: invalid-value;
+                    --for-guests-overflow: invalid-value;
+                    --for-guests-position: invalid-value;
+                    --for-guests-events: invalid-value; 
+                }
+                html.rms-logged-in {
+                    --for-users-display: invalid-value; /* gets ignored */
+                    --for-users-size: invalid-value;
+                    --for-users-overflow: invalid-value;
+                    --for-users-position: invalid-value;
+                    --for-users-events: invalid-value;
+                    --for-guests-display: none;
+                    --for-guests-size: 0px;
+                    --for-guests-overflow: hidden;
+                    --for-guests-position: absolute;
+                    --for-guests-events: none;
+                }
+                :host *.for-users[class] { /* just to make it more specific */
+                    display: var(--for-users-display) !important;
+                    max-width: var(--for-users-size) !important;
+                    max-height: var(--for-users-size) !important;
+                    overflow: var(--for-users-overflow) !important;
+                    pointer-events: var(--for-users-events) !important;
+                    position: var(--for-users-position) !important;
+                }
+                :host *.for-guests[class] { /* just to make it more specific */
+                    display: var(--for-guests-display) !important;
+                    max-width: var(--for-guests-size) !important;
+                    max-height: var(--for-guests-size) !important;
+                    overflow: var(--for-guests-overflow) !important;
+                    pointer-events: var(--for-guests-events) !important;
+                    position: var(--for-guests-position) !important;
                 }
             CSS));
+
+        // // @future When FF & Safari supports :host-context()
+        // :host-context(html.rms-logged-out) .for-users,
+        // :host-context(html.rms-logged-in) .for-guests {
+        //     display: none !important;
+        //     pointer-events: none !important;
+        //     position: absolute !important;
+        //     opacity: 0 !important;
+        // }
     }
 }
