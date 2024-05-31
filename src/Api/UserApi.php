@@ -7,7 +7,12 @@ namespace Zolinga\Rms\Api;
 use Zolinga\Rms\User;
 use Zolinga\System\Events\{ContentEvent, RequestEvent, RequestResponseEvent, ListenerInterface, AuthorizeEvent};
 use Zolinga\Commons\Email;
-
+/**
+ * User API
+ *
+ * @author Daniel Sevcik <danny@zolinga.net>
+ * @date 2024-04-30
+ */
 class UserApi implements ListenerInterface
 {
     private const RECOVERY_LINK_EXPIRATION = 3600;
