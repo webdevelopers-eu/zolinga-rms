@@ -18,12 +18,12 @@ use ArrayAccess;
  * @date 2024-05-28
  */
 class Meta implements ArrayAccess {
+    private User $user;
     private const JSON_FORMAT = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT;
-    private readonly int $userId;
     private array $meta = [];
 
     public function __construct(User $user) {
-        $this->userId = $user->id;
+        $this->user = $user;
     }
 
     public function __get(string $name): void {
@@ -37,7 +37,7 @@ class Meta implements ArrayAccess {
     public function getMeta(string $prop): mixed {
         global $api;
 
-        if (!$this->userId) {
+        if (!$this->user->id) {
             return null;
         }
 
@@ -49,7 +49,7 @@ class Meta implements ArrayAccess {
                     `rmsMeta` 
                 WHERE 
                     `userId` = ? AND `prop` = ?
-                SQL, $this->userId, $prop)['data'] ?? 'null', true);
+                SQL, $this->user->id, $prop)['data'] ?? 'null', true);
         }
 
         return $this->meta[$prop];
@@ -58,7 +58,7 @@ class Meta implements ArrayAccess {
     public function setMeta(string $prop, mixed $data): void {
         global $api;
 
-        if (!$this->userId) {
+        if (!$this->user->id) {
             throw new \Exception('RMS: Cannot set meta data on user. User ID not set');
         }
 
@@ -74,7 +74,7 @@ class Meta implements ArrayAccess {
                 `userId` = ?, `prop` = ?, `data` = ?
             ON DUPLICATE KEY UPDATE 
                 `data` = VALUES(`data`)
-            SQL, $this->userId, $prop, json_encode($data, self::JSON_FORMAT));
+            SQL, $this->user->id, $prop, json_encode($data, self::JSON_FORMAT));
 
         $this->meta[$prop] = $data;
     }
@@ -82,7 +82,7 @@ class Meta implements ArrayAccess {
     public function deleteMeta(string $prop): void {
         global $api;
 
-        if (!$this->userId) {
+        if (!$this->user->id) {
             throw new \Exception('RMS: Cannot set meta data on user. User ID not set');
         }
         
@@ -91,7 +91,7 @@ class Meta implements ArrayAccess {
                 `rmsMeta` 
             WHERE 
                 `userId` = ? AND `prop` = ?
-            SQL, $this->userId, $prop);
+            SQL, $this->user->id, $prop);
 
         $this->meta[$prop] = null;
     }
