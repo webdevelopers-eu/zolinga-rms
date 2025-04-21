@@ -257,7 +257,9 @@ class User
         if (empty($plainTextPassword)) return false;
         if (strlen($plainTextPassword) < self::PASSWORD_MIN_LENGTH) return false;
 
-        return password_verify($plainTextPassword, $this->password);
+        $ret = password_verify($plainTextPassword, $this->password);
+
+        return $ret;
     }
 
     /**
