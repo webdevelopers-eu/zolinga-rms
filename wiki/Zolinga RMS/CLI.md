@@ -29,3 +29,5 @@ bin/zolinga zolinga:rms --user=123 --revoke="access page#134" --list
 bin/zolinga zolinga:rms --user="another@example.com" --hasRight="read all"
 ```
 
+# Related
+* [API Interface](:Zolinga RMS:CLI) - The API interface for Zolinga User CLI.

@@ -1,0 +1,1 @@
+For CLI usage details refer to [Zolinga RMS CLI](:Zolinga RMS:CLI).
