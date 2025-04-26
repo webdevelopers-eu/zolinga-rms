@@ -577,6 +577,38 @@ class User
     }
 
     /**
+     * Does the user have a special right "member of administrators"?
+     *
+     * @return bool
+     */
+    public function isAdministrator(): bool
+    {
+        return $this->hasRight('member of administrators');
+    }
+
+    /**
+     * Grant the special right "member of administrators" to the user.
+     * 
+     * This right is used to identify the user as an administrator in the system.
+     * 
+     * @return void
+     */
+    public function grantAdministrator(): void
+    {
+        $this->grant('member of administrators');
+    }
+
+    /**
+     * Revoke the special right "member of administrators" from the user.
+     * 
+     * @return void
+     */
+    public function revokeAdministrator(): void
+    {
+        $this->revoke('member of administrators');
+    }
+
+    /**
      * Reset object to its initial state.
      *
      * @return void
