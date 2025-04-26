@@ -444,6 +444,30 @@ class User
         return $this->save();
     }
 
+    /**
+     * Get the list of all rights the user has.
+     * 
+     * Note: The array keys are preserved.
+     *
+     * @return array<Command> of rights the user has. The array keys are preserved.
+     */
+    public function listPermissions(): array 
+    {
+        global $api;
+
+        $this->loadedCheck("Cannot list permissions.");
+
+        $permissions = $api->db->query("
+            SELECT c.command
+            FROM rmsRights as r
+            LEFT JOIN rmsCommands as c ON (r.commandHash = c.hash)
+            WHERE r.userId = ?
+            ", 
+            $this->id
+        )->fetchFirstColumnAll();
+
+        return array_map(fn ($p) => new Command($p), $permissions);
+    }
 
     /**
      * Grants rights to the user by creating and inserting commands into the database.

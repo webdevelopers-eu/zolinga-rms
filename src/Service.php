@@ -99,27 +99,28 @@ class Service implements ServiceInterface
     {
         global $api;
 
+        // IMPORTANT: when comparing int 0 to string the string gets converted to 0
+        if (is_numeric($who)) {
+            $who = intval($who);
+            $field = 'id';
+        } else {
+            $field = 'username';
+        }
+
+        if (!$who) {
+            return false;
+        }
+
         $user = $this->getUserFromCache($who);
         if ($user) {
             return $user;
         }
 
-        /** 
-         * @var array{ 
-         *      id: ?int, 
-         *      username: ?string, 
-         *      password: ?string,
-         *      removed: ?int, 
-         *      canLogin: ?int, 
-         *      created: ?int, 
-         *      modified: ?int, 
-         *      lastLogin: ?int, 
-         *      lastLoginFrom: ?string}|null $data
-         */
         $data = $api->db->query('
             SELECT * 
             FROM rmsUsers 
-            WHERE removed = 0 AND ? in (id, username)
+            WHERE removed = 0 AND ' . $field . ' = ?
+            LIMIT 1
         ', $who)->current() ?? false;
 
         if (!is_array($data)) return false;

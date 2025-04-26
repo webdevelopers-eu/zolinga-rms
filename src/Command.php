@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Zolinga\Rms;
 
+use JsonSerializable;
+
 /**
  * Represents an RMS command. RMS command is a string consisting of 
  * a verb and object (e.g. "create user", "remove user", "list users").
@@ -11,7 +13,7 @@ namespace Zolinga\Rms;
  * @author Daniel Sevcik <danny@zolinga.net>
  * @date 2024-03-09
  */
-class Command
+class Command implements JsonSerializable
 {
     public readonly string $text;
     public readonly string $hash;
@@ -37,6 +39,11 @@ class Command
     }
 
     public function __toString(): string
+    {
+        return $this->text;
+    }
+
+    public function jsonSerialize(): string
     {
         return $this->text;
     }

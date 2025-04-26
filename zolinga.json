@@ -34,6 +34,16 @@
                 "remote"
             ],
             "priority": 0.5
+        },        
+        {
+            "description": "CLI user management interface.",
+            "event": "rms:user",
+            "class": "\\Zolinga\\Rms\\Api\\UserCliApi",
+            "method": "onRequest",
+            "origin": [
+                "cli"
+            ],
+            "priority": 0.5
         },
         {
             "description": "The User registration request.",
