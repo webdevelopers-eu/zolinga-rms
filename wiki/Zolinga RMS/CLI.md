@@ -28,7 +28,7 @@ bin/zolinga zolinga:rms --user=123 --revoke="access page#134"
 
 bin/zolinga --single=permissions zolinga:rms --user="admin@example.com" --list
 
-bin/zolinga zolinga:rms --user="another@example.com" --hasRight="read all"
+bin/zolinga --single=hasRight zolinga:rms --user="admin@example.com" --hasRight="read all"
 ```
 
 Note: The `--single=permissions` option is used to output only the response's `permissions` field. See `bin/zolinga --help` for details.

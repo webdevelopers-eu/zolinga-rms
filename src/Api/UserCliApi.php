@@ -58,14 +58,14 @@ class UserCliApi implements ListenerInterface
 
         if ($event->request['grant'] ?? false) {
             $user->grant($event->request['grant']);
-            $this->checkRight($user, $event->request['grant'], true, $event->response['report']['grant']);
+            $event->response['hasRight'] = $this->checkRight($user, $event->request['grant'], true, $event->response['report']['grant']);
         } 
         if ($event->request['revoke'] ?? false) {
             $user->revoke($event->request['revoke']);
-            $this->checkRight($user, $event->request['revoke'], false, $event->response['report']['revoke']);
+            $event->response['hasRight'] = $this->checkRight($user, $event->request['revoke'], false, $event->response['report']['revoke']);
         }
         if ($event->request['hasRight'] ?? false) {
-            $this->checkRight($user, $event->request['hasRight'], null, $event->response['report']['hasRight']);
+            $event->response['hasRight'] = $this->checkRight($user, $event->request['hasRight'], null, $event->response['report']['hasRight']);
         }
         if ($event->request['list'] ?? false) {
             $event->response['permissions'] = $user->listPermissions();
