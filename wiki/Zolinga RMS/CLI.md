@@ -30,4 +30,4 @@ bin/zolinga zolinga:rms --user="another@example.com" --hasRight="read all"
 ```
 
 # Related
-* [API Interface](:Zolinga RMS:CLI) - The API interface for Zolinga User CLI.
+* [API Interface](:ref:event:rms:user) - The API interface for Zolinga User CLI.
