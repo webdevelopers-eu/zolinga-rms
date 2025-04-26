@@ -106,7 +106,10 @@ export default class LoginBox extends WebComponent {
         }, true);
 
         if (['rms:login', 'rms:register'].includes(eventName) && resp.ok) {
-            this.broadcast('rms:login-changed', { loggedIn: resp.ok });
+            this.broadcast('rms:login-changed', { 
+                loggedIn: resp.ok,
+                tags: resp.response.user.tags 
+            });
         }
 
         if (resp.response.showCard) { // after password reset we may want to go back to login

@@ -41,7 +41,9 @@ class CmsIntegration implements ListenerInterface
         $style->setAttribute('type', 'text/css');
         $style->appendChild($event->content->createTextNode(<<<CSS
                 html.rms-logged-out .for-users,
-                html.rms-logged-in .for-guests {
+                html.rms-logged-in .for-guests,
+                html:not([data-user-tags~="debugger"]) .for-debuggers,
+                html:not([data-user-tags~="administrator"]) .for-administrators {
                     display: none !important;
                     pointer-events: none !important;
                     position: absolute !important;

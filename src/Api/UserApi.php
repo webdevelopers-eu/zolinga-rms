@@ -110,13 +110,7 @@ class UserApi implements ListenerInterface
             $api->user->remember();
         }
 
-        $event->response['user'] = [
-            "username" => $api->user->username,
-            "id" => $api->user->id,
-            // Other event listeners can add more user data here
-            // just register a listener with lower priority
-            // check if event status is OK and amend the response
-        ];
+        $event->response['user'] = $api->user->getPublicUserData();
         $msg = dgettext("zolinga-rms", "Welcome! You are now logged in.");
         $event->setStatus($event::STATUS_OK, $msg);
     }
@@ -163,6 +157,7 @@ class UserApi implements ListenerInterface
             return;
         }
 
+        $event->response['user'] = $api->user->getPublicUserData();
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Welcome! You are now logged in."));
     }
 

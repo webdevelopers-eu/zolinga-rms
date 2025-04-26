@@ -71,6 +71,11 @@ class UserCliApi implements ListenerInterface
             $event->response['permissions'] = $user->listPermissions();
             $event->response['report']['list'] = "Listed " . count($event->response['permissions']) . " permissions for user " . $user->username;
         }
+        if ($event->request['setPassword'] ?? false) {
+            $user->setPassword($event->request['setPassword']);
+            $user->save();
+            $event->response['report']['setPassword'] = "Set password for user " . $user->username;
+        }
 
         $event->setStatus($event::STATUS_OK, "Done.");
     }

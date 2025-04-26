@@ -2,6 +2,7 @@ import api from '/dist/system/js/api.js';
 import WebComponent from '/dist/system/js/web-component.js';
 
 let lastLoginState = getCookie('rmsIn') === '1';
+updateTags(lastLoginState ? null : ['logged-out']);
 
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -15,14 +16,25 @@ function getCookie(name) {
   }
 }
 
-function updateLoginState(loginState) {
+function updateTags(tags) {
+  tags = tags || JSON.parse(sessionStorage.getItem('rms-tags') || '["empty"]');
+  sessionStorage.setItem('rms-tags', JSON.stringify(tags));
+  document.documentElement.dataset.userTags = tags.join(' ');
+}
+
+function updateLoginState(loginState, data) {
+  updateTags(loginState ? data.tags : ['logged-out']);
+
   if (loginState === lastLoginState) {
     return;
   }
   console.log('RMS: Login state changed from %s to %s', lastLoginState, loginState);
   lastLoginState = loginState;
 
-  api.broadcast('rms:login-changed', { loggedIn: loginState }, true);
+  api.broadcast('rms:login-changed', {
+    ...data || {},
+    loggedIn: loginState
+  }, true);
 
   document.documentElement.classList.toggle('rms-logged-in', loginState);
   document.documentElement.classList.toggle('rms-logged-out', !loginState);
@@ -31,7 +43,12 @@ function updateLoginState(loginState) {
 setInterval(() => {
   const loginState = getCookie('rmsIn') === '1';
   if (lastLoginState != loginState) {
-    updateLoginState(loginState, { message: 'Your session expired.', type: 'warning', id: 'login-box-message' });
+    updateLoginState(loginState, {
+       message: 'Your session expired.', 
+       type: 'warning', 
+       id: 'login-box-message',
+       tags: ['session-expired']
+      });
   }
 }, 2000);
 
@@ -41,9 +58,10 @@ api
       message: resp.message,
       type: resp.ok ? 'success' : 'error',
       id: 'login-box-message',
-      timeout: resp.ok ? 5000 : 20000
+      timeout: resp.ok ? 5000 : 20000,
+      tags: [...resp.user?.tags || [], 'logout']
     }, true);
-    updateLoginState(false);
+    updateLoginState(false, resp);
   })
   .listen('rms:login-changed', (data) => {
     updateLoginState(data.loggedIn, data);

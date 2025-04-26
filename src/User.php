@@ -622,6 +622,34 @@ class User
     }
 
     /**
+     * Get the meta data of the user. Those data should be safe
+     * to be shared with the front-end.
+     *
+     * @return array
+     */
+    public function getPublicUserData(): array {
+        global $api;
+
+        $tags = [];
+        if ($api->user->isAdministrator()) {
+            $tags[] = "administrator";
+        }
+        if ($api->isDebugging()) {
+            $tags[] = "debugger";
+        }
+
+        // In future we should fire some event to allow other modules to add more data
+        return [
+            "username" => $api->user->username,
+            "id" => $api->user->id,
+            "tags" => $tags,
+            // Other event listeners can add more user data here
+            // just register a listener with lower priority
+            // check if event status is OK and amend the response
+        ];
+    }
+
+    /**
      * Check if the user is loaded and throw an exception if not.
      *
      * @param string $errMsg error message to prepend to the exception message.

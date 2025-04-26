@@ -57,6 +57,7 @@ class GoogleApi implements ListenerInterface
         }
 
         $api->user->loginNoPassword($user->id);
+        $event->response["user"] = $api->user->getPublicUserData();
 
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Welcome! You are now logged in."));
     }

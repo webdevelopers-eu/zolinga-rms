@@ -35,15 +35,19 @@ export default class GoogleLogin extends WebComponent {
 
     async #callback(response) {
         console.log('Google: callback', response);
-        const resp = await api.dispatchEvent("google:login", {"jwt": response.credential});
+        const event = await api.dispatchEvent("google:login", {"jwt": response.credential});
 
         this.broadcast("message", {
-            "message": resp.message, 
-            "type": resp.ok ? "success" : "error", 
+            "message": event.message, 
+            "type": event.ok ? "success" : "error", 
             "id": 'login-box-message',
-            "timeout": resp.ok ? 5000 : 20000
+            "timeout": event.ok ? 5000 : 20000,
+            "tags": event.response.user.tags
         }, true); 
-        this.broadcast("rms:login-changed", {"loggedIn": resp.ok});
+        this.broadcast("rms:login-changed", {
+            "loggedIn": event.ok,
+            "tags": event.response.user.tags
+        });
     }
 
     async #loadScript(url) {
