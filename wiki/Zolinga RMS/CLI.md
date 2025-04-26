@@ -24,10 +24,14 @@ bin/zolinga zolinga:rms --user=<user mail or id>
 ```bash
 bin/zolinga zolinga:rms --user="user@example.com" --grant="member of administrators"
 
-bin/zolinga zolinga:rms --user=123 --revoke="access page#134" --list
+bin/zolinga zolinga:rms --user=123 --revoke="access page#134"
+
+bin/zolinga --single=permissions zolinga:rms --user="admin@example.com" --list
 
 bin/zolinga zolinga:rms --user="another@example.com" --hasRight="read all"
 ```
+
+Note: The `--single=permissions` option is used to output only the response's `permissions` field. See `bin/zolinga --help` for details.
 
 # Related
 * [API Interface](:ref:event:rms:user) - The API interface for Zolinga User CLI.
