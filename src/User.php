@@ -530,15 +530,20 @@ class User
     {
         global $api;
 
-        $this->loadedCheck("Cannot filter rights.");
+        // $this->loadedCheck("Cannot filter rights.");
 
         $commandObjects = array_map(fn ($command) => $command instanceof Command ? $command : new Command((string) $command), $commands);
         $commandHashes = array_map(fn ($command) => $command->hash, $commandObjects);
-        $foundHashes = $api->db->queryExpand("
-            SELECT `commandHash` 
-            FROM `rmsRights` 
-            WHERE `userId` = ? AND commandHash IN ('??')
-            ", $this->id, $commandHashes)->fetchFirstColumnAll();
+    
+        if ($this->id) {
+            $foundHashes = $api->db->queryExpand("
+                SELECT `commandHash` 
+                FROM `rmsRights` 
+                WHERE `userId` = ? AND commandHash IN ('??')
+                ", $this->id, $commandHashes)->fetchFirstColumnAll();
+        } else {
+            $foundHashes = [];
+        }
 
         return array_filter(
             $commands,
@@ -584,6 +589,16 @@ class User
     public function isAdministrator(): bool
     {
         return $this->hasRight('member of administrators');
+    }
+
+    /**
+     * Does the user have a special right "member of guests"?
+     *
+     * @return boolean
+     */
+    public function isGuest(): bool
+    {
+        return $this->hasRight('member of guests');
     }
 
     /**
