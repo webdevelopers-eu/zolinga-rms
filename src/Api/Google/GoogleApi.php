@@ -50,10 +50,11 @@ class GoogleApi implements ListenerInterface
             $user = $api->rms->createUser([
                 "username" => $mail, 
                 "password" => null,
-                "givenName" => $jwt->payload["given_name"],
-                "familyName" => $jwt->payload["family_name"],
                 "lang" => $api->locale->locale
             ]);
+            $user->meta->setMeta('familyName', $jwt->payload["family_name"] ?? null);
+            $user->meta->setMeta('givenName', $jwt->payload["given_name"] ?? null);
+            $user->meta->setMeta('picture', $jwt->payload["picture"] ?? null);
         }
 
         $api->user->loginNoPassword($user->id);
