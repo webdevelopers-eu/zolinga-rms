@@ -147,10 +147,11 @@ class UserApi implements ListenerInterface
         $user = $api->rms->createUser([
             "username" => $username,
             "password" => $password,
-            "givenName" => $givenName,
-            "familyName" => $familyName,
             "lang" => $api->locale->locale
         ]);
+
+        $user->meta['givenName'] = $givenName ?: null;
+        $user->meta['familyName'] = $familyName ?: null;
 
         if (!$api->user->login($username, $password)) {
             $event->setStatus($event::STATUS_ERROR, dgettext("zolinga-rms", "User created but could not login."));

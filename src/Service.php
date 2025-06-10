@@ -171,7 +171,7 @@ class Service implements ServiceInterface
      *      created: ?int, 
      *      modified: ?int, 
      *      lastLogin: ?int, 
-     *      lastLoginFrom: ?string} $data
+     *      lastLoginFrom: ?string} $data,
      * @return User
      */
     public function createUser(array $data): User
