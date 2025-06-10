@@ -2,8 +2,6 @@ create table rmsUsers (
     `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key: Unique RMS User ID.',
     `username` VARCHAR(128) NOT NULL COMMENT 'User login e/mail.',
     `password` VARCHAR(1024) DEFAULT NULL COMMENT 'Password hash.',
-    `givenName` VARCHAR(128) DEFAULT NULL COMMENT 'Given name.',
-    `familyName` VARCHAR(128) DEFAULT NULL COMMENT 'Family name.',
     `lang` VARCHAR(5) DEFAULT 'en_US' COMMENT 'User language.',
     `removed` INT(10) UNSIGNED DEFAULT 0 COMMENT 'Date and time the registry item was removed.', 
     `canLogin` BOOLEAN DEFAULT 1 COMMENT 'User can login.',
