@@ -64,7 +64,7 @@ class User
      *      lastLogin: ?int, 
      *      lastLoginFrom: ?string} $data
      */
-    private array $data = [
+    public private(set) array $data = [
         'id' => null,
         'username' => null,
         'password' => null,
@@ -92,7 +92,7 @@ class User
      *
      * @var Meta
      */
-    private Meta $meta;
+    public private(set) Meta $meta;
 
     /**
      * Constructor
@@ -158,9 +158,6 @@ class User
     public function __get(string $name): null|string|int|bool|array|Meta
     {
         switch ($name) {
-            case 'meta':
-            case 'data': // readonly
-                return $this->$name;
             case 'isModified':
                 return (bool) $this->modifiedFields;
             case 'canLogin':
@@ -665,6 +662,33 @@ class User
         if (!$this->id) {
             throw new \Exception("$errMsg This user does not exist yet ($this). Load the user or create a new one first.");
         }
+    }
+
+    /**
+     * Get a user by ID, username or e-mail.
+     *
+     * @param string|integer|array $who
+     * @return User
+     */
+    public static function getUser(string|int|array $who): User
+    {
+        global $api;
+        return $api->rms->getUser($who);
+    }
+
+    /**
+     * Create a new user in the RMS system.
+     * 
+     * This method is a shortcut for creating a new User object and calling its create() method.
+     * 
+     * @param array $data The user data to create the user with. Must contain at least 'username'.
+     * @return User The created user object.
+     * @throws \Exception If the user cannot be created.
+     */
+    public static function createUser(array $data): User
+    {
+        global $api;
+        return $api->rms->createUser($data);
     }
 
     public function __toString(): string
