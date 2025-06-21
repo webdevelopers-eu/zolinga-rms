@@ -200,4 +200,25 @@ class Service implements ServiceInterface
         }
         $user->wipe();
     }
+
+    /**
+     * Search for users by meta data.
+     * 
+     * This method allows you to search for users by their meta data.
+     * 
+     * @param string $key The meta key to search for.
+     * @param string $value The value of the meta key to search for.
+     * @param bool $returnFirst If true, returns only the first matching user. Default is false.
+     * @return null|User|array<User> Array of User objects matching the search criteria.
+     */
+    public function searchMeta(string $key, string $value, bool $returnFirst = false): array|null|User
+    {
+        global $api;
+
+       return User::searchMeta(
+            key: $key,
+            value: $value,
+            returnFirst: $returnFirst
+        );
+    }
 }

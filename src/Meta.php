@@ -111,4 +111,38 @@ class Meta implements ArrayAccess {
     public function offsetUnset($offset): void {
         $this->deleteMeta($offset);
     }
+
+    /**
+     * Search for users by meta data.
+     * 
+     * @param string $key The meta key to search for.
+     * @param mixed $value The value of the meta key to search for.
+     * @param int|null $limit The maximum number of results to return. Default is null (no limit).
+     * @return array<User> Array of User objects matching the search criteria.
+     */
+    public static function search(string $key, mixed $value, ?int $limit = null): array {
+        global $api;
+
+        $q=<<<SQL
+            SELECT 
+                userId 
+            FROM 
+                rmsMeta
+            WHERE 
+                prop = ? AND data = ?
+            SQL;
+        $params = [$key, json_encode($value, self::JSON_FORMAT)];
+
+        if ($limit !== null) {
+            $q .= ' LIMIT ?';
+            $params[] = $limit;
+        }
+
+        $ids = $api->db->query($q, ...$params)->fetchFirstColumnAll();
+
+        return array_map(
+            fn($id) => User::getUser($id),
+            $ids
+        );
+    }
 }

@@ -691,6 +691,24 @@ class User
         return $api->rms->createUser($data);
     }
 
+    /**
+     * Search for users by meta data.
+     * 
+     * This method allows you to search for users by their meta data.
+     * 
+     * @param string $key The meta key to search for.
+     * @param string $value The value of the meta key to search for.
+     * @param bool $returnFirst If true, returns only the first matching user. Default is false.
+     * @return null|User|array<User> Array of User objects matching the search criteria or a single User object if $returnFirst is true.
+     */
+    public static function searchMeta(string $key, string $value, bool $returnFirst = false): null|User|array
+    {
+        global $api;
+
+        $users = Meta::search($key, $value, limit: $returnFirst ? 1 : null);
+        return $returnFirst ? ($users[0] ?? null) : $users;
+    }
+
     public function __toString(): string
     {
         $flags = [
