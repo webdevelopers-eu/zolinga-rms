@@ -275,7 +275,7 @@ class UserService extends User implements ServiceInterface
                     'domain' => '',
                     'secure' => false, // no need to secure this
                     'httponly' => false,
-                    'samesite' => 'Strict'
+                    'samesite' => 'lax'
                 ]);
             }
         }
