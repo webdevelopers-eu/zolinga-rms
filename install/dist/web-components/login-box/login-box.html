@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+    <login-box
+        [ layer="maximized|minimized" ]
+        [ click-outside-to-close ]
+        [ show-card="card-name" ]
+        [ password-reset-hash="hash" ]
+        [ remove-on-close ]
+        ></login-box>
+-->
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="login-box.css" />
+    <meta name="gettext" content="translate" />
+    <c-resources assets="forms/css"></c-resources>
+</head>
+
+<body>
+    <div class="curtain"></div>
+
+    <card-deck show-card="sign-in" flip-perspective="800" flip-speed="0.5">
+        <form id="sing-in-form" class="c-form" part="card sign-in" card-name="sign-in" data-event="rms:login">
+            <h1 part="heading h1 sign-in-heading" gettext=".">Sign in</h1>
+            <slot name="sign-in-before"></slot>
+
+            <label>
+                <span gettext=".">E-mail</span>
+                <input autocomplete="email" type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail" required>
+            </label>
+            <label>
+                <span gettext=".">Password</span>
+                <input autocomplete="current-password" type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password" required>
+            </label>
+
+            <label class="center">
+                <input type="checkbox" class="form-check-input" name="remember">
+                <span class="form-check" gettext=".">Remember me</span>
+            </label>
+
+            <slot name="sign-in-after"></slot>
+
+            <button part="button" type="submit" class="primary" gettext=".">Sign in</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('password-recover');" gettext=".">
+                Forgot password?
+            </a>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-up');" gettext=".">
+                Sign up
+            </a>
+
+            <google-login></google-login>
+        </form>
+        <form id="sing-up-form" class="c-form" part="card sign-up" card-name="sign-up" data-event="rms:register">
+            <h1 part="heading h1 sign-up-heading" gettext=".">Sign up</h1>
+
+            <slot name="sign-up-before"></slot>
+
+            <label>
+                <span gettext=".">Given name</span>
+                <input autocomplete="given-name" required type="text" class="form-control" name="givenName" gettext="placeholder" placeholder="Given name">
+            </label>
+            <label>
+                <span gettext=".">Family name</span>
+                <input autocomplete="family-name" required type="text" class="form-control" name="familyName" gettext="placeholder" placeholder="Family name">
+            </label>
+            <label>
+                <span gettext=".">E-mail</span>
+                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail">
+            </label>
+            <label>
+                <span gettext=".">Password</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
+            </label>
+            <label>
+                <span gettext=".">Confirm password</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Confirm Password">
+            </label>
+
+            <slot name="sign-up-after"></slot>
+
+            <button part="button" type="submit" class="primary" gettext=".">Sign up</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext=".">
+                Sign in
+            </a>
+        </form>
+        <form id="password-recover-form" class="c-form" part="card password-recover" card-name="password-recover" data-event="rms:recover">
+            <h1 part="heading h1 password-recover-heading" gettext=".">Password recovery</h1>
+
+            <slot name="password-recover-before"></slot>
+
+            <label>
+                <span gettext=".">E-mail</span>
+                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="placeholder" placeholder="E-mail">
+            </label>
+
+            <slot name="password-recover-after"></slot>
+
+            <button part="button" type="submit" class="primary" gettext=".">Recover password</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext=".">
+                Sign in
+            </a>
+        </form>
+        <form id="password-reset-form" class="c-form" part="card password-reset" card-name="password-reset" data-event="rms:reset">
+            <h1 part="heading h1 password-reset-heading" gettext=".">Password reset</h1>
+
+            <slot name="password-reset-before"></slot>
+
+            <label>
+                <span gettext=".">New password</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="placeholder" placeholder="Password">
+            </label>
+            <label>
+                <span gettext=".">Confirm password</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="placeholder" placeholder="Confirm password">
+            </label>
+
+            <input required type="hidden" name="hash" value=""/>
+
+            <slot name="password-reset-after"></slot>
+
+            <button part="button" type="submit" class="primary" gettext=".">Reset password</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext=".">
+                Sign in
+            </a>
+
+        </form>
+    </card-deck>
+
+</body>
+
+</html>

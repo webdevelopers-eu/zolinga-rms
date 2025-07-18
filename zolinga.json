@@ -1,0 +1,181 @@
+{
+    "name": "Zolinga Rights Management System",
+    "version": "1.0",
+    "description": "Provides a simple rights management system for Zolinga.",
+    "authors": [
+        "Danny Sevcik <danny@zolinga.net>"
+    ],
+    "attributes": {},
+    "listen": [
+        {
+            "description": "The $api->rms service providing user management API.",
+            "service": "rms",
+            "class": "\\Zolinga\\Rms\\Service",
+            "origin": [
+                "internal"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "The $api->user representing the current user.",
+            "service": "user",
+            "class": "\\Zolinga\\Rms\\UserService",
+            "origin": [
+                "internal"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "The User login request.",
+            "event": "rms:login",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onLogin",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },        
+        {
+            "description": "CLI user management interface.",
+            "event": "rms:user",
+            "class": "\\Zolinga\\Rms\\Api\\UserCliApi",
+            "method": "onRequest",
+            "origin": [
+                "cli"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "The User registration request.",
+            "event": "rms:register",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onRegister",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "The User password reset request.",
+            "event": "rms:recover",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onRecover",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "The User password reset.",
+            "event": "rms:reset",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onReset",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "Log the user out.",
+            "event": "rms:logout",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onLogout",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "RMS Authorization Provider",
+            "event": "system:authorize",
+            "class": "\\Zolinga\\Rms\\UserService",
+            "method": "onAuthorize",
+            "origin": [
+                "internal"
+            ]
+        },
+        {
+            "description": "Just wake up RMS User to set cookies.",
+            "event": "system:content",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onContent",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "Integrate with front-end HTML page.",
+            "event": "system:content",
+            "class": "\\Zolinga\\Rms\\CmsIntegration",
+            "method": "onContent",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.1
+        },
+        {
+            "description": "Get google button settings.",
+            "event": "google:get",
+            "class": "\\Zolinga\\Rms\\Api\\Google\\GoogleApi",
+            "method": "onGet",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "Set google button settings.",
+            "event": "google:login",
+            "class": "\\Zolinga\\Rms\\Api\\Google\\GoogleApi",
+            "method": "onLogin",
+            "origin": [
+                "remote"
+            ],
+            "priority": 0.5
+        },
+        {
+            "description": "Log-in settings API",
+            "event": "rms:settings",
+            "class": "\\Zolinga\\Rms\\Api\\SettingsApi",
+            "method": "onSettings",
+            "origin": [
+                "remote"
+            ],
+            "right": "member of users"
+        }
+    ],
+    "autoload": {
+        "Zolinga\\Rms\\": "src/"
+    },
+    "dependencies": [
+        "zolinga-db",
+        "zolinga-commons",
+        "zolinga-intl"
+    ],
+    "webComponents": [
+        {
+            "tag": "login-box",
+            "description": "The login form for the RMS system.",
+            "module": "web-components/login-box/login-box.js"
+        },
+        {
+            "tag": "google-login",
+            "description": "The Google sign-in button.",
+            "module": "web-components/google-login/google-login.js"
+        },
+        {
+            "tag": "login-settings",
+            "description": "The login settings for the RMS system.",
+            "module": "web-components/login-settings/login-settings.js"
+        }
+    ],
+    "config": {
+        "rms": {
+            "google": {
+                "# clientId": "The Google API client ID for sign-in button. See https://console.developers.google.com/apis",
+                "clientId": ""
+            }
+        }
+    }
+}

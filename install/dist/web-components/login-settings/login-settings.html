@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <meta name="gettext" content="translate" />
+    <link rel="stylesheet" href="login-settings.css" />
+    <c-resources assets="forms/css"></c-resources>
+</head>
+
+<body>
+    <main id="security">
+        <form action="javascript:">
+            <popup-container>
+                <div slot="title" gettext=".">Security</div>
+
+                <div slot="content" class="c-form form">
+                    <label>
+                        <span gettext=".">Primary Email / Login</span>
+                        <input type="email" autocomplete="" gettext="placeholder" placeholder="Email" name="username" z-var="username ="
+                            required />
+                    </label>
+
+                    <label>
+                        <span gettext=".">Existing Password</span>
+                        <input type="password" autocomplete="current-password" gettext="@placeholder" placeholder="Existing Password"
+                            name="currentPassword" required />
+                    </label>
+                    <label>
+                        <span gettext=".">Password</span>
+                        <input type="password" autocomplete="new-password" gettext="placeholder" placeholder="Password" name="password" />
+                    </label>
+                    <label>
+                        <span gettext=".">Confirm Password</span>
+                        <input type="password" gettext="placeholder" placeholder="Confirm Password"
+                            name="confirmPassword" />
+                    </label>
+                </div>
+
+                <div slot="actions">
+                    <button class="c-form" type="submit" gettext=".">Save</button>
+                </div>
+            </popup-container>
+        </form>
+    </main>
+</body>
+
+</html>
