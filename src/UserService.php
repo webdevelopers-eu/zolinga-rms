@@ -13,6 +13,9 @@ use const Zolinga\System\SECURE_CONNECTION;
 /**
 * The $api->user service representing the current user.
 *
+* Usage:
+*   $api->user->hasRight('member of users');
+*
 * @author Daniel Sevcik <danny@zolinga.net>
 * @date 2024-03-11
 */
