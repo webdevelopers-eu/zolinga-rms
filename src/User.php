@@ -293,7 +293,7 @@ class User
         global $api;
 
         if ($this->modifiedFields || $this->data['id']) {
-            throw new Exception("User data has been modified or User object is already loaded.");
+            throw new Exception("User data has been modified (" . implode(", ", array_keys($this->modifiedFields)) . ") or User object is already loaded " . ($this->data['id'] ? "with ID " . $this->data['id'] : "(not loaded)") . ".");
         }
 
         if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
