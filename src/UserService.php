@@ -59,14 +59,15 @@ class UserService extends User implements ServiceInterface
     * Load the user by ID or username and store the ID in the session.
     *
     * @param User|string|integer|array<mixed> $who
+    * @param bool $force force reload even if the object is already loaded or modified.
     * @return bool true if the user was found and logged in, false otherwise
     */
-    public function loginNoPassword(string|int|array $who): bool
+    public function loginNoPassword(string|int|array $who, bool $force = false): bool
     {
         global $api;
         
         try {
-            parent::load($who);
+            parent::load($who, $force);
             $_SESSION['rms']['user'] = $this->id;
             $this->setLoggedInFlagCookie((bool) $this->id);
         } catch (\Throwable $e) {

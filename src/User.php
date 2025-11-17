@@ -131,8 +131,9 @@ class User
      *      modified: ?int, 
      *      lastLogin: ?int, lo
      *      lastLoginFrom: ?string} $who
+     * @param bool $force force reload even if the object is already loaded or modified.
      */
-    protected function load(string|int|array $who): void
+    protected function load(string|int|array $who, bool $force = false): void
     {
         if ($this->id) {
             $this->reset();
@@ -143,10 +144,10 @@ class User
                 $this->loadFromArray($who);
                 break;
             case 'integer':
-                $this->loadById($who);
+                $this->loadById($who, $force);
                 break;
             case 'string':
-                $this->loadByUsername($who);
+                $this->loadByUsername($who, $force);
                 break;
         }
     }
@@ -256,13 +257,14 @@ class User
      *
      * @throws \InvalidArgumentException If the user with the given ID does not exist.
      * @param integer $id
+     * @param bool $force force reload even if the object is already loaded or modified.
      * @return User $this on success
      */
-    private function loadById(int $id): User
+    private function loadById(int $id, bool $force = false): User
     {
         global $api;
 
-        if ($this->modifiedFields) {
+        if ($this->modifiedFields && !$force) {
             throw new Exception("User data has been modified and not saved.");
         }
 
@@ -286,13 +288,14 @@ class User
      *
      * @throws \InvalidArgumentException If the user with the given username does not exist.
      * @param string $username
+     * @param bool $force force reload even if the object is already loaded or modified.
      * @return User $this on success
      */
-    private function loadByUsername(string $username): User
+    private function loadByUsername(string $username, bool $force = false): User
     {
         global $api;
 
-        if ($this->modifiedFields || $this->data['id']) {
+        if (!$force && ($this->modifiedFields || $this->data['id'])) {
             throw new Exception("User data has been modified (" . implode(", ", array_keys($this->modifiedFields)) . ") or User object is already loaded " . ($this->data['id'] ? "with ID " . $this->data['id'] : "(not loaded)") . ".");
         }
 
