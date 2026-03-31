@@ -153,6 +153,56 @@
         "zolinga-commons",
         "zolinga-intl"
     ],
+    "emit": [
+        {
+            "event": "rms:login",
+            "description": "Authenticate user with username and password.",
+            "class": "\\Zolinga\\System\\Events\\WebEvent",
+            "origin": ["remote"]
+        },
+        {
+            "event": "rms:logout",
+            "description": "Log out the current user session.",
+            "class": "\\Zolinga\\System\\Events\\WebEvent",
+            "origin": ["remote"]
+        },
+        {
+            "event": "rms:register",
+            "description": "Register a new user account.",
+            "class": "\\Zolinga\\System\\Events\\WebEvent",
+            "origin": ["remote"]
+        },
+        {
+            "event": "rms:recover",
+            "description": "Request password recovery email.",
+            "class": "\\Zolinga\\System\\Events\\WebEvent",
+            "origin": ["remote"]
+        },
+        {
+            "event": "rms:reset",
+            "description": "Reset password using recovery token.",
+            "class": "\\Zolinga\\System\\Events\\WebEvent",
+            "origin": ["remote"]
+        },
+        {
+            "event": "rms:settings",
+            "description": "Get or set user account settings (name, email, password).",
+            "class": "\\Zolinga\\System\\Events\\WebEvent",
+            "origin": ["remote"]
+        },
+        {
+            "event": "google:get",
+            "description": "Fetch Google OAuth configuration (client ID).",
+            "class": "\\Zolinga\\System\\Events\\WebEvent",
+            "origin": ["remote"]
+        },
+        {
+            "event": "google:login",
+            "description": "Authenticate user via Google OAuth credential.",
+            "class": "\\Zolinga\\System\\Events\\WebEvent",
+            "origin": ["remote"]
+        }
+    ],
     "webComponents": [
         {
             "tag": "login-box",
