@@ -121,3 +121,5 @@ window.rms = new class {
   }
 
 };
+
+document.dispatchEvent(new CustomEvent('rms:ready', { detail: { rms: window.rms } }));
