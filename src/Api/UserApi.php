@@ -185,8 +185,8 @@ class UserApi implements ListenerInterface
         $file = $api->locale->getLocalizedFile("private://zolinga-rms/templates/email-recover-password.html");
         $hash = $this->generateHash($user, time() + self::RECOVERY_LINK_EXPIRATION);
 
-        $recoveryLink = $_SERVER['HTTP_ORIGIN'];
-        $recoveryLink .= parse_url($referrer, PHP_URL_PATH);
+        $path = parse_url($referrer, PHP_URL_PATH);
+        $recoveryLink = $api->url->resolveUrl($path);
         $recoveryLink .= "#!recover=$hash";
 
         $html = file_get_contents($file)
