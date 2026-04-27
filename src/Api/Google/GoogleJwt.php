@@ -83,7 +83,7 @@ readonly class GoogleJwt implements \JsonSerializable
     {
         return
             $this->isValidIssuer() &&
-            // @todo uncomment $this->isValidExpiration() && 
+            $this->isValidExpiration() && 
             $this->isValidAudience($googleClientId) &&
             $this->isValidSignature();
     }
