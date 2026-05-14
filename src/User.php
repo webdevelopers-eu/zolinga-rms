@@ -228,6 +228,7 @@ class User
     public function setPassword(string $plainTextPassword): string
     {
         if (strlen($plainTextPassword) < self::PASSWORD_MIN_LENGTH) {
+            // TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
             throw new \InvalidArgumentException(sprintf(dgettext("zolinga-rms", "Password must be at least %d characters long."), self::PASSWORD_MIN_LENGTH));
         }
         $this->data['password'] = password_hash($plainTextPassword, PASSWORD_DEFAULT);
@@ -300,11 +301,13 @@ class User
         }
 
         if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
+            // TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
             throw new \InvalidArgumentException(dgettext("zolinga-rms", "Username must be a valid e-mail."));
         }
 
         $res = $api->db->query("SELECT * FROM rmsUsers WHERE username = ? and removed = 0", $username)->current();
         if (!$res) {
+            // TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
             throw new \InvalidArgumentException(sprintf(dgettext("zolinga-rms", "User with username %s does not exist."), $username));
         }
 

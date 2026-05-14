@@ -35,7 +35,7 @@ class SettingsApi implements ListenerInterface
         $event->response['data'] = [
             'username' => $api->user->username
         ];
-        $event->setStatus($event::STATUS_OK, _('Settings loaded'));
+        $event->setStatus($event::STATUS_OK, dgettext('zolinga-rms', 'Settings loaded'));
     }
 
     private function setSettings(RequestResponseEvent $event): void
@@ -44,11 +44,11 @@ class SettingsApi implements ListenerInterface
 
         // Check password
         $currentPassword = $event->request['currentPassword']
-            or throw new \InvalidArgumentException(_('Current password is required'), 403);
+            or throw new \InvalidArgumentException(dgettext('zolinga-rms', 'Current password is required'), 403);
 
         if ($api->user->password !== null) { // if logged in using Google or similar, password is null
             $api->user->validatePassword($currentPassword)
-                or throw new \InvalidArgumentException(_('Current password is incorrect'), 403);
+                or throw new \InvalidArgumentException(dgettext('zolinga-rms', 'Current password is incorrect'), 403);
         }
 
         // Check new password
@@ -62,13 +62,13 @@ class SettingsApi implements ListenerInterface
         $username = $event->request['username'];
         if ($username != $api->user->username) {
             if ($api->rms->findUser($username)) {
-                throw new \InvalidArgumentException(sprintf(_('Username %s is already taken'), $username), 403);
+                throw new \InvalidArgumentException(sprintf(dgettext('zolinga-rms', 'Username %s is already taken'), $username), 403);
             }
             $api->user->username = $username;
         }
 
         $api->user->save();
-        $event->setStatus($event::STATUS_OK, _('Settings saved'));
+        $event->setStatus($event::STATUS_OK, dgettext('zolinga-rms', 'Settings saved'));
     }
 
     private function changePassword(string $password, string $password2): void
@@ -76,11 +76,11 @@ class SettingsApi implements ListenerInterface
         global $api;
         
         if ($password != $password2) {
-            throw new \InvalidArgumentException(_('New password and confirmation password do not match'), 403);
+            throw new \InvalidArgumentException(dgettext('zolinga-rms', 'New password and confirmation password do not match'), 403);
         }
 
         if (strlen($password) < 6) {
-            throw new \InvalidArgumentException(_('Password must be at least 6 characters long'), 403);
+            throw new \InvalidArgumentException(dgettext('zolinga-rms', 'Password must be at least 6 characters long'), 403);
         }
 
         $api->user->setPassword($password);

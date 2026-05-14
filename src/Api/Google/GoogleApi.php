@@ -35,7 +35,8 @@ class GoogleApi implements ListenerInterface
         $jwt = new GoogleJwt($event->request["jwt"]);
 
         if (!$jwt->isValid()) {
-            $event->setStatus($event::STATUS_UNAUTHORIZED, _("Google response is invalid. Please log in again."));
+            // TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
+            $event->setStatus($event::STATUS_UNAUTHORIZED, dgettext('zolinga-rms', "Google response is invalid. Please log in again."));
             return;
         }
 
@@ -60,6 +61,7 @@ class GoogleApi implements ListenerInterface
         $api->user->loginNoPassword($user->id);
         $event->response["user"] = $api->user->getPublicUserData();
 
+        // TRANSLATORS: Welcome message shown after successful login.
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Welcome! You are now logged in."));
     }
 }

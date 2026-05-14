@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+
+#. TRANSLATORS: This string is inside a <title> element, which is a page title / follow rules for web page titles - SEO applies.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/head/title)
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/h1)
+msgid "Account password recovery"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <p> element, which is a paragraph / follow rules for general text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[1])
+msgid "We have received a request to recover your account password."
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <p> element, which is a paragraph / follow rules for general text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[2])
+msgid "To reset your password, click the link below:"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <a> element, which is a link / if it has "href" attribute apply SEO rules, otherwise treat as generic element.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[3]/a)
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/button)
+msgid "Reset password"
+msgstr ""
+
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[1])
+msgid "Security"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[2]/label[1]/span)
+msgid "Primary Email / Login"
+msgstr ""
+
+#. TRANSLATORS: The text has the following HTML attributes: type="email", name="username".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:placeholder, /html/body/main/form/popup-container/div[2]/label[1]/input/@placeholder)
+msgid "Email"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[2]/label[2]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="currentPassword".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:placeholder, /html/body/main/form/popup-container/div[2]/label[2]/input/@placeholder)
+msgid "Existing Password"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[2]/label[3]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="password".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:placeholder, /html/body/main/form/popup-container/div[2]/label[3]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[2]/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[1]/label[2]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[4]/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[4]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[4]/label[1]/input/@placeholder)
+msgid "Password"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[2]/label[4]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="confirmPassword".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:placeholder, /html/body/main/form/popup-container/div[2]/label[4]/input/@placeholder)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="password2".
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[5]/input/@placeholder)
+msgid "Confirm Password"
+msgstr ""
+
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[3]/button)
+msgid "Save"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/h1)
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/button)
+#. TRANSLATORS: This string is inside a <a> element, which is a link / if it has "href" attribute apply SEO rules, otherwise treat as generic element.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/a)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[3]/a)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/a)
+msgid "Sign in"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[1]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="email", name="username".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[1]/label[1]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[3]/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[3]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[3]/label/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[3]/label/input/@placeholder)
+msgid "E-mail"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[3]/span)
+msgid "Remember me"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <a> element, which is a link / if it has "href" attribute apply SEO rules, otherwise treat as generic element.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/a[1])
+msgid "Forgot password?"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <a> element, which is a link / if it has "href" attribute apply SEO rules, otherwise treat as generic element.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/a[2])
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/h1)
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/button)
+msgid "Sign up"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[1]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="text", name="givenName".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[1]/input/@placeholder)
+msgid "Given name"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[2]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="text", name="familyName".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[2]/input/@placeholder)
+msgid "Family name"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[5]/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/label[2]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="password2".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[4]/label[2]/input/@placeholder)
+msgid "Confirm password"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[3]/h1)
+msgid "Password recovery"
+msgstr ""
+
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[3]/button)
+msgid "Recover password"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/h1)
+msgid "Password reset"
+msgstr ""
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/label[1]/span)
+msgid "New password"
+msgstr ""

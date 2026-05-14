@@ -24,11 +24,13 @@ class UserApi implements ListenerInterface
         $username = $event->request['username'] ?? null;
 
         if (!$username) {
+            // TRANSLATORS: Error when username is missing from recovery request.
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username is required."));
             return;
         }
 
         if (filter_var($username, FILTER_VALIDATE_EMAIL) === false) {
+            // TRANSLATORS: Validation error when username is not a valid email address.
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username must be a valid email address."));
             return;
         }
@@ -36,12 +38,14 @@ class UserApi implements ListenerInterface
         $user = $api->rms->findUser($username);
 
         if ($user && !$this->sendRecoveryEmail($user, $event->request['referrer'] ?? "")) {
+            // TRANSLATORS: Error when sending the password recovery email failed.
             $event->setStatus($event::STATUS_ERROR, dgettext("zolinga-rms", "Could not send recovery email."));
             return;
         }
 
         // $api->rms->sendRecoveryEmail($user);
         $event->response['showCard'] = 'sign-in'; // show login card after reset
+        // TRANSLATORS: Message shown after a recovery email was sent successfully.
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Recovery email sent. Check your inbox and follow the instructions."));
     }
 
@@ -50,11 +54,13 @@ class UserApi implements ListenerInterface
         global $api;
 
         if ($event->request['password'] != $event->request['password2']) {
+            // TRANSLATORS: Error when provided passwords do not match during reset.
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Passwords do not match."));
             return;
         }
 
         if (strlen($event->request['password']) < 6) {
+            // TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Password must be at least 6 characters long."));
             return;
         }
@@ -70,6 +76,7 @@ class UserApi implements ListenerInterface
             return;
         }
 
+        // TRANSLATORS: Message shown when the password has been reset successfully.
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Password reset successful."));
     }
 
@@ -97,11 +104,14 @@ class UserApi implements ListenerInterface
         $remember = $event->request['remember'] ?? false;
 
         if (!$username || !$password) {
+            // TRANSLATORS: Error when username or password is missing from login request.
+            // TRANSLATORS: Error when registration omits username or password.
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username and password are required."));
             return;
         }
 
         if (!$api->user->login($username, $password)) {
+            // TRANSLATORS: Error shown when login credentials are invalid.
             $event->setStatus($event::STATUS_UNAUTHORIZED, dgettext("zolinga-rms", "Invalid username or password."));
             return;
         }
@@ -111,6 +121,7 @@ class UserApi implements ListenerInterface
         }
 
         $event->response['user'] = $api->user->getPublicUserData();
+        // TRANSLATORS: Welcome message after successful login.
         $msg = dgettext("zolinga-rms", "Welcome! You are now logged in.");
         $event->setStatus($event::STATUS_OK, $msg);
     }
@@ -130,16 +141,19 @@ class UserApi implements ListenerInterface
         }
 
         if (isset($event->request['password2']) && $event->request['password2'] !== $password) {
+            // TRANSLATORS: Error when registration password and confirmation do not match.
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Passwords do not match."));
             return;
         }
 
         if (filter_var($username, FILTER_VALIDATE_EMAIL) === false) {
+            // TRANSLATORS: Validation error when registration username is not a valid email address.
             $event->setStatus($event::STATUS_BAD_REQUEST, dgettext("zolinga-rms", "Username must be a valid email address."));
             return;
         }
 
         if ($api->rms->findUser($username)) {
+            // TRANSLATORS: Error shown during registration when the username/email is already taken.
             $event->setStatus($event::STATUS_CONFLICT, dgettext("zolinga-rms", "User already exists."));
             return;
         }
@@ -154,11 +168,13 @@ class UserApi implements ListenerInterface
         $user->meta['familyName'] = $familyName ?: null;
 
         if (!$api->user->login($username, $password)) {
+            // TRANSLATORS: Error shown when a user was created but automatic login failed.
             $event->setStatus($event::STATUS_ERROR, dgettext("zolinga-rms", "User created but could not login."));
             return;
         }
 
         $event->response['user'] = $api->user->getPublicUserData();
+        // TRANSLATORS: Welcome message after successful registration and login.
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Welcome! You are now logged in."));
     }
 
@@ -175,6 +191,7 @@ class UserApi implements ListenerInterface
     {
         global $api;
         $api->user->logout();
+        // TRANSLATORS: Message shown after user logs out successfully.
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "You have been logged out."));
     }
 
@@ -218,6 +235,7 @@ class UserApi implements ListenerInterface
         $expiration = (int) base_convert($expirationBase, 36, 10);
 
         if (!$id || !$expiration) {
+            // TRANSLATORS: Exception message when recovery link is invalid or expired.
             throw new \Exception(dgettext("zolinga-rms", "Invalid or expired recovery link."));
         }
 
@@ -227,6 +245,7 @@ class UserApi implements ListenerInterface
 
         $user = $api->rms->findUser($id);
         if (!$user) {
+            // TRANSLATORS: Exception message when a user cannot be found for provided identifier.
             throw new \Exception(dgettext("zolinga-rms", "User not found."));
         }
 
