@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language: en\n"
-"Plural-Forms: Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: This string is inside a <title> element, which is a page title / follow rules for web page titles - SEO applies.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/head/title)
