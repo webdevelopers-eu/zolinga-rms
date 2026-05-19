@@ -1,0 +1,44 @@
+<html lang="tr-TR">
+
+<head>
+    <meta name="gettext" content="translate">
+    <link rel="stylesheet" href="login-settings.css">
+    <c-resources assets="forms/css"></c-resources>
+    <meta charset="UTF-8">
+    <meta name="gettext" content="translate">
+</head>
+<body>
+    <main id="security">
+        <form action="javascript:">
+            <popup-container>
+                <div slot="title" gettext="zolinga-rms:.#0f4c4a">Güvenlik</div>
+
+                <div slot="content" class="c-form form">
+                    <label>
+                        <span gettext="zolinga-rms:.#84588a">Birincil E-posta / Giriş</span>
+                        <input type="email" autocomplete="" gettext="zolinga-rms:placeholder#260f7e" placeholder="E-posta" name="username" z-var="username =" required>
+                    </label>
+
+                    <label>
+                        <span gettext="zolinga-rms:.#983561">Mevcut Parola</span>
+                        <input type="password" autocomplete="current-password" gettext="zolinga-rms:placeholder#89e79d" placeholder="Mevcut Parola" name="currentPassword" required>
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#2ffd6b">Şifre</span>
+                        <input type="password" autocomplete="new-password" gettext="zolinga-rms:placeholder#ef0c22" placeholder="Şifre" name="password">
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#fec9a3">Parolayı Onayla</span>
+                        <input type="password" gettext="zolinga-rms:placeholder#f8730b" placeholder="Parolayı Onayla" name="confirmPassword">
+                    </label>
+                </div>
+
+                <div slot="actions">
+                    <button class="c-form" type="submit" gettext="zolinga-rms:.#abdb57">Kaydet</button>
+                </div>
+            </popup-container>
+        </form>
+    </main>
+</body>
+
+</html>

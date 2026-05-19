@@ -1,0 +1,44 @@
+<html lang="ro-RO">
+
+<head>
+    <meta name="gettext" content="translate">
+    <link rel="stylesheet" href="login-settings.css">
+    <c-resources assets="forms/css"></c-resources>
+    <meta charset="UTF-8">
+    <meta name="gettext" content="translate">
+</head>
+<body>
+    <main id="security">
+        <form action="javascript:">
+            <popup-container>
+                <div slot="title" gettext="zolinga-rms:.#0f4c4a">Securitate</div>
+
+                <div slot="content" class="c-form form">
+                    <label>
+                        <span gettext="zolinga-rms:.#84588a">E-mail principal / Autentificare</span>
+                        <input type="email" autocomplete="" gettext="zolinga-rms:placeholder#260f7e" placeholder="Email" name="username" z-var="username =" required>
+                    </label>
+
+                    <label>
+                        <span gettext="zolinga-rms:.#983561">Parola actuală</span>
+                        <input type="password" autocomplete="current-password" gettext="zolinga-rms:placeholder#89e79d" placeholder="Parola actuală" name="currentPassword" required>
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#2ffd6b">Parolă</span>
+                        <input type="password" autocomplete="new-password" gettext="zolinga-rms:placeholder#ef0c22" placeholder="Parolă" name="password">
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#fec9a3">Confirmă parola</span>
+                        <input type="password" gettext="zolinga-rms:placeholder#f8730b" placeholder="Confirmă parola" name="confirmPassword">
+                    </label>
+                </div>
+
+                <div slot="actions">
+                    <button class="c-form" type="submit" gettext="zolinga-rms:.#abdb57">Salvează</button>
+                </div>
+            </popup-container>
+        </form>
+    </main>
+</body>
+
+</html>

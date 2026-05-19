@@ -1,0 +1,308 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: v 2.ipdefender.eu\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. TRANSLATORS: This string is inside a <title> element, which is a page title / follow rules for web page titles - SEO applies.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/head/title)
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/h1)
+msgid "Account password recovery"
+msgstr "Восстановление пароля аккаунта"
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[2]/label[4]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="confirmPassword".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:placeholder, /html/body/main/form/popup-container/div[2]/label[4]/input/@placeholder)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="password2".
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[5]/input/@placeholder)
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[5]/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/label[2]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="password2".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[4]/label[2]/input/@placeholder)
+msgid "Confirm password"
+msgstr "Подтвердите пароль"
+
+#. TRANSLATORS: Error when sending the password recovery email failed.
+#: /dev/fd/61:42
+msgid "Could not send recovery email."
+msgstr "Не удалось отправить письмо для восстановления."
+
+#: /dev/fd/58:51
+msgid "Current password is incorrect"
+msgstr "Текущий пароль неверен"
+
+#: /dev/fd/58:47
+msgid "Current password is required"
+msgstr "Требуется текущий пароль"
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[1]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="email", name="username".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[1]/label[1]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[3]/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[3]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[3]/label/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[3]/label/input/@placeholder)
+msgid "E-mail"
+msgstr "E-mail"
+
+#. TRANSLATORS: The text has the following HTML attributes: type="email", name="username".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:placeholder, /html/body/main/form/popup-container/div[2]/label[1]/input/@placeholder)
+msgid "Email"
+msgstr "Электронная почта"
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[2]/label[2]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="currentPassword".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:placeholder, /html/body/main/form/popup-container/div[2]/label[2]/input/@placeholder)
+msgid "Existing Password"
+msgstr "Текущий пароль"
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[2]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="text", name="familyName".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[2]/input/@placeholder)
+msgid "Family name"
+msgstr "Фамилия"
+
+#. TRANSLATORS: This string is inside a <a> element, which is a link / if it has "href" attribute apply SEO rules, otherwise treat as generic element.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/a[1])
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[1]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="text", name="givenName".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[1]/input/@placeholder)
+msgid "Given name"
+msgstr "Имя"
+
+#. TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
+#: /dev/fd/59:39
+msgid "Google response is invalid. Please log in again."
+msgstr "Неверный ответ от Google. Пожалуйста, войдите снова."
+
+#. TRANSLATORS: Exception message when recovery link is invalid or expired.
+#: /dev/fd/61:239 /dev/fd/61:243 /dev/fd/61:253
+msgid "Invalid or expired recovery link."
+msgstr "Ссылка для восстановления недействительна или истекла."
+
+#. TRANSLATORS: Error shown when login credentials are invalid.
+#: /dev/fd/61:115
+msgid "Invalid username or password."
+msgstr "Неверное имя пользователя или пароль."
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/label[1]/span)
+msgid "New password"
+msgstr "Новый пароль"
+
+#: /dev/fd/58:79
+msgid "New password and confirmation password do not match"
+msgstr "Новый пароль и подтверждение не совпадают"
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[2]/label[3]/span)
+#. TRANSLATORS: The text has the following HTML attributes: type="password", name="password".
+#. TRANSLATORS: This string is the value of the 'placeholder' attribute of a <input> element, which is a form input / should be short.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:placeholder, /html/body/main/form/popup-container/div[2]/label[3]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[2]/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[1]/label[2]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/label[4]/span)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[2]/label[4]/input/@placeholder)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:placeholder, /html/body/card-deck/form[4]/label[1]/input/@placeholder)
+msgid "Password"
+msgstr "Пароль"
+
+#. TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
+#: /dev/fd/53:232
+#, php-format
+msgid "Password must be at least %d characters long."
+msgstr "Пароль должен содержать не менее %d символов."
+
+#: /dev/fd/58:83
+msgid "Password must be at least 6 characters long"
+msgstr "Пароль должен быть не менее 6 символов"
+
+#. TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
+#: /dev/fd/61:64
+msgid "Password must be at least 6 characters long."
+msgstr "Пароль должен содержать не менее 6 символов."
+
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[3]/h1)
+msgid "Password recovery"
+msgstr "Восстановление пароля"
+
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/h1)
+msgid "Password reset"
+msgstr "Сброс пароля"
+
+#. TRANSLATORS: Message shown when the password has been reset successfully.
+#: /dev/fd/61:80
+msgid "Password reset successful."
+msgstr "Пароль успешно сброшен."
+
+#. TRANSLATORS: Error when provided passwords do not match during reset.
+#. TRANSLATORS: Error when registration password and confirmation do not match.
+#: /dev/fd/61:58 /dev/fd/61:145
+msgid "Passwords do not match."
+msgstr "Пароли не совпадают."
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[2]/label[1]/span)
+msgid "Primary Email / Login"
+msgstr "Основной email / логин"
+
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[3]/button)
+msgid "Recover password"
+msgstr "Восстановить пароль"
+
+#. TRANSLATORS: Message shown after a recovery email was sent successfully.
+#: /dev/fd/61:49
+msgid "Recovery email sent. Check your inbox and follow the instructions."
+msgstr "Письмо для восстановления отправлено. Проверьте входящие и следуйте инструкциям."
+
+#. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[3]/span)
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#. TRANSLATORS: This string is inside a <a> element, which is a link / if it has "href" attribute apply SEO rules, otherwise treat as generic element.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[3]/a)
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/button)
+msgid "Reset password"
+msgstr "Сбросить пароль"
+
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[3]/button)
+msgid "Save"
+msgstr "Сохранить"
+
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-settings/login-settings.html> (zolinga-rms:., /html/body/main/form/popup-container/div[1])
+msgid "Security"
+msgstr "Безопасность"
+
+#: /dev/fd/58:38
+msgid "Settings loaded"
+msgstr "Настройки загружены"
+
+#: /dev/fd/58:71
+msgid "Settings saved"
+msgstr "Настройки сохранены"
+
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/h1)
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/button)
+#. TRANSLATORS: This string is inside a <a> element, which is a link / if it has "href" attribute apply SEO rules, otherwise treat as generic element.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/a)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[3]/a)
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[4]/a)
+msgid "Sign in"
+msgstr "Войти"
+
+#. TRANSLATORS: This string is inside a <a> element, which is a link / if it has "href" attribute apply SEO rules, otherwise treat as generic element.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/a[2])
+#. TRANSLATORS: This string is inside a <h1> element, which is a heading / follow rules for headings or capter titles in {{TARGET_LANG}} langauge.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/h1)
+#. TRANSLATORS: The text has the following HTML attributes: type="submit".
+#. TRANSLATORS: This string is inside a <button> element, which is a button / should be concise and as short as possible, follow rules for button text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[2]/button)
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#. TRANSLATORS: This string is inside a <p> element, which is a paragraph / follow rules for general text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[2])
+msgid "To reset your password, click the link below:"
+msgstr "Чтобы сбросить пароль, нажмите на ссылку ниже:"
+
+#. TRANSLATORS: Error shown during registration when the username/email is already taken.
+#: /dev/fd/61:157
+msgid "User already exists."
+msgstr "Пользователь уже зарегистрирован."
+
+#. TRANSLATORS: Error shown when a user was created but automatic login failed.
+#: /dev/fd/61:172
+msgid "User created but could not login."
+msgstr "Пользователь создан, но войти не удалось."
+
+#. TRANSLATORS: Exception message when a user cannot be found for provided identifier.
+#: /dev/fd/61:249
+msgid "User not found."
+msgstr "Пользователь не найден."
+
+#. TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
+#: /dev/fd/53:311
+#, php-format
+msgid "User with username %s does not exist."
+msgstr "Пользователь с именем %s не найден."
+
+#: /dev/fd/58:65
+#, php-format
+msgid "Username %s is already taken"
+msgstr "Имя пользователя %s уже занято"
+
+#. TRANSLATORS: Error when username or password is missing from login request.
+#. TRANSLATORS: Error when registration omits username or password.
+#: /dev/fd/61:109 /dev/fd/61:139
+msgid "Username and password are required."
+msgstr "Необходимо указать имя пользователя и пароль."
+
+#. TRANSLATORS: Error when username is missing from recovery request.
+#: /dev/fd/61:28
+msgid "Username is required."
+msgstr "Имя пользователя обязательно."
+
+#. TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
+#: /dev/fd/53:305
+msgid "Username must be a valid e-mail."
+msgstr "Имя пользователя должно быть действительным e-mail адресом."
+
+#. TRANSLATORS: Validation error when username is not a valid email address.
+#. TRANSLATORS: Validation error when registration username is not a valid email address.
+#: /dev/fd/61:34 /dev/fd/61:151
+msgid "Username must be a valid email address."
+msgstr "Имя пользователя должно быть действительным адресом электронной почты."
+
+#. TRANSLATORS: This string is inside a <p> element, which is a paragraph / follow rules for general text in {{TARGET_LANG}} language.
+#. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[1])
+msgid "We have received a request to recover your account password."
+msgstr "Мы получили запрос на восстановление пароля вашей учетной записи."
+
+#. TRANSLATORS: Welcome message after successful login.
+#. TRANSLATORS: Welcome message after successful registration and login.
+#. TRANSLATORS: Welcome message shown after successful login.
+#: /dev/fd/59:65 /dev/fd/61:125 /dev/fd/61:178
+msgid "Welcome! You are now logged in."
+msgstr "Добро пожаловать! Вы успешно вошли в систему."
+
+#. TRANSLATORS: Message shown after user logs out successfully.
+#: /dev/fd/61:195
+msgid "You have been logged out."
+msgstr "Вы вышли из системы."

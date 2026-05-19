@@ -1,0 +1,44 @@
+<html lang="ko-KR">
+
+<head>
+    <meta name="gettext" content="translate">
+    <link rel="stylesheet" href="login-settings.css">
+    <c-resources assets="forms/css"></c-resources>
+    <meta charset="UTF-8">
+    <meta name="gettext" content="translate">
+</head>
+<body>
+    <main id="security">
+        <form action="javascript:">
+            <popup-container>
+                <div slot="title" gettext="zolinga-rms:.#0f4c4a">보안</div>
+
+                <div slot="content" class="c-form form">
+                    <label>
+                        <span gettext="zolinga-rms:.#84588a">주요 이메일 / 로그인</span>
+                        <input type="email" autocomplete="" gettext="zolinga-rms:placeholder#260f7e" placeholder="이메일" name="username" z-var="username =" required>
+                    </label>
+
+                    <label>
+                        <span gettext="zolinga-rms:.#983561">기존 비밀번호</span>
+                        <input type="password" autocomplete="current-password" gettext="zolinga-rms:placeholder#89e79d" placeholder="기존 비밀번호" name="currentPassword" required>
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#2ffd6b">비밀번호</span>
+                        <input type="password" autocomplete="new-password" gettext="zolinga-rms:placeholder#ef0c22" placeholder="비밀번호" name="password">
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#fec9a3">비밀번호 확인</span>
+                        <input type="password" gettext="zolinga-rms:placeholder#f8730b" placeholder="비밀번호 확인" name="confirmPassword">
+                    </label>
+                </div>
+
+                <div slot="actions">
+                    <button class="c-form" type="submit" gettext="zolinga-rms:.#abdb57">저장</button>
+                </div>
+            </popup-container>
+        </form>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html lang="fi-FI">
+
+<head>
+    <meta name="gettext" content="translate">
+    <link rel="stylesheet" href="login-settings.css">
+    <c-resources assets="forms/css"></c-resources>
+    <meta charset="UTF-8">
+    <meta name="gettext" content="translate">
+</head>
+<body>
+    <main id="security">
+        <form action="javascript:">
+            <popup-container>
+                <div slot="title" gettext="zolinga-rms:.#0f4c4a">Turvallisuus</div>
+
+                <div slot="content" class="c-form form">
+                    <label>
+                        <span gettext="zolinga-rms:.#84588a">Ensisijainen sähköposti / kirjautuminen</span>
+                        <input type="email" autocomplete="" gettext="zolinga-rms:placeholder#260f7e" placeholder="Sähköposti" name="username" z-var="username =" required>
+                    </label>
+
+                    <label>
+                        <span gettext="zolinga-rms:.#983561">Nykyinen salasana</span>
+                        <input type="password" autocomplete="current-password" gettext="zolinga-rms:placeholder#89e79d" placeholder="Nykyinen salasana" name="currentPassword" required>
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#2ffd6b">Salasana</span>
+                        <input type="password" autocomplete="new-password" gettext="zolinga-rms:placeholder#ef0c22" placeholder="Salasana" name="password">
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#fec9a3">Vahvista salasana</span>
+                        <input type="password" gettext="zolinga-rms:placeholder#f8730b" placeholder="Vahvista salasana" name="confirmPassword">
+                    </label>
+                </div>
+
+                <div slot="actions">
+                    <button class="c-form" type="submit" gettext="zolinga-rms:.#abdb57">Tallenna</button>
+                </div>
+            </popup-container>
+        </form>
+    </main>
+</body>
+
+</html>

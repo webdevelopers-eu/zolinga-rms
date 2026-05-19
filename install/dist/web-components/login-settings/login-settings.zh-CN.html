@@ -1,0 +1,44 @@
+<html lang="zh-CN">
+
+<head>
+    <meta name="gettext" content="translate">
+    <link rel="stylesheet" href="login-settings.css">
+    <c-resources assets="forms/css"></c-resources>
+    <meta charset="UTF-8">
+    <meta name="gettext" content="translate">
+</head>
+<body>
+    <main id="security">
+        <form action="javascript:">
+            <popup-container>
+                <div slot="title" gettext="zolinga-rms:.#0f4c4a">安全</div>
+
+                <div slot="content" class="c-form form">
+                    <label>
+                        <span gettext="zolinga-rms:.#84588a">主要邮箱 / 登录</span>
+                        <input type="email" autocomplete="" gettext="zolinga-rms:placeholder#260f7e" placeholder="电子邮箱" name="username" z-var="username =" required>
+                    </label>
+
+                    <label>
+                        <span gettext="zolinga-rms:.#983561">当前密码</span>
+                        <input type="password" autocomplete="current-password" gettext="zolinga-rms:placeholder#89e79d" placeholder="当前密码" name="currentPassword" required>
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#2ffd6b">密码</span>
+                        <input type="password" autocomplete="new-password" gettext="zolinga-rms:placeholder#ef0c22" placeholder="密码" name="password">
+                    </label>
+                    <label>
+                        <span gettext="zolinga-rms:.#fec9a3">确认密码</span>
+                        <input type="password" gettext="zolinga-rms:placeholder#f8730b" placeholder="确认密码" name="confirmPassword">
+                    </label>
+                </div>
+
+                <div slot="actions">
+                    <button class="c-form" type="submit" gettext="zolinga-rms:.#abdb57">保存</button>
+                </div>
+            </popup-container>
+        </form>
+    </main>
+</body>
+
+</html>

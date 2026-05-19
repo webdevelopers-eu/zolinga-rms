@@ -1,0 +1,127 @@
+<html lang="pt-PT">
+
+<!--
+    <login-box
+        [ layer="maximized|minimized" ]
+        [ click-outside-to-close ]
+        [ show-card="card-name" ]
+        [ password-reset-hash="hash" ]
+        [ remove-on-close ]
+        ></login-box>
+-->
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="login-box.css">
+    <meta name="gettext" content="replace">
+    <c-resources assets="forms/css"></c-resources>
+<meta charset="UTF-8"></head>
+
+<body>
+    <div class="curtain"></div>
+
+    <card-deck show-card="sign-in" flip-perspective="800" flip-speed="0.5">
+        <form id="sing-in-form" class="c-form" part="card sign-in" card-name="sign-in" data-event="rms:login">
+            <h1 part="heading h1 sign-in-heading" gettext="zolinga-rms:.#69fc31">Entrar</h1>
+            <slot name="sign-in-before"></slot>
+
+            <label>
+                <span gettext="zolinga-rms:.#2afd8a">E-mail</span>
+                <input autocomplete="email" type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#0ab8ab" placeholder="E-mail" required>
+            </label>
+            <label>
+                <span gettext="zolinga-rms:.#51ec4d">Senha</span>
+                <input autocomplete="current-password" type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#0c0e13" placeholder="Senha" required>
+            </label>
+
+            <label class="center">
+                <input type="checkbox" class="form-check-input" name="remember">
+                <span class="form-check" gettext="zolinga-rms:.#e9c0ef">Lembrar de mim</span>
+            </label>
+
+            <slot name="sign-in-after"></slot>
+
+            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#f340c4">Entrar</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('password-recover');" gettext="zolinga-rms:.#335167">Esqueceu a senha?</a>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-up');" gettext="zolinga-rms:.#d062c4">Cadastrar-se</a>
+
+            <google-login></google-login>
+        </form>
+        <form id="sing-up-form" class="c-form" part="card sign-up" card-name="sign-up" data-event="rms:register">
+            <h1 part="heading h1 sign-up-heading" gettext="zolinga-rms:.#21e8a3">Cadastrar-se</h1>
+
+            <slot name="sign-up-before"></slot>
+
+            <label>
+                <span gettext="zolinga-rms:.#b524cf">Nome</span>
+                <input autocomplete="given-name" required type="text" class="form-control" name="givenName" gettext="zolinga-rms:placeholder#689efa" placeholder="Nome">
+            </label>
+            <label>
+                <span gettext="zolinga-rms:.#6e6f06">Sobrenome</span>
+                <input autocomplete="family-name" required type="text" class="form-control" name="familyName" gettext="zolinga-rms:placeholder#7caf87" placeholder="Sobrenome">
+            </label>
+            <label>
+                <span gettext="zolinga-rms:.#997ec5">E-mail</span>
+                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#fc800c" placeholder="E-mail">
+            </label>
+            <label>
+                <span gettext="zolinga-rms:.#95ccea">Senha</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#cd999e" placeholder="Senha">
+            </label>
+            <label>
+                <span gettext="zolinga-rms:.#5edd15">Confirmar senha</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="zolinga-rms:placeholder#dc8d92" placeholder="Confirmar senha">
+            </label>
+
+            <slot name="sign-up-after"></slot>
+
+            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#a65877">Cadastrar-se</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#0fc7a3">Entrar</a>
+        </form>
+        <form id="password-recover-form" class="c-form" part="card password-recover" card-name="password-recover" data-event="rms:recover">
+            <h1 part="heading h1 password-recover-heading" gettext="zolinga-rms:.#766415">Recuperação de senha</h1>
+
+            <slot name="password-recover-before"></slot>
+
+            <label>
+                <span gettext="zolinga-rms:.#afa09e">E-mail</span>
+                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#25967e" placeholder="E-mail">
+            </label>
+
+            <slot name="password-recover-after"></slot>
+
+            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#82a589">Recuperar senha</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#c0815e">Entrar</a>
+        </form>
+        <form id="password-reset-form" class="c-form" part="card password-reset" card-name="password-reset" data-event="rms:reset">
+            <h1 part="heading h1 password-reset-heading" gettext="zolinga-rms:.#771ac8">Redefinição de senha</h1>
+
+            <slot name="password-reset-before"></slot>
+
+            <label>
+                <span gettext="zolinga-rms:.#1a3809">Nova senha</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#1c72e0" placeholder="Senha">
+            </label>
+            <label>
+                <span gettext="zolinga-rms:.#cdedfb">Confirmar senha</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="zolinga-rms:placeholder#7311c0" placeholder="Confirmar senha">
+            </label>
+
+            <input required type="hidden" name="hash" value="">
+
+            <slot name="password-reset-after"></slot>
+
+            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#86d5e1">Redefinir senha</button>
+
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#4c7059">Entrar</a>
+
+        </form>
+    </card-deck>
+
+</body>
+
+</html>
