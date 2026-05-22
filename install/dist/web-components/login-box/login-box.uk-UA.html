@@ -22,112 +22,102 @@
 
     <card-deck show-card="sign-in" flip-perspective="800" flip-speed="0.5">
         <form id="sing-in-form" class="c-form" part="card sign-in" card-name="sign-in" data-event="rms:login">
-            <h1 part="heading h1 sign-in-heading" gettext="zolinga-rms:.#69fc31">Sign in</h1>
+            <h1 part="heading h1 sign-in-heading" gettext="zolinga-rms:.#69fc31">Увійти</h1>
             <slot name="sign-in-before"></slot>
 
             <label>
-                <span gettext="zolinga-rms:.#2afd8a">E-mail</span>
-                <input autocomplete="email" type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#0ab8ab" placeholder="E-mail" required>
+                <span gettext="zolinga-rms:.#2afd8a">Електронна пошта</span>
+                <input autocomplete="email" type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#0ab8ab" placeholder="Електронна пошта" required>
             </label>
             <label>
-                <span gettext="zolinga-rms:.#51ec4d">Password</span>
-                <input autocomplete="current-password" type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#0c0e13" placeholder="Password" required>
+                <span gettext="zolinga-rms:.#51ec4d">Пароль</span>
+                <input autocomplete="current-password" type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#0c0e13" placeholder="Пароль" required>
             </label>
 
             <label class="center">
                 <input type="checkbox" class="form-check-input" name="remember">
-                <span class="form-check" gettext="zolinga-rms:.#e9c0ef">Remember me</span>
+                <span class="form-check" gettext="zolinga-rms:.#e9c0ef">Запам'ятати мене</span>
             </label>
 
             <slot name="sign-in-after"></slot>
 
-            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#f340c4">Sign in</button>
+            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#f340c4">Увійти</button>
 
-            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('password-recover');" gettext="zolinga-rms:.#335167">
-                Forgot password?
-            </a>
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('password-recover');" gettext="zolinga-rms:.#335167">Забули пароль?</a>
 
-            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-up');" gettext="zolinga-rms:.#d062c4">
-                Sign up
-            </a>
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-up');" gettext="zolinga-rms:.#d062c4">Зареєструватися</a>
 
             <google-login></google-login>
         </form>
         <form id="sing-up-form" class="c-form" part="card sign-up" card-name="sign-up" data-event="rms:register">
-            <h1 part="heading h1 sign-up-heading" gettext="zolinga-rms:.#21e8a3">Sign up</h1>
+            <h1 part="heading h1 sign-up-heading" gettext="zolinga-rms:.#21e8a3">Зареєструватися</h1>
 
             <slot name="sign-up-before"></slot>
 
             <label>
-                <span gettext="zolinga-rms:.#b524cf">Given name</span>
-                <input autocomplete="given-name" required type="text" class="form-control" name="givenName" gettext="zolinga-rms:placeholder#689efa" placeholder="Given name">
+                <span gettext="zolinga-rms:.#b524cf">Ім'я</span>
+                <input autocomplete="given-name" required type="text" class="form-control" name="givenName" gettext="zolinga-rms:placeholder#689efa" placeholder="Ім'я">
             </label>
             <label>
-                <span gettext="zolinga-rms:.#6e6f06">Family name</span>
-                <input autocomplete="family-name" required type="text" class="form-control" name="familyName" gettext="zolinga-rms:placeholder#7caf87" placeholder="Family name">
+                <span gettext="zolinga-rms:.#6e6f06">Прізвище</span>
+                <input autocomplete="family-name" required type="text" class="form-control" name="familyName" gettext="zolinga-rms:placeholder#7caf87" placeholder="Прізвище">
             </label>
             <label>
-                <span gettext="zolinga-rms:.#997ec5">E-mail</span>
-                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#fc800c" placeholder="E-mail">
+                <span gettext="zolinga-rms:.#997ec5">Електронна пошта</span>
+                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#fc800c" placeholder="Електронна пошта">
             </label>
             <label>
-                <span gettext="zolinga-rms:.#95ccea">Password</span>
-                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#cd999e" placeholder="Password">
+                <span gettext="zolinga-rms:.#95ccea">Пароль</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#cd999e" placeholder="Пароль">
             </label>
             <label>
-                <span gettext="zolinga-rms:.#5edd15">Confirm password</span>
-                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="zolinga-rms:placeholder#dc8d92" placeholder="Confirm Password">
+                <span gettext="zolinga-rms:.#5edd15">Підтвердіть пароль</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="zolinga-rms:placeholder#dc8d92" placeholder="Підтвердьте пароль">
             </label>
 
             <slot name="sign-up-after"></slot>
 
-            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#a65877">Sign up</button>
+            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#a65877">Зареєструватися</button>
 
-            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#0fc7a3">
-                Sign in
-            </a>
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#0fc7a3">Увійти</a>
         </form>
         <form id="password-recover-form" class="c-form" part="card password-recover" card-name="password-recover" data-event="rms:recover">
-            <h1 part="heading h1 password-recover-heading" gettext="zolinga-rms:.#766415">Password recovery</h1>
+            <h1 part="heading h1 password-recover-heading" gettext="zolinga-rms:.#766415">Відновлення пароля</h1>
 
             <slot name="password-recover-before"></slot>
 
             <label>
-                <span gettext="zolinga-rms:.#afa09e">E-mail</span>
-                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#25967e" placeholder="E-mail">
+                <span gettext="zolinga-rms:.#afa09e">Електронна пошта</span>
+                <input autocomplete="email" required type="email" class="form-control" name="username" gettext="zolinga-rms:placeholder#25967e" placeholder="Електронна пошта">
             </label>
 
             <slot name="password-recover-after"></slot>
 
-            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#82a589">Recover password</button>
+            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#82a589">Відновити пароль</button>
 
-            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#c0815e">
-                Sign in
-            </a>
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#c0815e">Увійти</a>
         </form>
         <form id="password-reset-form" class="c-form" part="card password-reset" card-name="password-reset" data-event="rms:reset">
-            <h1 part="heading h1 password-reset-heading" gettext="zolinga-rms:.#771ac8">Password reset</h1>
+            <h1 part="heading h1 password-reset-heading" gettext="zolinga-rms:.#771ac8">Скидання пароля</h1>
 
             <slot name="password-reset-before"></slot>
 
             <label>
-                <span gettext="zolinga-rms:.#1a3809">New password</span>
-                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#1c72e0" placeholder="Password">
+                <span gettext="zolinga-rms:.#1a3809">Новий пароль</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password" gettext="zolinga-rms:placeholder#1c72e0" placeholder="Пароль">
             </label>
             <label>
-                <span gettext="zolinga-rms:.#cdedfb">Confirm password</span>
-                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="zolinga-rms:placeholder#7311c0" placeholder="Confirm password">
+                <span gettext="zolinga-rms:.#cdedfb">Підтвердіть пароль</span>
+                <input autocomplete="new-password" required type="password" minlength="6" class="form-control" name="password2" gettext="zolinga-rms:placeholder#7311c0" placeholder="Підтвердіть пароль">
             </label>
 
             <input required type="hidden" name="hash" value="">
 
             <slot name="password-reset-after"></slot>
 
-            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#86d5e1">Reset password</button>
+            <button part="button" type="submit" class="primary" gettext="zolinga-rms:.#86d5e1">Скинути пароль</button>
 
-            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#4c7059">
-                Sign in
-            </a>
+            <a part="link" class="small center" href="javascript:" onclick="this.closest('card-deck').showCard('sign-in');" gettext="zolinga-rms:.#4c7059">Увійти</a>
 
         </form>
     </card-deck>
