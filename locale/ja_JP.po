@@ -36,15 +36,12 @@ msgid "Confirm password"
 msgstr "パスワード（確認）"
 
 #. TRANSLATORS: Error when sending the password recovery email failed.
-#: /dev/fd/61:42
 msgid "Could not send recovery email."
 msgstr "パスワード再設定メールの送信に失敗しました。"
 
-#: /dev/fd/58:51
 msgid "Current password is incorrect"
 msgstr "現在のパスワードが正しくありません"
 
-#: /dev/fd/58:47
 msgid "Current password is required"
 msgstr "現在のパスワードが必要です"
 
@@ -96,17 +93,14 @@ msgid "Given name"
 msgstr "名"
 
 #. TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
-#: /dev/fd/59:39
 msgid "Google response is invalid. Please log in again."
 msgstr "Google からの応答が無効です。再度ログインしてください。"
 
 #. TRANSLATORS: Exception message when recovery link is invalid or expired.
-#: /dev/fd/61:239 /dev/fd/61:243 /dev/fd/61:253
 msgid "Invalid or expired recovery link."
 msgstr "回復リンクが無効または期限切れです。"
 
 #. TRANSLATORS: Error shown when login credentials are invalid.
-#: /dev/fd/61:115
 msgid "Invalid username or password."
 msgstr "ユーザー名またはパスワードが正しくありません。"
 
@@ -115,7 +109,6 @@ msgstr "ユーザー名またはパスワードが正しくありません。"
 msgid "New password"
 msgstr "新しいパスワード"
 
-#: /dev/fd/58:79
 msgid "New password and confirmation password do not match"
 msgstr "新しいパスワードと確認パスワードが一致しません"
 
@@ -133,17 +126,14 @@ msgid "Password"
 msgstr "パスワード"
 
 #. TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
-#: /dev/fd/53:232
 #, php-format
 msgid "Password must be at least %d characters long."
 msgstr "パスワードは最低%d 文字必要です。"
 
-#: /dev/fd/58:83
 msgid "Password must be at least 6 characters long"
 msgstr "パスワードは 6 文字以上で設定してください。"
 
 #. TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
-#: /dev/fd/61:64
 msgid "Password must be at least 6 characters long."
 msgstr "パスワードは 6 文字以上で設定してください。"
 
@@ -158,13 +148,11 @@ msgid "Password reset"
 msgstr "パスワードのリセット"
 
 #. TRANSLATORS: Message shown when the password has been reset successfully.
-#: /dev/fd/61:80
 msgid "Password reset successful."
 msgstr "パスワードのリセットが完了しました。"
 
 #. TRANSLATORS: Error when provided passwords do not match during reset.
 #. TRANSLATORS: Error when registration password and confirmation do not match.
-#: /dev/fd/61:58 /dev/fd/61:145
 msgid "Passwords do not match."
 msgstr "パスワードが一致しません。"
 
@@ -180,7 +168,6 @@ msgid "Recover password"
 msgstr "パスワードをリセット"
 
 #. TRANSLATORS: Message shown after a recovery email was sent successfully.
-#: /dev/fd/61:49
 msgid "Recovery email sent. Check your inbox and follow the instructions."
 msgstr "回復メールを送信しました。受信トレイを確認し、指示に従ってください。"
 
@@ -207,11 +194,9 @@ msgstr "保存"
 msgid "Security"
 msgstr "セキュリティ"
 
-#: /dev/fd/58:38
 msgid "Settings loaded"
 msgstr "設定を読み込みました"
 
-#: /dev/fd/58:71
 msgid "Settings saved"
 msgstr "設定を保存しました"
 
@@ -243,50 +228,41 @@ msgid "To reset your password, click the link below:"
 msgstr "パスワードをリセットするには、以下のリンクをクリックしてください："
 
 #. TRANSLATORS: Error shown during registration when the username/email is already taken.
-#: /dev/fd/61:157
 msgid "User already exists."
 msgstr "すでに登録されています。"
 
 #. TRANSLATORS: Error shown when a user was created but automatic login failed.
-#: /dev/fd/61:172
 msgid "User created but could not login."
 msgstr "ユーザーは作成されましたが、ログインできませんでした。"
 
 #. TRANSLATORS: Exception message when a user cannot be found for provided identifier.
-#: /dev/fd/61:249
 msgid "User not found."
 msgstr "ユーザーが見つかりません。"
 
 #. TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
-#: /dev/fd/53:311
 #, php-format
 msgid "User with username %s does not exist."
 msgstr "ユーザー名 %s は存在しません。"
 
-#: /dev/fd/58:65
 #, php-format
 msgid "Username %s is already taken"
 msgstr "ユーザー名「%s」はすでに使用されています。"
 
 #. TRANSLATORS: Error when username or password is missing from login request.
 #. TRANSLATORS: Error when registration omits username or password.
-#: /dev/fd/61:109 /dev/fd/61:139
 msgid "Username and password are required."
 msgstr "ユーザー名とパスワードは必須です。"
 
 #. TRANSLATORS: Error when username is missing from recovery request.
-#: /dev/fd/61:28
 msgid "Username is required."
 msgstr "ユーザー名が必要です。"
 
 #. TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
-#: /dev/fd/53:305
 msgid "Username must be a valid e-mail."
 msgstr "ユーザー名は有効なメールアドレスである必要があります。"
 
 #. TRANSLATORS: Validation error when username is not a valid email address.
 #. TRANSLATORS: Validation error when registration username is not a valid email address.
-#: /dev/fd/61:34 /dev/fd/61:151
 msgid "Username must be a valid email address."
 msgstr "ユーザー名は有効なメールアドレスである必要があります。"
 
@@ -298,11 +274,9 @@ msgstr "アカウントのパスワード再発行リクエストを受け付け
 #. TRANSLATORS: Welcome message after successful login.
 #. TRANSLATORS: Welcome message after successful registration and login.
 #. TRANSLATORS: Welcome message shown after successful login.
-#: /dev/fd/59:65 /dev/fd/61:125 /dev/fd/61:178
 msgid "Welcome! You are now logged in."
 msgstr "ようこそ！ログインしました。"
 
 #. TRANSLATORS: Message shown after user logs out successfully.
-#: /dev/fd/61:195
 msgid "You have been logged out."
 msgstr "ログアウトしました。"

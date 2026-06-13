@@ -36,15 +36,12 @@ msgid "Confirm password"
 msgstr "Bevestig wachtwoord"
 
 #. TRANSLATORS: Error when sending the password recovery email failed.
-#: /dev/fd/61:42
 msgid "Could not send recovery email."
 msgstr "Verzenden van herstel-e-mail mislukt."
 
-#: /dev/fd/58:51
 msgid "Current password is incorrect"
 msgstr "Het huidige wachtwoord is onjuist."
 
-#: /dev/fd/58:47
 msgid "Current password is required"
 msgstr "Huidig wachtwoord is vereist"
 
@@ -96,17 +93,14 @@ msgid "Given name"
 msgstr "Voornaam"
 
 #. TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
-#: /dev/fd/59:39
 msgid "Google response is invalid. Please log in again."
 msgstr "Ongeldig antwoord van Google. Log opnieuw in."
 
 #. TRANSLATORS: Exception message when recovery link is invalid or expired.
-#: /dev/fd/61:239 /dev/fd/61:243 /dev/fd/61:253
 msgid "Invalid or expired recovery link."
 msgstr "De herstel-link is ongeldig of verlopen."
 
 #. TRANSLATORS: Error shown when login credentials are invalid.
-#: /dev/fd/61:115
 msgid "Invalid username or password."
 msgstr "Ongeldige gebruikersnaam of wachtwoord."
 
@@ -115,7 +109,6 @@ msgstr "Ongeldige gebruikersnaam of wachtwoord."
 msgid "New password"
 msgstr "Nieuw wachtwoord"
 
-#: /dev/fd/58:79
 msgid "New password and confirmation password do not match"
 msgstr "Nieuw wachtwoord en bevestigingswachtwoord komen niet overeen."
 
@@ -133,17 +126,14 @@ msgid "Password"
 msgstr "Wachtwoord"
 
 #. TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
-#: /dev/fd/53:232
 #, php-format
 msgid "Password must be at least %d characters long."
 msgstr "Wachtwoord moet minimaal %d tekens lang zijn."
 
-#: /dev/fd/58:83
 msgid "Password must be at least 6 characters long"
 msgstr "Wachtwoord moet minimaal 6 tekens lang zijn."
 
 #. TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
-#: /dev/fd/61:64
 msgid "Password must be at least 6 characters long."
 msgstr "Het wachtwoord moet minimaal 6 tekens lang zijn."
 
@@ -158,13 +148,11 @@ msgid "Password reset"
 msgstr "Wachtwoord reset"
 
 #. TRANSLATORS: Message shown when the password has been reset successfully.
-#: /dev/fd/61:80
 msgid "Password reset successful."
 msgstr "Wachtwoord succesvol gereset."
 
 #. TRANSLATORS: Error when provided passwords do not match during reset.
 #. TRANSLATORS: Error when registration password and confirmation do not match.
-#: /dev/fd/61:58 /dev/fd/61:145
 msgid "Passwords do not match."
 msgstr "De wachtwoorden komen niet overeen."
 
@@ -180,7 +168,6 @@ msgid "Recover password"
 msgstr "Wachtwoord herstellen"
 
 #. TRANSLATORS: Message shown after a recovery email was sent successfully.
-#: /dev/fd/61:49
 msgid "Recovery email sent. Check your inbox and follow the instructions."
 msgstr "Herstel-e-mail verzonden. Controleer uw inbox en volg de instructies."
 
@@ -207,11 +194,9 @@ msgstr "Opslaan"
 msgid "Security"
 msgstr "Beveiliging"
 
-#: /dev/fd/58:38
 msgid "Settings loaded"
 msgstr "Instellingen geladen"
 
-#: /dev/fd/58:71
 msgid "Settings saved"
 msgstr "Instellingen opgeslagen"
 
@@ -240,53 +225,45 @@ msgstr "Aanmelden"
 #. TRANSLATORS: This string is inside a <p> element, which is a paragraph / follow rules for general text in {{TARGET_LANG}} language.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[2])
 msgid "To reset your password, click the link below:"
-msgstr "Om uw wachtwoord opnieuw in te stellen, klikt u op de onderstaande link:"
+msgstr ""
+"Om uw wachtwoord opnieuw in te stellen, klikt u op de onderstaande link:"
 
 #. TRANSLATORS: Error shown during registration when the username/email is already taken.
-#: /dev/fd/61:157
 msgid "User already exists."
 msgstr "Deze gebruiker bestaat al."
 
 #. TRANSLATORS: Error shown when a user was created but automatic login failed.
-#: /dev/fd/61:172
 msgid "User created but could not login."
 msgstr "Gebruiker aangemaakt, maar inloggen mislukt."
 
 #. TRANSLATORS: Exception message when a user cannot be found for provided identifier.
-#: /dev/fd/61:249
 msgid "User not found."
 msgstr "Gebruiker niet gevonden."
 
 #. TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
-#: /dev/fd/53:311
 #, php-format
 msgid "User with username %s does not exist."
 msgstr "Gebruiker met de gebruikersnaam %s bestaat niet."
 
-#: /dev/fd/58:65
 #, php-format
 msgid "Username %s is already taken"
 msgstr "Gebruikersnaam %s is al in gebruik"
 
 #. TRANSLATORS: Error when username or password is missing from login request.
 #. TRANSLATORS: Error when registration omits username or password.
-#: /dev/fd/61:109 /dev/fd/61:139
 msgid "Username and password are required."
 msgstr "Gebruikersnaam en wachtwoord zijn verplicht."
 
 #. TRANSLATORS: Error when username is missing from recovery request.
-#: /dev/fd/61:28
 msgid "Username is required."
 msgstr "Gebruikersnaam is verplicht."
 
 #. TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
-#: /dev/fd/53:305
 msgid "Username must be a valid e-mail."
 msgstr "Het gebruikersnaam moet een geldig e-mailadres zijn."
 
 #. TRANSLATORS: Validation error when username is not a valid email address.
 #. TRANSLATORS: Validation error when registration username is not a valid email address.
-#: /dev/fd/61:34 /dev/fd/61:151
 msgid "Username must be a valid email address."
 msgstr "De gebruikersnaam moet een geldig e-mailadres zijn."
 
@@ -298,11 +275,9 @@ msgstr "We hebben een verzoek ontvangen om uw accountwachtwoord te herstellen."
 #. TRANSLATORS: Welcome message after successful login.
 #. TRANSLATORS: Welcome message after successful registration and login.
 #. TRANSLATORS: Welcome message shown after successful login.
-#: /dev/fd/59:65 /dev/fd/61:125 /dev/fd/61:178
 msgid "Welcome! You are now logged in."
 msgstr "Welkom! U bent nu ingelogd."
 
 #. TRANSLATORS: Message shown after user logs out successfully.
-#: /dev/fd/61:195
 msgid "You have been logged out."
 msgstr "U bent uitgelogd."

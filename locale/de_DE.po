@@ -36,15 +36,12 @@ msgid "Confirm password"
 msgstr "Passwort bestätigen"
 
 #. TRANSLATORS: Error when sending the password recovery email failed.
-#: /dev/fd/61:42
 msgid "Could not send recovery email."
 msgstr "Das Wiederherstellungs-E-Mail konnte nicht gesendet werden."
 
-#: /dev/fd/58:51
 msgid "Current password is incorrect"
 msgstr "Das aktuelle Passwort ist falsch."
 
-#: /dev/fd/58:47
 msgid "Current password is required"
 msgstr "Das aktuelle Passwort ist erforderlich."
 
@@ -96,17 +93,14 @@ msgid "Given name"
 msgstr "Vorname"
 
 #. TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
-#: /dev/fd/59:39
 msgid "Google response is invalid. Please log in again."
 msgstr "Die Google-Antwort ist ungültig. Bitte melden Sie sich erneut an."
 
 #. TRANSLATORS: Exception message when recovery link is invalid or expired.
-#: /dev/fd/61:239 /dev/fd/61:243 /dev/fd/61:253
 msgid "Invalid or expired recovery link."
 msgstr "Ungültiger oder abgelaufener Wiederherstellungslink."
 
 #. TRANSLATORS: Error shown when login credentials are invalid.
-#: /dev/fd/61:115
 msgid "Invalid username or password."
 msgstr "Ungültiger Benutzername oder Passwort."
 
@@ -115,7 +109,6 @@ msgstr "Ungültiger Benutzername oder Passwort."
 msgid "New password"
 msgstr "Neues Passwort"
 
-#: /dev/fd/58:79
 msgid "New password and confirmation password do not match"
 msgstr "Neues Passwort und Passwortbestätigung stimmen nicht überein."
 
@@ -133,17 +126,14 @@ msgid "Password"
 msgstr "Passwort"
 
 #. TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
-#: /dev/fd/53:232
 #, php-format
 msgid "Password must be at least %d characters long."
 msgstr "Das Passwort muss mindestens %d Zeichen lang sein."
 
-#: /dev/fd/58:83
 msgid "Password must be at least 6 characters long"
 msgstr "Das Passwort muss mindestens 6 Zeichen lang sein."
 
 #. TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
-#: /dev/fd/61:64
 msgid "Password must be at least 6 characters long."
 msgstr "Das Passwort muss mindestens 6 Zeichen lang sein."
 
@@ -158,13 +148,11 @@ msgid "Password reset"
 msgstr "Passwort zurücksetzen"
 
 #. TRANSLATORS: Message shown when the password has been reset successfully.
-#: /dev/fd/61:80
 msgid "Password reset successful."
 msgstr "Passwort erfolgreich zurückgesetzt."
 
 #. TRANSLATORS: Error when provided passwords do not match during reset.
 #. TRANSLATORS: Error when registration password and confirmation do not match.
-#: /dev/fd/61:58 /dev/fd/61:145
 msgid "Passwords do not match."
 msgstr "Die Passwörter stimmen nicht überein."
 
@@ -180,9 +168,10 @@ msgid "Recover password"
 msgstr "Passwort wiederherstellen"
 
 #. TRANSLATORS: Message shown after a recovery email was sent successfully.
-#: /dev/fd/61:49
 msgid "Recovery email sent. Check your inbox and follow the instructions."
-msgstr "Wiederherstellungs-E-Mail gesendet. Bitte prüfen Sie Ihren Posteingang und folgen Sie den Anweisungen."
+msgstr ""
+"Wiederherstellungs-E-Mail gesendet. Bitte prüfen Sie Ihren Posteingang und "
+"folgen Sie den Anweisungen."
 
 #. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[3]/span)
@@ -207,11 +196,9 @@ msgstr "Speichern"
 msgid "Security"
 msgstr "Sicherheit"
 
-#: /dev/fd/58:38
 msgid "Settings loaded"
 msgstr "Einstellungen geladen"
 
-#: /dev/fd/58:71
 msgid "Settings saved"
 msgstr "Einstellungen gespeichert"
 
@@ -240,69 +227,60 @@ msgstr "Registrieren"
 #. TRANSLATORS: This string is inside a <p> element, which is a paragraph / follow rules for general text in {{TARGET_LANG}} language.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[2])
 msgid "To reset your password, click the link below:"
-msgstr "Um Ihr Passwort zurückzusetzen, klicken Sie auf den untenstehenden Link:"
+msgstr ""
+"Um Ihr Passwort zurückzusetzen, klicken Sie auf den untenstehenden Link:"
 
 #. TRANSLATORS: Error shown during registration when the username/email is already taken.
-#: /dev/fd/61:157
 msgid "User already exists."
 msgstr "Benutzer existiert bereits."
 
 #. TRANSLATORS: Error shown when a user was created but automatic login failed.
-#: /dev/fd/61:172
 msgid "User created but could not login."
 msgstr "Benutzer erstellt, aber Anmeldung fehlgeschlagen."
 
 #. TRANSLATORS: Exception message when a user cannot be found for provided identifier.
-#: /dev/fd/61:249
 msgid "User not found."
 msgstr "Benutzer nicht gefunden."
 
 #. TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
-#: /dev/fd/53:311
 #, php-format
 msgid "User with username %s does not exist."
 msgstr "Ein Benutzer mit dem Benutzernamen %s existiert nicht."
 
-#: /dev/fd/58:65
 #, php-format
 msgid "Username %s is already taken"
 msgstr "Benutzername %s ist bereits vergeben."
 
 #. TRANSLATORS: Error when username or password is missing from login request.
 #. TRANSLATORS: Error when registration omits username or password.
-#: /dev/fd/61:109 /dev/fd/61:139
 msgid "Username and password are required."
 msgstr "Benutzername und Passwort sind erforderlich."
 
 #. TRANSLATORS: Error when username is missing from recovery request.
-#: /dev/fd/61:28
 msgid "Username is required."
 msgstr "Benutzername ist erforderlich."
 
 #. TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
-#: /dev/fd/53:305
 msgid "Username must be a valid e-mail."
 msgstr "Der Benutzername muss eine gültige E-Mail-Adresse sein."
 
 #. TRANSLATORS: Validation error when username is not a valid email address.
 #. TRANSLATORS: Validation error when registration username is not a valid email address.
-#: /dev/fd/61:34 /dev/fd/61:151
 msgid "Username must be a valid email address."
 msgstr "Der Benutzername muss eine gültige E-Mail-Adresse sein."
 
 #. TRANSLATORS: This string is inside a <p> element, which is a paragraph / follow rules for general text in {{TARGET_LANG}} language.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/body/div/p[1])
 msgid "We have received a request to recover your account password."
-msgstr "Wir haben eine Anfrage zur Wiederherstellung Ihres Kontopassworts erhalten."
+msgstr ""
+"Wir haben eine Anfrage zur Wiederherstellung Ihres Kontopassworts erhalten."
 
 #. TRANSLATORS: Welcome message after successful login.
 #. TRANSLATORS: Welcome message after successful registration and login.
 #. TRANSLATORS: Welcome message shown after successful login.
-#: /dev/fd/59:65 /dev/fd/61:125 /dev/fd/61:178
 msgid "Welcome! You are now logged in."
 msgstr "Willkommen! Sie sind jetzt angemeldet."
 
 #. TRANSLATORS: Message shown after user logs out successfully.
-#: /dev/fd/61:195
 msgid "You have been logged out."
 msgstr "Sie wurden erfolgreich abgemeldet."

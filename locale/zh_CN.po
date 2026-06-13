@@ -35,15 +35,12 @@ msgid "Confirm password"
 msgstr "确认密码"
 
 #. TRANSLATORS: Error when sending the password recovery email failed.
-#: /dev/fd/61:42
 msgid "Could not send recovery email."
 msgstr "无法发送找回邮件。"
 
-#: /dev/fd/58:51
 msgid "Current password is incorrect"
 msgstr "当前密码不正确"
 
-#: /dev/fd/58:47
 msgid "Current password is required"
 msgstr "请输入当前密码"
 
@@ -95,17 +92,14 @@ msgid "Given name"
 msgstr "名字"
 
 #. TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
-#: /dev/fd/59:39
 msgid "Google response is invalid. Please log in again."
 msgstr "Google 响应无效，请重新登录。"
 
 #. TRANSLATORS: Exception message when recovery link is invalid or expired.
-#: /dev/fd/61:239 /dev/fd/61:243 /dev/fd/61:253
 msgid "Invalid or expired recovery link."
 msgstr "恢复链接无效或已过期。"
 
 #. TRANSLATORS: Error shown when login credentials are invalid.
-#: /dev/fd/61:115
 msgid "Invalid username or password."
 msgstr "用户名或密码无效。"
 
@@ -114,7 +108,6 @@ msgstr "用户名或密码无效。"
 msgid "New password"
 msgstr "新密码"
 
-#: /dev/fd/58:79
 msgid "New password and confirmation password do not match"
 msgstr "新密码与确认密码不一致"
 
@@ -132,17 +125,14 @@ msgid "Password"
 msgstr "密码"
 
 #. TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
-#: /dev/fd/53:232
 #, php-format
 msgid "Password must be at least %d characters long."
 msgstr "密码长度必须至少为 %d 个字符。"
 
-#: /dev/fd/58:83
 msgid "Password must be at least 6 characters long"
 msgstr "密码长度至少为 6 个字符"
 
 #. TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
-#: /dev/fd/61:64
 msgid "Password must be at least 6 characters long."
 msgstr "密码长度至少为 6 个字符。"
 
@@ -157,13 +147,11 @@ msgid "Password reset"
 msgstr "密码重置"
 
 #. TRANSLATORS: Message shown when the password has been reset successfully.
-#: /dev/fd/61:80
 msgid "Password reset successful."
 msgstr "密码重置成功。"
 
 #. TRANSLATORS: Error when provided passwords do not match during reset.
 #. TRANSLATORS: Error when registration password and confirmation do not match.
-#: /dev/fd/61:58 /dev/fd/61:145
 msgid "Passwords do not match."
 msgstr "密码不一致。"
 
@@ -179,7 +167,6 @@ msgid "Recover password"
 msgstr "找回密码"
 
 #. TRANSLATORS: Message shown after a recovery email was sent successfully.
-#: /dev/fd/61:49
 msgid "Recovery email sent. Check your inbox and follow the instructions."
 msgstr "恢复邮件已发送。请查收收件箱并按指示操作。"
 
@@ -206,11 +193,9 @@ msgstr "保存"
 msgid "Security"
 msgstr "安全"
 
-#: /dev/fd/58:38
 msgid "Settings loaded"
 msgstr "设置已加载"
 
-#: /dev/fd/58:71
 msgid "Settings saved"
 msgstr "设置已保存"
 
@@ -242,50 +227,41 @@ msgid "To reset your password, click the link below:"
 msgstr "如需重置密码，请点击下方链接："
 
 #. TRANSLATORS: Error shown during registration when the username/email is already taken.
-#: /dev/fd/61:157
 msgid "User already exists."
 msgstr "用户已存在"
 
 #. TRANSLATORS: Error shown when a user was created but automatic login failed.
-#: /dev/fd/61:172
 msgid "User created but could not login."
 msgstr "用户已创建，但无法登录"
 
 #. TRANSLATORS: Exception message when a user cannot be found for provided identifier.
-#: /dev/fd/61:249
 msgid "User not found."
 msgstr "用户未找到。"
 
 #. TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
-#: /dev/fd/53:311
 #, php-format
 msgid "User with username %s does not exist."
 msgstr "用户名 %s 不存在"
 
-#: /dev/fd/58:65
 #, php-format
 msgid "Username %s is already taken"
 msgstr "用户名 %s 已被占用"
 
 #. TRANSLATORS: Error when username or password is missing from login request.
 #. TRANSLATORS: Error when registration omits username or password.
-#: /dev/fd/61:109 /dev/fd/61:139
 msgid "Username and password are required."
 msgstr "用户名和密码为必填项。"
 
 #. TRANSLATORS: Error when username is missing from recovery request.
-#: /dev/fd/61:28
 msgid "Username is required."
 msgstr "用户名必填。"
 
 #. TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
-#: /dev/fd/53:305
 msgid "Username must be a valid e-mail."
 msgstr "用户名必须是有效的电子邮件地址。"
 
 #. TRANSLATORS: Validation error when username is not a valid email address.
 #. TRANSLATORS: Validation error when registration username is not a valid email address.
-#: /dev/fd/61:34 /dev/fd/61:151
 msgid "Username must be a valid email address."
 msgstr "用户名必须是有效的邮箱地址。"
 
@@ -297,11 +273,9 @@ msgstr "我们已收到您的账户密码找回请求。"
 #. TRANSLATORS: Welcome message after successful login.
 #. TRANSLATORS: Welcome message after successful registration and login.
 #. TRANSLATORS: Welcome message shown after successful login.
-#: /dev/fd/59:65 /dev/fd/61:125 /dev/fd/61:178
 msgid "Welcome! You are now logged in."
 msgstr "欢迎！您已成功登录。"
 
 #. TRANSLATORS: Message shown after user logs out successfully.
-#: /dev/fd/61:195
 msgid "You have been logged out."
 msgstr "您已成功退出。"

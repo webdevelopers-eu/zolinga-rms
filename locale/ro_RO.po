@@ -7,7 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
 
 #. TRANSLATORS: This string is inside a <title> element, which is a page title / follow rules for web page titles - SEO applies.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/head/title)
@@ -36,15 +37,12 @@ msgid "Confirm password"
 msgstr "Confirmă parola"
 
 #. TRANSLATORS: Error when sending the password recovery email failed.
-#: /dev/fd/61:42
 msgid "Could not send recovery email."
 msgstr "Nu s-a putut trimite e-mailul de recuperare."
 
-#: /dev/fd/58:51
 msgid "Current password is incorrect"
 msgstr "Parola curentă este incorectă."
 
-#: /dev/fd/58:47
 msgid "Current password is required"
 msgstr "Parola actuală este necesară"
 
@@ -96,17 +94,14 @@ msgid "Given name"
 msgstr "Prenume"
 
 #. TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
-#: /dev/fd/59:39
 msgid "Google response is invalid. Please log in again."
 msgstr "Răspunsul Google este invalid. Vă rugăm să vă conectați din nou."
 
 #. TRANSLATORS: Exception message when recovery link is invalid or expired.
-#: /dev/fd/61:239 /dev/fd/61:243 /dev/fd/61:253
 msgid "Invalid or expired recovery link."
 msgstr "Link de recuperare invalid sau expirat."
 
 #. TRANSLATORS: Error shown when login credentials are invalid.
-#: /dev/fd/61:115
 msgid "Invalid username or password."
 msgstr "Nume de utilizator sau parolă incorecte."
 
@@ -115,7 +110,6 @@ msgstr "Nume de utilizator sau parolă incorecte."
 msgid "New password"
 msgstr "Parolă nouă"
 
-#: /dev/fd/58:79
 msgid "New password and confirmation password do not match"
 msgstr "Parola nouă și confirmarea parolei nu se potrivesc."
 
@@ -133,17 +127,14 @@ msgid "Password"
 msgstr "Parolă"
 
 #. TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
-#: /dev/fd/53:232
 #, php-format
 msgid "Password must be at least %d characters long."
 msgstr "Parola trebuie să aibă cel puțin %d caractere."
 
-#: /dev/fd/58:83
 msgid "Password must be at least 6 characters long"
 msgstr "Parola trebuie să aibă cel puțin 6 caractere."
 
 #. TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
-#: /dev/fd/61:64
 msgid "Password must be at least 6 characters long."
 msgstr "Parola trebuie să aibă cel puțin 6 caractere."
 
@@ -158,13 +149,11 @@ msgid "Password reset"
 msgstr "Resetare parolă"
 
 #. TRANSLATORS: Message shown when the password has been reset successfully.
-#: /dev/fd/61:80
 msgid "Password reset successful."
 msgstr "Parola a fost resetată cu succes."
 
 #. TRANSLATORS: Error when provided passwords do not match during reset.
 #. TRANSLATORS: Error when registration password and confirmation do not match.
-#: /dev/fd/61:58 /dev/fd/61:145
 msgid "Passwords do not match."
 msgstr "Parolele nu se potrivesc."
 
@@ -180,9 +169,10 @@ msgid "Recover password"
 msgstr "Recuperează parola"
 
 #. TRANSLATORS: Message shown after a recovery email was sent successfully.
-#: /dev/fd/61:49
 msgid "Recovery email sent. Check your inbox and follow the instructions."
-msgstr "Email de recuperare trimis. Verificați căsuța de mesaje și urmați instrucțiunile."
+msgstr ""
+"Email de recuperare trimis. Verificați căsuța de mesaje și urmați "
+"instrucțiunile."
 
 #. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[3]/span)
@@ -207,11 +197,9 @@ msgstr "Salvează"
 msgid "Security"
 msgstr "Securitate"
 
-#: /dev/fd/58:38
 msgid "Settings loaded"
 msgstr "Setări încărcate"
 
-#: /dev/fd/58:71
 msgid "Settings saved"
 msgstr "Setări salvate"
 
@@ -243,50 +231,41 @@ msgid "To reset your password, click the link below:"
 msgstr "Pentru a reseta parola, faceți clic pe linkul de mai jos:"
 
 #. TRANSLATORS: Error shown during registration when the username/email is already taken.
-#: /dev/fd/61:157
 msgid "User already exists."
 msgstr "Utilizatorul există deja."
 
 #. TRANSLATORS: Error shown when a user was created but automatic login failed.
-#: /dev/fd/61:172
 msgid "User created but could not login."
 msgstr "Utilizator creat, dar autentificarea a eșuat."
 
 #. TRANSLATORS: Exception message when a user cannot be found for provided identifier.
-#: /dev/fd/61:249
 msgid "User not found."
 msgstr "Utilizatorul nu a fost găsit."
 
 #. TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
-#: /dev/fd/53:311
 #, php-format
 msgid "User with username %s does not exist."
 msgstr "Utilizatorul cu numele de utilizator %s nu există."
 
-#: /dev/fd/58:65
 #, php-format
 msgid "Username %s is already taken"
 msgstr "Numele de utilizator %s este deja luat."
 
 #. TRANSLATORS: Error when username or password is missing from login request.
 #. TRANSLATORS: Error when registration omits username or password.
-#: /dev/fd/61:109 /dev/fd/61:139
 msgid "Username and password are required."
 msgstr "Numele de utilizator și parola sunt obligatorii."
 
 #. TRANSLATORS: Error when username is missing from recovery request.
-#: /dev/fd/61:28
 msgid "Username is required."
 msgstr "Numele de utilizator este obligatoriu."
 
 #. TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
-#: /dev/fd/53:305
 msgid "Username must be a valid e-mail."
 msgstr "Numele de utilizator trebuie să fie o adresă de e-mail validă."
 
 #. TRANSLATORS: Validation error when username is not a valid email address.
 #. TRANSLATORS: Validation error when registration username is not a valid email address.
-#: /dev/fd/61:34 /dev/fd/61:151
 msgid "Username must be a valid email address."
 msgstr "Numele de utilizator trebuie să fie o adresă de e-mail validă."
 
@@ -298,11 +277,9 @@ msgstr "Am primit o solicitare de recuperare a parolei contului dumneavoastră."
 #. TRANSLATORS: Welcome message after successful login.
 #. TRANSLATORS: Welcome message after successful registration and login.
 #. TRANSLATORS: Welcome message shown after successful login.
-#: /dev/fd/59:65 /dev/fd/61:125 /dev/fd/61:178
 msgid "Welcome! You are now logged in."
 msgstr "Bine ați venit! Sunteți autentificat."
 
 #. TRANSLATORS: Message shown after user logs out successfully.
-#: /dev/fd/61:195
 msgid "You have been logged out."
 msgstr "Ați fost deconectat(ă)."

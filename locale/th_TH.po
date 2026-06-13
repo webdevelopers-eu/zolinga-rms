@@ -35,15 +35,12 @@ msgid "Confirm password"
 msgstr "ยืนยันรหัสผ่าน"
 
 #. TRANSLATORS: Error when sending the password recovery email failed.
-#: /dev/fd/61:42
 msgid "Could not send recovery email."
 msgstr "ไม่สามารถส่งอีเมลกู้คืนรหัสผ่านได้"
 
-#: /dev/fd/58:51
 msgid "Current password is incorrect"
 msgstr "รหัสผ่านปัจจุบันไม่ถูกต้อง"
 
-#: /dev/fd/58:47
 msgid "Current password is required"
 msgstr "ต้องระบุรหัสผ่านปัจจุบัน"
 
@@ -95,17 +92,14 @@ msgid "Given name"
 msgstr "ชื่อ"
 
 #. TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
-#: /dev/fd/59:39
 msgid "Google response is invalid. Please log in again."
 msgstr "การตอบสนองจาก Google ไม่ถูกต้อง กรุณาเข้าสู่ระบบอีกครั้ง"
 
 #. TRANSLATORS: Exception message when recovery link is invalid or expired.
-#: /dev/fd/61:239 /dev/fd/61:243 /dev/fd/61:253
 msgid "Invalid or expired recovery link."
 msgstr "ลิงก์กู้คืนไม่ถูกต้องหรือหมดอายุแล้ว"
 
 #. TRANSLATORS: Error shown when login credentials are invalid.
-#: /dev/fd/61:115
 msgid "Invalid username or password."
 msgstr "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
 
@@ -114,7 +108,6 @@ msgstr "ชื่อผู้ใช้หรือรหัสผ่านไม
 msgid "New password"
 msgstr "รหัสผ่านใหม่"
 
-#: /dev/fd/58:79
 msgid "New password and confirmation password do not match"
 msgstr "รหัสผ่านใหม่และรหัสผ่านยืนยันไม่ตรงกัน"
 
@@ -132,17 +125,14 @@ msgid "Password"
 msgstr "รหัสผ่าน"
 
 #. TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
-#: /dev/fd/53:232
 #, php-format
 msgid "Password must be at least %d characters long."
 msgstr "รหัสผ่านต้องมีความยาวอย่างน้อย %d ตัวอักษร"
 
-#: /dev/fd/58:83
 msgid "Password must be at least 6 characters long"
 msgstr "รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร"
 
 #. TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
-#: /dev/fd/61:64
 msgid "Password must be at least 6 characters long."
 msgstr "รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร"
 
@@ -157,13 +147,11 @@ msgid "Password reset"
 msgstr "รีเซ็ตรหัสผ่าน"
 
 #. TRANSLATORS: Message shown when the password has been reset successfully.
-#: /dev/fd/61:80
 msgid "Password reset successful."
 msgstr "รีเซ็ตรหัสผ่านสำเร็จแล้ว"
 
 #. TRANSLATORS: Error when provided passwords do not match during reset.
 #. TRANSLATORS: Error when registration password and confirmation do not match.
-#: /dev/fd/61:58 /dev/fd/61:145
 msgid "Passwords do not match."
 msgstr "รหัสผ่านไม่ตรงกัน"
 
@@ -179,7 +167,6 @@ msgid "Recover password"
 msgstr "กู้คืนรหัสผ่าน"
 
 #. TRANSLATORS: Message shown after a recovery email was sent successfully.
-#: /dev/fd/61:49
 msgid "Recovery email sent. Check your inbox and follow the instructions."
 msgstr "ส่งอีเมลกู้คืนแล้ว โปรดตรวจสอบกล่องจดหมายเข้าและปฏิบัติตามคำแนะนำ"
 
@@ -206,11 +193,9 @@ msgstr "บันทึก"
 msgid "Security"
 msgstr "ความปลอดภัย"
 
-#: /dev/fd/58:38
 msgid "Settings loaded"
 msgstr "โหลดการตั้งค่าเรียบร้อยแล้ว"
 
-#: /dev/fd/58:71
 msgid "Settings saved"
 msgstr "บันทึกการตั้งค่าแล้ว"
 
@@ -242,50 +227,41 @@ msgid "To reset your password, click the link below:"
 msgstr "หากต้องการรีเซ็ตรหัสผ่าน โปรดคลิกลิงก์ด้านล่างนี้:"
 
 #. TRANSLATORS: Error shown during registration when the username/email is already taken.
-#: /dev/fd/61:157
 msgid "User already exists."
 msgstr "ชื่อนี้มีผู้ใช้งานอยู่แล้ว"
 
 #. TRANSLATORS: Error shown when a user was created but automatic login failed.
-#: /dev/fd/61:172
 msgid "User created but could not login."
 msgstr "สร้างผู้ใช้สำเร็จ แต่ไม่สามารถเข้าสู่ระบบได้"
 
 #. TRANSLATORS: Exception message when a user cannot be found for provided identifier.
-#: /dev/fd/61:249
 msgid "User not found."
 msgstr "ไม่พบผู้ใช้"
 
 #. TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
-#: /dev/fd/53:311
 #, php-format
 msgid "User with username %s does not exist."
 msgstr "ไม่พบผู้ใช้ชื่อ %s"
 
-#: /dev/fd/58:65
 #, php-format
 msgid "Username %s is already taken"
 msgstr "ชื่อผู้ใช้ %s ถูกใช้ไปแล้ว"
 
 #. TRANSLATORS: Error when username or password is missing from login request.
 #. TRANSLATORS: Error when registration omits username or password.
-#: /dev/fd/61:109 /dev/fd/61:139
 msgid "Username and password are required."
 msgstr "ต้องระบุชื่อผู้ใช้และรหัสผ่าน"
 
 #. TRANSLATORS: Error when username is missing from recovery request.
-#: /dev/fd/61:28
 msgid "Username is required."
 msgstr "ต้องระบุชื่อผู้ใช้"
 
 #. TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
-#: /dev/fd/53:305
 msgid "Username must be a valid e-mail."
 msgstr "ชื่อผู้ใช้ต้องเป็นอีเมลที่ถูกต้อง"
 
 #. TRANSLATORS: Validation error when username is not a valid email address.
 #. TRANSLATORS: Validation error when registration username is not a valid email address.
-#: /dev/fd/61:34 /dev/fd/61:151
 msgid "Username must be a valid email address."
 msgstr "ชื่อผู้ใช้ต้องเป็นที่อยู่อีเมลที่ถูกต้อง"
 
@@ -297,11 +273,9 @@ msgstr "เราได้รับคำขอกู้คืนรหัสผ
 #. TRANSLATORS: Welcome message after successful login.
 #. TRANSLATORS: Welcome message after successful registration and login.
 #. TRANSLATORS: Welcome message shown after successful login.
-#: /dev/fd/59:65 /dev/fd/61:125 /dev/fd/61:178
 msgid "Welcome! You are now logged in."
 msgstr "ยินดีต้อนรับ! คุณเข้าสู่ระบบเรียบร้อยแล้ว"
 
 #. TRANSLATORS: Message shown after user logs out successfully.
-#: /dev/fd/61:195
 msgid "You have been logged out."
 msgstr "คุณได้ออกจากระบบเรียบร้อยแล้ว"

@@ -7,7 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. TRANSLATORS: This string is inside a <title> element, which is a page title / follow rules for web page titles - SEO applies.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/private/templates/email-recover-password.html> (default:., /html/head/title)
@@ -36,15 +37,12 @@ msgid "Confirm password"
 msgstr "Підтвердіть пароль"
 
 #. TRANSLATORS: Error when sending the password recovery email failed.
-#: /dev/fd/61:42
 msgid "Could not send recovery email."
 msgstr "Не вдалося надіслати лист для відновлення."
 
-#: /dev/fd/58:51
 msgid "Current password is incorrect"
 msgstr "Неправильний поточний пароль"
 
-#: /dev/fd/58:47
 msgid "Current password is required"
 msgstr "Потрібно ввести поточний пароль"
 
@@ -96,17 +94,14 @@ msgid "Given name"
 msgstr "Ім'я"
 
 #. TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
-#: /dev/fd/59:39
 msgid "Google response is invalid. Please log in again."
 msgstr "Відповідь Google недійсна. Будь ласка, увійдіть знову."
 
 #. TRANSLATORS: Exception message when recovery link is invalid or expired.
-#: /dev/fd/61:239 /dev/fd/61:243 /dev/fd/61:253
 msgid "Invalid or expired recovery link."
 msgstr "Посилання для відновлення недійсне або термін його дії минув."
 
 #. TRANSLATORS: Error shown when login credentials are invalid.
-#: /dev/fd/61:115
 msgid "Invalid username or password."
 msgstr "Невірне ім'я користувача або пароль."
 
@@ -115,7 +110,6 @@ msgstr "Невірне ім'я користувача або пароль."
 msgid "New password"
 msgstr "Новий пароль"
 
-#: /dev/fd/58:79
 msgid "New password and confirmation password do not match"
 msgstr "Новий пароль і підтвердження пароля не збігаються."
 
@@ -133,17 +127,14 @@ msgid "Password"
 msgstr "Пароль"
 
 #. TRANSLATORS: Validation error for password minimum length. %d is the minimum number of characters.
-#: /dev/fd/53:232
 #, php-format
 msgid "Password must be at least %d characters long."
 msgstr "Пароль має містити щонайменше %d символів."
 
-#: /dev/fd/58:83
 msgid "Password must be at least 6 characters long"
 msgstr "Пароль має містити щонайменше 6 символів"
 
 #. TRANSLATORS: Error when provided password is too short during reset. Minimal length is 6.
-#: /dev/fd/61:64
 msgid "Password must be at least 6 characters long."
 msgstr "Пароль має містити щонайменше 6 символів."
 
@@ -158,13 +149,11 @@ msgid "Password reset"
 msgstr "Скидання пароля"
 
 #. TRANSLATORS: Message shown when the password has been reset successfully.
-#: /dev/fd/61:80
 msgid "Password reset successful."
 msgstr "Пароль успішно змінено."
 
 #. TRANSLATORS: Error when provided passwords do not match during reset.
 #. TRANSLATORS: Error when registration password and confirmation do not match.
-#: /dev/fd/61:58 /dev/fd/61:145
 msgid "Passwords do not match."
 msgstr "Паролі не збігаються."
 
@@ -180,9 +169,10 @@ msgid "Recover password"
 msgstr "Відновити пароль"
 
 #. TRANSLATORS: Message shown after a recovery email was sent successfully.
-#: /dev/fd/61:49
 msgid "Recovery email sent. Check your inbox and follow the instructions."
-msgstr "Лист для відновлення надіслано. Перевірте свою поштову скриньку та дотримуйтесь інструкцій."
+msgstr ""
+"Лист для відновлення надіслано. Перевірте свою поштову скриньку та "
+"дотримуйтесь інструкцій."
 
 #. TRANSLATORS: This string is inside a <label> element, which is a form label / should be concise and as short as possible.
 #. TRANSLATORS: SOURCE: <module://zolinga-rms/install/dist/web-components/login-box/login-box.html> (zolinga-rms:., /html/body/card-deck/form[1]/label[3]/span)
@@ -207,11 +197,9 @@ msgstr "Зберегти"
 msgid "Security"
 msgstr "Безпека"
 
-#: /dev/fd/58:38
 msgid "Settings loaded"
 msgstr "Налаштування завантажено"
 
-#: /dev/fd/58:71
 msgid "Settings saved"
 msgstr "Налаштування збережено"
 
@@ -243,50 +231,41 @@ msgid "To reset your password, click the link below:"
 msgstr "Щоб скинути пароль, натисніть на посилання нижче:"
 
 #. TRANSLATORS: Error shown during registration when the username/email is already taken.
-#: /dev/fd/61:157
 msgid "User already exists."
 msgstr "Користувач уже існує."
 
 #. TRANSLATORS: Error shown when a user was created but automatic login failed.
-#: /dev/fd/61:172
 msgid "User created but could not login."
 msgstr "Користувача створено, але не вдалося виконати вхід."
 
 #. TRANSLATORS: Exception message when a user cannot be found for provided identifier.
-#: /dev/fd/61:249
 msgid "User not found."
 msgstr "Користувача не знайдено."
 
 #. TRANSLATORS: Error when a user lookup by username/email fails; %s is replaced by the username.
-#: /dev/fd/53:311
 #, php-format
 msgid "User with username %s does not exist."
 msgstr "Користувача з ім'ям %s не існує."
 
-#: /dev/fd/58:65
 #, php-format
 msgid "Username %s is already taken"
 msgstr "Ім'я користувача %s вже зайняте"
 
 #. TRANSLATORS: Error when username or password is missing from login request.
 #. TRANSLATORS: Error when registration omits username or password.
-#: /dev/fd/61:109 /dev/fd/61:139
 msgid "Username and password are required."
 msgstr "Ім'я користувача та пароль обов'язкові."
 
 #. TRANSLATORS: Error when username is missing from recovery request.
-#: /dev/fd/61:28
 msgid "Username is required."
 msgstr "Необхідно вказати ім'я користувача."
 
 #. TRANSLATORS: Validation error shown when provided username is not a valid e-mail address.
-#: /dev/fd/53:305
 msgid "Username must be a valid e-mail."
 msgstr "Ім'я користувача має бути дійсною електронною адресою."
 
 #. TRANSLATORS: Validation error when username is not a valid email address.
 #. TRANSLATORS: Validation error when registration username is not a valid email address.
-#: /dev/fd/61:34 /dev/fd/61:151
 msgid "Username must be a valid email address."
 msgstr "Ім'я користувача має бути дійсною електронною адресою."
 
@@ -298,11 +277,9 @@ msgstr "Ми отримали запит на відновлення парол�
 #. TRANSLATORS: Welcome message after successful login.
 #. TRANSLATORS: Welcome message after successful registration and login.
 #. TRANSLATORS: Welcome message shown after successful login.
-#: /dev/fd/59:65 /dev/fd/61:125 /dev/fd/61:178
 msgid "Welcome! You are now logged in."
 msgstr "Вітаємо! Ви успішно увійшли."
 
 #. TRANSLATORS: Message shown after user logs out successfully.
-#: /dev/fd/61:195
 msgid "You have been logged out."
 msgstr "Ви вийшли з системи."
