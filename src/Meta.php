@@ -52,7 +52,7 @@ class Meta implements ArrayAccess {
                 SQL, $this->user->id, $prop)['data'] ?? 'null', true);
         }
 
-        return $this->meta[$prop];
+        return $this->meta[$prop] ?? $api->config['rms']['user']['defaults']['meta'][$prop] ?? null;
     }
 
     public function setMeta(string $prop, mixed $data): void {

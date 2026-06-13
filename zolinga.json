@@ -225,6 +225,12 @@
             "google": {
                 "# clientId": "The Google API client ID for sign-in button. See https://console.developers.google.com/apis",
                 "clientId": ""
+            },
+            "user": {
+                "defaults": {
+                    "# meta": "Default values for new user accounts - not saved to DB, just used as default values when no meta is defined.",
+                    "meta": {}
+                }
             }
         }
     }
