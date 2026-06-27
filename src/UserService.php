@@ -150,6 +150,7 @@ class UserService extends User implements ServiceInterface
         global $api;
         
         if (!$this->id) return; // not loaded yet - no rights
+        $event->requiresLogin = false; // user is logged in, no need to require login
         $rights = array_map(strval(...), $event->unauthorized);
         $authorized = $this->filterRights($rights);
         $event->authorize(...$authorized);

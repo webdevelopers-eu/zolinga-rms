@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Zolinga\Rms;
 
-use Zolinga\System\Events\{ListenerInterface, ContentEvent};
+use Zolinga\System\Events\ListenerInterface;
+use Zolinga\System\Events\Content\HtmlContentEvent;
 
 /**
  * Cms integration class.
@@ -15,7 +16,7 @@ use Zolinga\System\Events\{ListenerInterface, ContentEvent};
 class CmsIntegration implements ListenerInterface
 {
 
-    public function onContent(ContentEvent $event): void
+    public function onContent(HtmlContentEvent $event): void
     {
         global $api;
 

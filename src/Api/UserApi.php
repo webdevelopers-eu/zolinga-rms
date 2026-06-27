@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Zolinga\Rms\Api;
 
 use Zolinga\Rms\User;
-use Zolinga\System\Events\{ContentEvent, RequestEvent, RequestResponseEvent, ListenerInterface, AuthorizeEvent};
+use Zolinga\System\Events\Content\HtmlContentEvent;
+use Zolinga\System\Events\{RequestEvent, RequestResponseEvent, ListenerInterface, AuthorizeEvent};
 use Zolinga\Commons\Email;
 /**
  * User API
@@ -179,7 +180,7 @@ class UserApi implements ListenerInterface
     }
 
     // we just need to wake up the user object so it sets cookies
-    public function onContent(ContentEvent $event): void
+    public function onContent(HtmlContentEvent $event): void
     {
         global $api;
         // wake up the user object

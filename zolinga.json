@@ -96,7 +96,7 @@
         },
         {
             "description": "Just wake up RMS User to set cookies.",
-            "event": "system:content",
+            "event": "system:content:html",
             "class": "\\Zolinga\\Rms\\Api\\UserApi",
             "method": "onContent",
             "origin": [
@@ -106,7 +106,7 @@
         },
         {
             "description": "Integrate with front-end HTML page.",
-            "event": "system:content",
+            "event": "system:content:html",
             "class": "\\Zolinga\\Rms\\CmsIntegration",
             "method": "onContent",
             "origin": [
