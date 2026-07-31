@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace Zolinga\Rms\Api\Google;
-use Zolinga\System\Events\{RequestResponseEvent, ListenerInterface, RequestEvent};
+use Zolinga\System\Events\{RequestResponseEvent, ListenerInterface};
 
 /**
  * This class is responsible for handling the authentication requests using Google Identity services.
@@ -33,8 +33,10 @@ class GoogleApi implements ListenerInterface
         global $api;
 
         $jwt = new GoogleJwt($event->request["jwt"]);
+        $clientId = $api->config["rms"]["google"]["clientId"]
+            or throw new \Exception("Google client ID not set in the configuration.");
 
-        if (!$jwt->isValid()) {
+        if (!$jwt->isValid($clientId)) {
             // TRANSLATORS: Error shown when Google authentication response is invalid and the user must re-authenticate.
             $event->setStatus($event::STATUS_UNAUTHORIZED, dgettext('zolinga-rms', "Google response is invalid. Please log in again."));
             return;

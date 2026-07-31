@@ -90,7 +90,7 @@ readonly class GoogleJwt implements \JsonSerializable
 
     private function isValidAudience(?string $googleClientId = null): bool
     {
-        if ($googleClientId && $this->payload['aud'] !== $googleClientId()) {
+        if ($googleClientId && $this->payload['aud'] !== $googleClientId) {
             trigger_error("Invalid audience (Google client id) in JWT: {$this->payload['aud']}, expected {$googleClientId}", E_USER_WARNING);
             return false;
         }

@@ -49,6 +49,9 @@ class UserService extends User implements ServiceInterface
         
         try {
             parent::__construct($id);
+            if ($this->id && (!$this->canLogin || $this->removed)) {
+                $this->reset();
+            }
         } catch (\Throwable $e) { // usually when user with $id does not exist
             $api->log->error("rms.login", $e);
             $this->reset();
@@ -68,6 +71,13 @@ class UserService extends User implements ServiceInterface
         
         try {
             parent::load($who, $force);
+            if ($this->id && (!$this->canLogin || $this->removed)) {
+                $this->reset();
+                return false;
+            }
+            if (!headers_sent()) {
+                session_regenerate_id(true);
+            }
             $_SESSION['rms']['user'] = $this->id;
             $this->setLoggedInFlagCookie((bool) $this->id);
         } catch (\Throwable $e) {
@@ -211,7 +221,7 @@ class UserService extends User implements ServiceInterface
             $expire = (int) base_convert($expire, 36, 10);
             
             // Hash does not match - probably IP changed, browser changed, or tampered with
-            if ($this->hashAutologinToken($id, $expire) !== $hash) {
+            if (!hash_equals($this->hashAutologinToken($id, $expire), $hash)) {
                 return null;
             }
             
@@ -257,10 +267,12 @@ class UserService extends User implements ServiceInterface
             $passHash = $api->db->query("SELECT password FROM rmsUsers WHERE id = ?", $userId)['password']
             or throw new \Exception("User $userId not found.");
             
+            // Re-use system registry tokenHashKey specifically for hmac hashing security
+            $key = $api->registry->get('oauth2:tokenHashKey') ?: 'zolinga-rms-default-secret-salt';
             $hashString = $userId . $expire . @$_SERVER['REMOTE_ADDR'] . @$_SERVER['HTTP_USER_AGENT'] . $passHash;
             
             // calculate the bytes needed to store the PHP_MAX_INT binary
-            return base_convert(substr(sha1($hashString), 4, 28), 16, 36);
+            return base_convert(substr(hash_hmac('sha256', $hashString, $key), 4, 28), 16, 36);
         }
         
         /**

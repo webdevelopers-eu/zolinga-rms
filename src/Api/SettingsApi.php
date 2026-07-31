@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Zolinga\Rms\Api;
 
-use Zolinga\Rms\User;
-use Zolinga\System\Events\{RequestResponseEvent, ListenerInterface, AuthorizeEvent};
-use Zolinga\Commons\Email;
+use Zolinga\System\Events\RequestResponseEvent;
+use Zolinga\System\Events\ListenerInterface;
 
 /**
  * Settings API
@@ -60,7 +59,7 @@ class SettingsApi implements ListenerInterface
  
         // Username
         $username = $event->request['username'];
-        if ($username != $api->user->username) {
+        if ($username !== $api->user->username) {
             if ($api->rms->findUser($username)) {
                 throw new \InvalidArgumentException(sprintf(dgettext('zolinga-rms', 'Username %s is already taken'), $username), 403);
             }
@@ -75,7 +74,7 @@ class SettingsApi implements ListenerInterface
     {
         global $api;
         
-        if ($password != $password2) {
+        if ($password !== $password2) {
             throw new \InvalidArgumentException(dgettext('zolinga-rms', 'New password and confirmation password do not match'), 403);
         }
 
