@@ -1,6 +1,6 @@
 {
     "name": "Zolinga Rights Management System",
-    "version": "1.1",
+    "version": "1.2",
     "description": "Provides a simple rights management system for Zolinga.",
     "authors": [
         "Danny Sevcik <danny@zolinga.net>"
@@ -143,6 +143,20 @@
                 "remote"
             ],
             "right": "member of users"
+        },
+        {
+            "event": "userSearch",
+            "description": "Search for RMS users by username (LIKE), id (exact), lastLoginFrom IP (exact), and date ranges on created/modified/lastLogin. Returns an array of user records.",
+            "class": "\\Zolinga\\Rms\\Mcp\\UserSearchMcpHandler",
+            "method": "onUserSearch",
+            "origin": [
+                "mcp"
+            ],
+            "right": "manage rms",
+            "schema": {
+                "request": "module://zolinga-rms/schema/mcp/userSearch-request.json",
+                "response": "module://zolinga-rms/schema/mcp/userSearch-response.json"
+            }
         }
     ],
     "autoload": {

@@ -1,0 +1,52 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "title": "User Search Request",
+    "description": "Search for RMS users. All criteria are optional. 'username' is a LIKE search; 'id' and 'lastLoginFrom' are exact matches; date fields support range queries via *From/*To suffixes. Date values may be Unix timestamps (int) or date strings parseable by strtotime().",
+    "properties": {
+        "username": {
+            "type": "string",
+            "description": "Partial username (e-mail) to search for. Uses SQL LIKE matching (wildcards added automatically)."
+        },
+        "id": {
+            "type": "integer",
+            "description": "Exact user ID to match."
+        },
+        "lastLoginFrom": {
+            "type": "string",
+            "description": "Exact IP address of the last login to match."
+        },
+        "createdFrom": {
+            "type": ["integer", "string"],
+            "description": "Lower bound (inclusive) for the 'created' timestamp. Unix timestamp or date string."
+        },
+        "createdTo": {
+            "type": ["integer", "string"],
+            "description": "Upper bound (inclusive) for the 'created' timestamp. Unix timestamp or date string."
+        },
+        "modifiedFrom": {
+            "type": ["integer", "string"],
+            "description": "Lower bound (inclusive) for the 'modified' timestamp. Unix timestamp or date string."
+        },
+        "modifiedTo": {
+            "type": ["integer", "string"],
+            "description": "Upper bound (inclusive) for the 'modified' timestamp. Unix timestamp or date string."
+        },
+        "lastLoginAfter": {
+            "type": ["integer", "string"],
+            "description": "Lower bound (inclusive) for the 'lastLogin' timestamp. Unix timestamp or date string."
+        },
+        "lastLoginBefore": {
+            "type": ["integer", "string"],
+            "description": "Upper bound (inclusive) for the 'lastLogin' timestamp. Unix timestamp or date string."
+        },
+        "limit": {
+            "type": "integer",
+            "description": "Maximum number of results to return. Default 100, max 1000.",
+            "default": 100,
+            "minimum": 1,
+            "maximum": 1000
+        }
+    },
+    "additionalProperties": false
+}

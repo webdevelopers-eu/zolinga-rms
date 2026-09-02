@@ -1,0 +1,59 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "title": "User Search Response",
+    "description": "Raw structured payload for the userSearch MCP tool. Wrapped by the MCP gateway in { content, isError, structuredContent }.",
+    "properties": {
+        "data": {
+            "type": "array",
+            "description": "Array of user records matching the search criteria.",
+            "items": {
+                "$ref": "#/$defs/user"
+            }
+        }
+    },
+    "required": ["data"],
+    "additionalProperties": false,
+    "$defs": {
+        "user": {
+            "type": "object",
+            "description": "A single RMS user record.",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Unique user ID."
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User login e-mail."
+                },
+                "removed": {
+                    "type": "integer",
+                    "description": "Removal timestamp. 0 means not removed."
+                },
+                "canLogin": {
+                    "type": "boolean",
+                    "description": "Whether the user can log in."
+                },
+                "created": {
+                    "type": ["integer", "null"],
+                    "description": "Unix timestamp of account creation."
+                },
+                "modified": {
+                    "type": ["integer", "null"],
+                    "description": "Unix timestamp of last modification."
+                },
+                "lastLogin": {
+                    "type": ["integer", "null"],
+                    "description": "Unix timestamp of last login."
+                },
+                "lastLoginFrom": {
+                    "type": ["string", "null"],
+                    "description": "IP address of the last login."
+                }
+            },
+            "required": ["id", "username", "removed", "canLogin", "created", "modified", "lastLogin", "lastLoginFrom"],
+            "additionalProperties": false
+        }
+    }
+}

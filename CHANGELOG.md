@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2] - 2026-09-03
+
+### Added
+- MCP tool `userSearch` for searching RMS users by username (LIKE), id (exact), lastLoginFrom IP (exact), and date ranges on created/modified/lastLogin. Requires the "manage rms" right.
+
 ## [1.1] - 2026-07-08
 
 ### Changed
