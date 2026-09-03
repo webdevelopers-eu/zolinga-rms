@@ -6,7 +6,7 @@ namespace Zolinga\Rms\Api;
 
 use Zolinga\Rms\User;
 use Zolinga\System\Events\Content\HtmlContentEvent;
-use Zolinga\System\Events\{RequestEvent, RequestResponseEvent, ListenerInterface, AuthorizeEvent};
+use Zolinga\System\Events\{RequestEvent, WebEvent, ListenerInterface, AuthorizeEvent};
 use Zolinga\Commons\Email;
 /**
  * User API
@@ -18,7 +18,7 @@ class UserApi implements ListenerInterface
 {
     private const RECOVERY_LINK_EXPIRATION = 3600;
 
-    public function onRecover(RequestResponseEvent $event): void
+    public function onRecover(WebEvent $event): void
     {
         global $api;
 
@@ -50,7 +50,7 @@ class UserApi implements ListenerInterface
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Recovery email sent. Check your inbox and follow the instructions."));
     }
 
-    public function onReset(RequestResponseEvent $event): void
+    public function onReset(WebEvent $event): void
     {
         global $api;
 
@@ -93,10 +93,10 @@ class UserApi implements ListenerInterface
      *    const resp = await api.dispatchEvent('rms:login', {username: 'user', password: 'password'});
      * ```
      * 
-     * @param RequestResponseEvent $event
+     * @param WebEvent $event
      * @return void
      */
-    public function onLogin(RequestResponseEvent $event): void
+    public function onLogin(WebEvent $event): void
     {
         global $api;
 
@@ -127,7 +127,7 @@ class UserApi implements ListenerInterface
         $event->setStatus($event::STATUS_OK, $msg);
     }
 
-    public function onRegister(RequestResponseEvent $event): void
+    public function onRegister(WebEvent $event): void
     {
         global $api;
 
@@ -175,6 +175,7 @@ class UserApi implements ListenerInterface
         }
 
         $event->response['user'] = $api->user->getPublicUserData();
+        $event->broadcastBack('tracking', ['event' => 'rms:register'], false);
         // TRANSLATORS: Welcome message after successful registration and login.
         $event->setStatus($event::STATUS_OK, dgettext("zolinga-rms", "Welcome! You are now logged in."));
     }
