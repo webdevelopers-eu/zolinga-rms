@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Wiki article "Magic Rights" expanded: documents that `member of users`/`member of guests` are code-based magic rights while `member of administrators` is an ordinary DB-backed right requiring an `rmsRights` row, plus the authorization flow and CLI testing notes.
+- New agent skill `zolinga-rms-rights` covering rights resolution, storage schema, and testing of rights-protected listeners.
+
+### Fixed
+- Wiki `Zolinga RMS/CLI.md` examples used wrong event name `zolinga:rms`; the actual manifest event is `rms:user`. Examples corrected.
+
 ## [1.2] - 2026-09-03
 
 ### Added

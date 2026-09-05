@@ -6,7 +6,7 @@ The Zolinga RMS CLI is a command line tool that allows users to interact with th
 ## Usage
 
 ```
-bin/zolinga zolinga:rms --user=<user mail or id>
+bin/zolinga rms:user --user=<user mail or id>
       [--grant=<string>]
       [--revoke=<string>]
       [--hasRight=<string>]
@@ -22,13 +22,13 @@ bin/zolinga zolinga:rms --user=<user mail or id>
 ## Examples
 
 ```bash
-bin/zolinga zolinga:rms --user="user@example.com" --grant="member of administrators"
+bin/zolinga rms:user --user="user@example.com" --grant="member of administrators"
 
-bin/zolinga zolinga:rms --user=123 --revoke="access page#134"
+bin/zolinga rms:user --user=123 --revoke="access page#134"
 
-bin/zolinga --single=permissions zolinga:rms --user="admin@example.com" --list
+bin/zolinga --single=permissions rms:user --user="admin@example.com" --list
 
-bin/zolinga --single=hasRight zolinga:rms --user="admin@example.com" --hasRight="read all"
+bin/zolinga --single=hasRight rms:user --user="admin@example.com" --hasRight="read all"
 ```
 
 Note: The `--single=permissions` option is used to output only the response's `permissions` field. See `bin/zolinga --help` for details.
