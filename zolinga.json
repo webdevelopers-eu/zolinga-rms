@@ -152,7 +152,7 @@
             "origin": [
                 "mcp"
             ],
-            "right": "manage rms",
+            "right": "member of administrators",
             "schema": {
                 "request": "module://zolinga-rms/schema/mcp/userSearch-request.json",
                 "response": "module://zolinga-rms/schema/mcp/userSearch-response.json"
