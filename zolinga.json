@@ -1,6 +1,6 @@
 {
     "name": "Zolinga Rights Management System",
-    "version": "1.4",
+    "version": "1.5",
     "description": "Provides a simple rights management system for Zolinga.",
     "authors": [
         "Danny Sevcik <danny@zolinga.net>"
@@ -36,7 +36,7 @@
             "priority": 0.5
         },        
         {
-            "description": "CLI user management interface.",
+            "description": "CLI user management interface. Allows passwordless login, granting/revoking rights and more.",
             "event": "rms:user",
             "class": "\\Zolinga\\Rms\\Api\\UserCliApi",
             "method": "onRequest",

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `rms:user --login` CLI option: passwordless login of the managed user. Subsequent events in the same CLI run are authorized as that user. Does not update `lastLogin`/`lastLoginFrom`.
 - Wiki article "Magic Rights" expanded: documents that `member of users`/`member of guests` are code-based magic rights while `member of administrators` is an ordinary DB-backed right requiring an `rmsRights` row, plus the authorization flow and CLI testing notes.
 - New agent skill `zolinga-rms-rights` covering rights resolution, storage schema, and testing of rights-protected listeners.
 

@@ -11,6 +11,7 @@ bin/zolinga rms:user --user=<user mail or id>
       [--revoke=<string>]
       [--hasRight=<string>]
       [--list]
+      [--login]
 ```      
 
 * `--user` - The user to manage. This can be specified as an user name (email address) or user id.
@@ -18,6 +19,7 @@ bin/zolinga rms:user --user=<user mail or id>
 * `--revoke` - Revokes a right from the user.
 * `--hasRight` - Checks if the user has a specific right.
 * `--list` - Lists all rights of the user.
+* `--login` - Logs the user in without a password. See [Logging In From Command Line](#logging-in-from-command-line).
 
 ## Examples
 
@@ -32,6 +34,19 @@ bin/zolinga --single=hasRight rms:user --user="admin@example.com" --hasRight="re
 ```
 
 Note: The `--single=permissions` option is used to output only the response's `permissions` field. See `bin/zolinga --help` for details.
+
+# Logging In From Command Line
+
+The `--login` option of the `rms:user` event logs the user in without a password. Subsequent events in the same `bin/zolinga` run are then authorized as that user:
+
+```bash
+bin/zolinga rms:user --user="admin@example.com" --login \
+    my:event --param=value
+```
+
+- The login is passwordless and works only from the command line.
+- The last-login timestamp and IP are **not** updated.
+- The login takes effect for all events chained after `rms:user` in the same run.
 
 # Related
 * [API Interface](:ref:event:rms:user) - The API interface for Zolinga User CLI.

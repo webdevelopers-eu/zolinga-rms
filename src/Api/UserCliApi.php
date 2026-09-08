@@ -36,11 +36,16 @@ class UserCliApi implements ListenerInterface
     }
 
     /**
-     * bin/zolinga rms:user --user=<email or id> 
+     * bin/zolinga rms:user --user=<email-or-id> 
      *      [--grant=<permission>] 
      *      [--revoke=<permission>]
      *      [--hasRight=<permission>]
      *      [--list]
+     *      [--login | --login=<email-or-id>]
+     * 
+     * The --login option logs the user in without a password (CLI only).
+     * It does not update lastLogin/lastLoginFrom. It is a CLI hack so that
+     * subsequent events in the same run are authorized as this user.
      * 
      * @param RequestResponseEvent $event
      * @return void
@@ -48,6 +53,16 @@ class UserCliApi implements ListenerInterface
     public function onRequest(RequestResponseEvent $event)
     {
         global $api;
+
+        if ($event->request['login'] ?? false) {
+            $loginAs = !is_bool($event->request['login']) ? $event->request['login'] : $event->request['user'] ?? null;
+            if (!$loginAs) throw new \Exception("Missing `bin/zolinga rms:user --login=<email-or-id>` or `bin/zolinga rms:user --user=<email-or-id> --login` argument. As who should I log in?");
+            $event->response['loggedIn'] = $api->user->loginNoPassword($loginAs, true);
+        }
+
+        if (!isset($event->request['user'])) {
+            return; // maybe just a --login=<email-or-id> request
+        }
 
         $user = $api->rms->findUser($event->request['user'] ?? 0)
             or throw new \Exception("User " . json_encode($event->request['user'] ?? null) ." not found. Specify correct --user=<email or id>");

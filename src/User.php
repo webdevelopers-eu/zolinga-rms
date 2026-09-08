@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Zolinga\Rms;
 
 use Stringable;
-use Exception, InvalidArgumentException;
 use const Zolinga\System\IS_INTERACTIVE;
 
 
@@ -124,12 +123,12 @@ class User
      *      id: ?int, 
      *      username: ?string, 
      *      password: ?string,
-     *      lang: ?string
+     *      lang: ?string,
      *      removed: ?int, 
      *      canLogin: ?int, 
      *      created: ?int, 
      *      modified: ?int, 
-     *      lastLogin: ?int, lo
+     *      lastLogin: ?int,
      *      lastLoginFrom: ?string} $who
      * @param bool $force force reload even if the object is already loaded or modified.
      */
@@ -165,6 +164,14 @@ class User
                 return (bool) $this->modifiedFields;
             case 'canLogin':
                 return (bool) $this->data[$name];
+            case 'removedFmt':
+                return $this->data['removed'] ? date('c', $this->data['removed']) : null;
+            case 'createdFmt':
+                return $this->data['created'] ? date('c', $this->data['created']) : null;
+            case 'modifiedFmt':
+                return $this->data['modified'] ? date('c', $this->data['modified']) : null;
+            case 'lastLoginFmt':
+                return $this->data['lastLogin'] ? date('c', $this->data['lastLogin']) : null;
             default:
                 if (!key_exists($name, $this->data)) {
                     throw new \InvalidArgumentException("Property $name does not exist.");
@@ -266,7 +273,7 @@ class User
         global $api;
 
         if ($this->modifiedFields && !$force) {
-            throw new Exception("User data has been modified and not saved.");
+            throw new \Exception("User data has been modified and not saved.");
         }
 
         $res = $api->db->query("SELECT * FROM rmsUsers WHERE id = ?", $id)->current();
@@ -297,7 +304,7 @@ class User
         global $api;
 
         if (!$force && ($this->modifiedFields || $this->data['id'])) {
-            throw new Exception("User data has been modified (" . implode(", ", array_keys($this->modifiedFields)) . ") or User object is already loaded " . ($this->data['id'] ? "with ID " . $this->data['id'] : "(not loaded)") . ".");
+            throw new \Exception("User data has been modified (" . implode(", ", array_keys($this->modifiedFields)) . ") or User object is already loaded " . ($this->data['id'] ? "with ID " . $this->data['id'] : "(not loaded)") . ".");
         }
 
         if (!filter_var($username, FILTER_VALIDATE_EMAIL)) {
