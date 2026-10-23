@@ -127,11 +127,22 @@ class UserService extends User implements ServiceInterface
         $this->save();
     }
     
+    /**
+     * Reset the service to its logged-out state.
+     *
+     * Clears the session, the cookies AND the loaded user data. The parent
+     * User::reset() is what nulls $this->data; without it a failed login
+     * would leave the identity loaded, so $this->id, isGuest() and
+     * hasRight() would still report the previous user.
+     *
+     * @return void
+     */
     protected function reset(): void
     {
         unset($_SESSION['rms']['user']);
         $this->setLoggedInFlagCookie(false);
         $this->clearAutologinCookie();
+        parent::reset();
     }
     
     private function clearAutologinCookie(): void

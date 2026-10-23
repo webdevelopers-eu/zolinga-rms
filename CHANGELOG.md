@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6] - 2026-10-23
+
+### Security
+- `UserService::reset()` now also clears the loaded user data (via `parent::reset()`). Previously it only cleared the session and cookies, so a failed login left the identity loaded: `loginNoPassword()` returned `false` while `$api->user->id`, `isGuest()` and `hasRight()` still reported the previous user. Any caller that trusted the boolean could then act as that user.
+
 ### Added
 - `rms:user --login` CLI option: passwordless login of the managed user. Subsequent events in the same CLI run are authorized as that user. Does not update `lastLogin`/`lastLoginFrom`.
 - Wiki article "Magic Rights" expanded: documents that `member of users`/`member of guests` are code-based magic rights while `member of administrators` is an ordinary DB-backed right requiring an `rmsRights` row, plus the authorization flow and CLI testing notes.

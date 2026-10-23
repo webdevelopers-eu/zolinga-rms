@@ -1,6 +1,6 @@
 {
     "name": "Zolinga Rights Management System",
-    "version": "1.5",
+    "version": "1.6",
     "description": "Provides a simple rights management system for Zolinga.",
     "authors": [
         "Danny Sevcik <danny@zolinga.net>"
