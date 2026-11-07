@@ -1,0 +1,19 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "title": "User Recover Request",
+    "description": "Send a password recovery e-mail to an RMS user. Requires the 'member of administrators' right.",
+    "properties": {
+        "username": {
+            "type": "string",
+            "format": "email",
+            "description": "Login e-mail of the account that should receive the recovery e-mail."
+        },
+        "referrer": {
+            "type": "string",
+            "description": "Optional page URL used as the base of the reset link, so the owner lands on a known page after opening it. Only the path part is used. Defaults to the base URL configured for the site."
+        }
+    },
+    "required": ["username"],
+    "additionalProperties": false
+}

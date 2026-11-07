@@ -1,6 +1,6 @@
 {
     "name": "Zolinga Rights Management System",
-    "version": "1.9",
+    "version": "1.10",
     "description": "Provides a simple rights management system for Zolinga.",
     "authors": [
         "Danny Sevcik <danny@zolinga.net>"
@@ -64,6 +64,21 @@
                 "remote"
             ],
             "priority": 0.5
+        },
+        {
+            "description": "SITE-WIDE ADMINISTRATIVE TOOL - USE WITH CAUTION. Sends a password recovery e-mail with a time-limited reset link to any RMS user account. The owner must open the link and choose a new password; no password is returned to the caller. Reports success even when the account does not exist, so the answer cannot be used to probe which e-mails are registered.",
+            "event": "userRecover",
+            "class": "\\Zolinga\\Rms\\Api\\UserApi",
+            "method": "onRecover",
+            "origin": [
+                "mcp"
+            ],
+            "priority": 0.5,
+            "right": "member of administrators",
+            "schema": {
+                "request": "module://zolinga-rms/schema/mcp/userRecover-request.json",
+                "response": "module://zolinga-rms/schema/mcp/userRecover-response.json"
+            }
         },
         {
             "description": "The User password reset.",

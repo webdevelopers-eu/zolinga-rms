@@ -1,0 +1,13 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "title": "User Recover Response",
+    "description": "Raw structured payload for the userRecover MCP tool. Wrapped by the MCP gateway in { content, isError, structuredContent }. Omitted on argument validation errors.",
+    "properties": {
+        "showCard": {
+            "type": "string",
+            "description": "UI hint for the web client. Set to \"sign-in\"."
+        }
+    },
+    "additionalProperties": false
+}

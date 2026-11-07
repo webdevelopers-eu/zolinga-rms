@@ -6,6 +6,7 @@ namespace Zolinga\Rms\Api;
 
 use Zolinga\Rms\User;
 use Zolinga\System\Events\Content\HtmlContentEvent;
+use Zolinga\System\Events\Mcp\Tools\CallEvent;
 use Zolinga\System\Events\{RequestEvent, WebEvent, ListenerInterface, AuthorizeEvent};
 use Zolinga\Commons\Email;
 /**
@@ -18,7 +19,17 @@ class UserApi implements ListenerInterface
 {
     private const RECOVERY_LINK_EXPIRATION = 3600;
 
-    public function onRecover(WebEvent $event): void
+    /**
+     * Send a password recovery e-mail.
+     *
+     * Handles both the front-end event `rms:recover` and the administrator-only
+     * MCP tool `userRecover`. Accepts `username` (valid e-mail) and an optional
+     * `referrer` used to build the reset link.
+     *
+     * @param WebEvent|CallEvent $event
+     * @return void
+     */
+    public function onRecover(WebEvent|CallEvent $event): void
     {
         global $api;
 
@@ -37,8 +48,9 @@ class UserApi implements ListenerInterface
         }
 
         $user = $api->rms->findUser($username);
+        $referrer = $event->request['referrer'] ?? $api->config['baseURL'] ?? "";
 
-        if ($user && !$this->sendRecoveryEmail($user, $event->request['referrer'] ?? "")) {
+        if ($user && !$this->sendRecoveryEmail($user, $referrer)) {
             // TRANSLATORS: Error when sending the password recovery email failed.
             $event->setStatus($event::STATUS_ERROR, dgettext("zolinga-rms", "Could not send recovery email."));
             return;
@@ -204,7 +216,7 @@ class UserApi implements ListenerInterface
         $file = $api->locale->getLocalizedFile("private://zolinga-rms/templates/email-recover-password.html");
         $hash = $this->generateHash($user, time() + self::RECOVERY_LINK_EXPIRATION);
 
-        $path = parse_url($referrer, PHP_URL_PATH);
+        $path = parse_url($referrer, PHP_URL_PATH) ?: "/";
         $recoveryLink = $api->url->resolveUrl($path);
         $recoveryLink .= "#!recover=$hash";
 
