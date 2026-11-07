@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10] - 2026-11-07
+
+### Added
+- MCP tool `userRecover`: sends a password recovery e-mail with a time-limited reset link to any user account. Reuses `UserApi::onRecover()`, which now accepts `WebEvent|CallEvent`. Protected by the `member of administrators` right.
+
+### Changed
+- `UserApi::onRecover()` falls back to `$api->config['baseURL']` when no `referrer` is supplied, so the reset link is absolute instead of root-relative.
+
 ## [1.9] - 2026-11-07
 
 ### Added
