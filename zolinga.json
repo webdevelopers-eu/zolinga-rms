@@ -1,6 +1,6 @@
 {
     "name": "Zolinga Rights Management System",
-    "version": "1.6",
+    "version": "1.7",
     "description": "Provides a simple rights management system for Zolinga.",
     "authors": [
         "Danny Sevcik <danny@zolinga.net>"
@@ -156,6 +156,20 @@
             "schema": {
                 "request": "module://zolinga-rms/schema/mcp/userSearch-request.json",
                 "response": "module://zolinga-rms/schema/mcp/userSearch-response.json"
+            }
+        },
+        {
+            "event": "userCreate",
+            "description": "SITE-WIDE ADMINISTRATIVE TOOL - USE WITH CAUTION. Create a new RMS user account with a mandatory e-mail username and password. Optionally set canLogin, lang, given/family name meta data and grant rights (e.g. \"member of administrators\"). Fails if a user with the same username already exists.",
+            "class": "\\Zolinga\\Rms\\Mcp\\UserCreateMcpHandler",
+            "method": "onCreate",
+            "origin": [
+                "mcp"
+            ],
+            "right": "member of administrators",
+            "schema": {
+                "request": "module://zolinga-rms/schema/mcp/userCreate-request.json",
+                "response": "module://zolinga-rms/schema/mcp/userCreate-response.json"
             }
         }
     ],

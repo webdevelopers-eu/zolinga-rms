@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7] - 2026-11-07
+
+### Added
+- MCP tool `userCreate` for creating RMS users. Accepts `username` (valid e-mail) and `password`, plus optional `canLogin`, `lang`, `givenName`, `familyName` and `grant` (list of rights to grant). Protected by the `member of administrators` right, so only administrators see it in `tools/list` and can call it.
+
 ## [1.6] - 2026-10-23
 
 ### Security

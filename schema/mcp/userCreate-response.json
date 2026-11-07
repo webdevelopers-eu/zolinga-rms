@@ -1,0 +1,53 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "title": "User Create Response",
+    "description": "Raw structured payload for the userCreate MCP tool. Wrapped by the MCP gateway in { content, isError, structuredContent }.",
+    "properties": {
+        "user": {
+            "type": "object",
+            "description": "The newly created user record.",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Unique user ID assigned by the database."
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User login e-mail."
+                },
+                "canLogin": {
+                    "type": "boolean",
+                    "description": "Whether the user can log in."
+                },
+                "lang": {
+                    "type": "string",
+                    "description": "Preferred locale in ll_CC format."
+                },
+                "created": {
+                    "type": ["integer", "null"],
+                    "description": "Unix timestamp of account creation."
+                },
+                "givenName": {
+                    "type": ["string", "null"],
+                    "description": "Given (first) name meta, if set."
+                },
+                "familyName": {
+                    "type": ["string", "null"],
+                    "description": "Family (last) name meta, if set."
+                },
+                "permissions": {
+                    "type": "array",
+                    "description": "Rights granted to the user.",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": ["id", "username", "canLogin", "lang", "created", "givenName", "familyName", "permissions"],
+            "additionalProperties": false
+        }
+    },
+    "required": ["user"],
+    "additionalProperties": false
+}

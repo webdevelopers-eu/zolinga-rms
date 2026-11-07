@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "title": "User Create Request",
+    "description": "Create a new RMS user account. 'username' (a valid e-mail address) and 'password' are required. All other fields are optional.",
+    "properties": {
+        "username": {
+            "type": "string",
+            "format": "email",
+            "description": "Login e-mail of the new user. Must not already exist."
+        },
+        "password": {
+            "type": "string",
+            "minLength": 6,
+            "description": "Plain-text password. Minimum 6 characters."
+        },
+        "canLogin": {
+            "type": "boolean",
+            "default": true,
+            "description": "Whether the user is allowed to log in. Defaults to true."
+        },
+        "lang": {
+            "type": "string",
+            "pattern": "^[a-z]{2}_[A-Z]{2}$",
+            "description": "Preferred locale in ll_CC format, e.g. \"en_US\"."
+        },
+        "givenName": {
+            "type": "string",
+            "description": "Given (first) name stored as user meta."
+        },
+        "familyName": {
+            "type": "string",
+            "description": "Family (last) name stored as user meta."
+        },
+        "grant": {
+            "type": "array",
+            "description": "Rights to grant to the new user, e.g. [\"member of administrators\"].",
+            "items": {
+                "type": "string",
+                "minLength": 1
+            }
+        }
+    },
+    "required": ["username", "password"],
+    "additionalProperties": false
+}
