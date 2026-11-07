@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Zolinga\Rms;
 
+use Zolinga\System\Events\RequestEvent;
 use Zolinga\System\Events\ServiceInterface;
+use Zolinga\System\Types\OriginEnum;
 use WeakReference;
 
 /**
@@ -184,6 +186,15 @@ class Service implements ServiceInterface
         }
         $user->create();
         $this->addUserToCache($user);
+
+        // Announce the new user so that feature modules can provision their
+        // per-user data. RMS itself does not know about them.
+        $api->dispatchEvent(new RequestEvent(
+            'rms:user:created',
+            OriginEnum::INTERNAL,
+            ['userId' => (int) $user->id]
+        ));
+
         return $user;
     }
 

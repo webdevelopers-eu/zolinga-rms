@@ -1,6 +1,6 @@
 {
     "name": "Zolinga Rights Management System",
-    "version": "1.8",
+    "version": "1.9",
     "description": "Provides a simple rights management system for Zolinga.",
     "authors": [
         "Danny Sevcik <danny@zolinga.net>"
@@ -199,6 +199,12 @@
             "description": "Register a new user account.",
             "class": "\\Zolinga\\System\\Events\\WebEvent",
             "origin": ["remote"]
+        },
+        {
+            "event": "rms:user:created",
+            "description": "Dispatched internally after a user record is created, by whichever path (registration, Google login, MCP userCreate, rms:user CLI). The request contains the new 'userId'.",
+            "class": "\\Zolinga\\System\\Events\\RequestEvent",
+            "origin": ["internal"]
         },
         {
             "event": "tracking",

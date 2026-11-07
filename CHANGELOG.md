@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.9] - 2026-11-07
+
+### Added
+- Event `rms:user:created`, dispatched internally by `$api->rms->createUser()` with the new `userId`. Feature modules listen to it to provision their per-user records, regardless of which path created the user (registration, Google login, MCP `userCreate`, `rms:user` CLI).
+
 ## [1.8] - 2026-11-07
 
 ### Changed
