@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.8] - 2026-11-07
+
+### Changed
+- MCP tool `userCreate`: `password` is now optional. When omitted, the server generates a random password derived from `random_bytes(32)` (MD5) that is never returned to the caller, so the account stays unusable until the owner resets the password.
+
 ## [1.7] - 2026-11-07
 
 ### Added

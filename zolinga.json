@@ -1,6 +1,6 @@
 {
     "name": "Zolinga Rights Management System",
-    "version": "1.7",
+    "version": "1.8",
     "description": "Provides a simple rights management system for Zolinga.",
     "authors": [
         "Danny Sevcik <danny@zolinga.net>"
@@ -160,7 +160,7 @@
         },
         {
             "event": "userCreate",
-            "description": "SITE-WIDE ADMINISTRATIVE TOOL - USE WITH CAUTION. Create a new RMS user account with a mandatory e-mail username and password. Optionally set canLogin, lang, given/family name meta data and grant rights (e.g. \"member of administrators\"). Fails if a user with the same username already exists.",
+            "description": "SITE-WIDE ADMINISTRATIVE TOOL - USE WITH CAUTION. Create a new RMS user account with a mandatory e-mail username. The password is optional; when omitted the server generates a random password nobody knows, so the user must reset it before first login. Optionally set canLogin, lang, given/family name meta data and grant rights (e.g. \"member of administrators\"). Fails if a user with the same username already exists.",
             "class": "\\Zolinga\\Rms\\Mcp\\UserCreateMcpHandler",
             "method": "onCreate",
             "origin": [

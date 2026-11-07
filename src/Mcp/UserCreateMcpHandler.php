@@ -12,11 +12,14 @@ use Zolinga\System\Events\Mcp\Tools\CallEvent;
  * MCP tool for creating RMS users.
  *
  * Restricted by the manifest to the "member of administrators" right. Creates
- * a new user account with a mandatory e-mail username and password and
- * optionally sets canLogin/lang, given/family name meta data and grants rights.
+ * a new user account with a mandatory e-mail username. The password is
+ * optional; when omitted the server generates a random password nobody knows,
+ * so the account can only be used after the owner resets it. Optionally sets
+ * canLogin/lang, given/family name meta data and grants rights.
  *
  * Example:
  *
+ *   {"name": "userCreate", "arguments": {"username": "jane@example.com"}}
  *   {"name": "userCreate", "arguments": {"username": "jane@example.com", "password": "secret123"}}
  *
  * @author Daniel Sevcik <danny@zolinga.net>
@@ -98,6 +101,10 @@ final class UserCreateMcpHandler implements ListenerInterface
     /**
      * Validate and return the "password" argument, or set a BAD_REQUEST status.
      *
+     * When the argument is omitted a random password is generated that is never
+     * returned to the caller and cannot be guessed. Such an account is unusable
+     * until the owner resets the password.
+     *
      * @param CallEvent $event
      * @return string|null
      */
@@ -105,8 +112,12 @@ final class UserCreateMcpHandler implements ListenerInterface
     {
         $password = $event->request['password'] ?? null;
 
+        if ($password === null) {
+            return md5(random_bytes(32) . microtime(true));
+        }
+
         if (!is_string($password) || $password === '') {
-            $event->setStatus($event::STATUS_BAD_REQUEST, 'Missing or empty "password" argument.');
+            $event->setStatus($event::STATUS_BAD_REQUEST, 'Invalid or empty "password" argument. Omit it to have one generated.');
             return null;
         }
 

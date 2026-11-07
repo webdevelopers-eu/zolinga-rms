@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "title": "User Create Request",
-    "description": "Create a new RMS user account. 'username' (a valid e-mail address) and 'password' are required. All other fields are optional.",
+    "description": "Create a new RMS user account. 'username' (a valid e-mail address) is required. 'password' is optional - when omitted the server generates a random password that is never disclosed, so the user has to reset it before first login. All other fields are optional.",
     "properties": {
         "username": {
             "type": "string",
@@ -12,7 +12,7 @@
         "password": {
             "type": "string",
             "minLength": 6,
-            "description": "Plain-text password. Minimum 6 characters."
+            "description": "Optional plain-text password, minimum 6 characters. Omit it to have the server generate a random password that nobody knows; the user then has to reset the password before the first login."
         },
         "canLogin": {
             "type": "boolean",
@@ -41,6 +41,6 @@
             }
         }
     },
-    "required": ["username", "password"],
+    "required": ["username"],
     "additionalProperties": false
 }
