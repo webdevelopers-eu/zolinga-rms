@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- `install/install/010-database.sql` had an uncommented `====` banner line between the `rmsMeta` table and the trigger section, which is invalid SQL and made the whole script fail to install. Also removed the `DELIMITER ;;` directive, which the installer rejects because `DELIMITER` is a mysql CLI client command rather than a server statement.
+
 ## [1.10] - 2026-11-07
 
 ### Added

@@ -63,15 +63,18 @@ CREATE TABLE IF NOT EXISTS `rmsMeta` (
   CONSTRAINT `fk_rmsMeta_1` FOREIGN KEY (`userId`) REFERENCES `rmsUsers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-====================================================================
+-- ====================================================================
 -- Triggers
 -- ============================================================================
 DROP TRIGGER IF EXISTS `before_update_rmsUsers`;
 
-DELIMITER ;;
+-- NOTE: no `DELIMITER` directive here. It is a mysql CLI client command, not a
+-- server statement, and the installer runs these scripts through
+-- mysqli::multi_query() which sends the raw text to the server. A multi-line
+-- `SET` body is parsed as one statement, so a plain `;` terminator is correct.
 CREATE TRIGGER `before_update_rmsUsers`
 BEFORE UPDATE ON rmsUsers
 FOR EACH ROW
 SET 
 NEW.modified = UNIX_TIMESTAMP(),
-NEW.created = IFNULL(OLD.created, UNIX_TIMESTAMP()) ;;
+NEW.created = IFNULL(OLD.created, UNIX_TIMESTAMP());
